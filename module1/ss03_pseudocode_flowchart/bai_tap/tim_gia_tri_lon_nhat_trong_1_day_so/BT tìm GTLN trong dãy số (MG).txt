@@ -1,0 +1,15 @@
+BEGIN
+	INPUT n là số lượng các số trong dãy
+	INPUT a1 , a2 ,a3 ...an
+	      max= a1 , i=2
+	
+	WHILE i <= n
+	DO 
+	   IF ai > max
+	      max = ai
+	   END IF
+	i++
+	END DO
+	OUTPUT Max
+END
+    
