@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<body>
+    <table style=" width: 600px;" cellspacing="10" cellpadding="5">
+        <tr>
+            <th>Amount</th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="number" id="amount"></td>
+            <td>
+                <select id="FromCur" style="width: 80px" >
+                    <option value="VND">VNĐ</option>
+                    <option value="USD">USD</option>
+                </select>
+            </td>
+            <td>
+                <select id="ToCur" style="width: 80px">
+                    <option value="VND">VNĐ</option>
+                    <option value="USD">USD</option>
+                </select>
+            </td>
+            <td>
+                <button type="button" id="convert" onclick="convertFunction()">Convert</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><p id="resultCurrency" style="color: blue"></p></td>
+        </tr>
+    </table>
+    <script src="chuyen_doi_tien_te.js"></script>
+</body>
+</html>
