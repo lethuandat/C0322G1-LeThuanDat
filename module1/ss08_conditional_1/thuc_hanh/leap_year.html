@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Năm nhuận</title>
+</head>
+<body>
+    <script>
+        let year = parseInt(prompt("Nhập năm bạn muốn xem"));
+        let isLeapYear = false;
+        let isDivisibleBy4 = year % 4 == 0;
+        let isDivisibleBy100 = year % 100 == 0;
+        let isDivisibleBy400 = year % 400 == 0;
+
+        if (isDivisibleBy4) {
+            if (isDivisibleBy100) {
+                if (isDivisibleBy400) {
+                    isLeapYear = true;
+                }
+            }
+            else
+            {
+                isLeapYear = true;
+            }
+        }
+        if (isLeapYear) {
+            alert(year + " là năm nhuận");
+        }
+        else
+        {
+            alert(year + " ko phải là năm nhuận");
+        }
+
+    </script>
+</body>
+</html>
