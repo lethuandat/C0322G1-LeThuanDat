@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 1 - Bài 7</title>
+</head>
+<body>
+    <h2>Bài 7: Tính cước điện thoại cho một hộ gia đình với các thông số đã cho</h2>
+    <input type="text" id="mCall" placeholder="Số phút đã gọi">
+    <input type="button" onclick="caseSeven()" value="Tính">
+    <p>Cước cố định hằng tháng là 50.000 VNĐ</p>
+    <p id="resultB7"></p>
+    <script>
+        const CUOC_CD = 50000;
+        function caseSeven() {
+            let minute = parseInt(document.getElementById("mCall").value)
+            if (minute < 50) {
+                document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
+                    + (CUOC_CD + minute*1200) + " VNĐ";
+            }
+            else if (minute < 100) {
+                document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
+                    + (CUOC_CD + minute*1200) + " VNĐ";
+            }
+            else if (minute < 200) {
+                document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
+                    + (CUOC_CD + minute*1000) + " VNĐ";
+            }
+            else if (minute < 400) {
+                document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
+                    + (CUOC_CD + minute*800) + " VNĐ";
+            }
+            else
+            {
+                document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
+                    + (CUOC_CD + minute*500) + " VNĐ";
+            }
+        }
+    </script>
+</body>
+</html>

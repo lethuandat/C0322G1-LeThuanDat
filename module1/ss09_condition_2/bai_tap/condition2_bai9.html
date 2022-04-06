@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 2 - Bài 9</title>
+</head>
+<body>
+    <h2>Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác</h2>
+    <input type="text" id="numberA" placeholder="Số a">
+    <input type="text" id="numberB" placeholder="Số b">
+    <input type="text" id="numberC" placeholder="Số c">
+    <input type="button" onclick="check()" value="Kết quả">
+    <p id="result"></p>
+    <script>
+        function check() {
+            let a = parseFloat(document.getElementById("numberA").value);
+            let b = parseFloat(document.getElementById("numberB").value);
+            let c = parseFloat(document.getElementById("numberC").value);
+            if (a > 0 && b > 0 && c > 0) {
+                if (a + b > c && b + c > a && a + c > b) {
+                    document.getElementById("result").innerText = "3 số này là cạnh của 1 tam giác";
+                }
+                else
+                {
+                    document.getElementById("result").innerText = "3 số này không phải là cạnh của 1 tam giác";
+                }
+            }
+            else
+            {
+                document.getElementById("result").innerText = "3 số này không phải là cạnh của 1 tam giác";
+            }
+        }
+    </script>
+</body>
+</html>

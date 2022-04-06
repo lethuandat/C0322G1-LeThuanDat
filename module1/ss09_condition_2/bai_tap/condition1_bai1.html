@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 1 - Bài 1</title>
+</head>
+<body>
+    <h2>Bài 1: Nhập vào hai số a và b, và kiểm tra xem a có chia hết cho b hay không</h2>
+    <input type="text" id="numberA">
+    <input type="text" id="numberB">
+    <input type="button" onclick="caseOne()" value="Tính">
+    <p id="resultB1"></p>
+    <script>
+        function caseOne() {
+            let numA = parseInt(document.getElementById("numberA").value);
+            let numB = parseInt(document.getElementById("numberB").value);
+            if (numA%numB === 0) {
+                document.getElementById("resultB1").innerText = numA + " chia hết cho " + numB;
+            }
+            else
+            {
+                document.getElementById("resultB1").innerText = numA + " không chia hết cho " + numB;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 2 - Bài 10</title>
+</head>
+<body>
+    <script>
+        let kWh = parseInt(prompt("Nhập số lượng điện đã tiêu thụ tháng qua (kWh):"));
+        if (kWh < 0) {
+            alert("Bạn nhập sai ");
+        }
+        else if (kWh < 51) {
+            alert("Tiền điện phải trả là " + kWh * 1678 + " đồng");
+        }
+        else if (kWh < 101) {
+            alert("Tiền điện phải trả là " + ((50 * 1678) + (kWh - 50) * 1734) + " đồng");
+        }
+        else if (kWh < 201) {
+            alert("Tiền điện phải trả là " + ((50 * 1678) + (50 * 1734) + (kWh - 100) * 2014) + " đồng");
+        }
+        else if (kWh < 301) {
+            alert("Tiền điện phải trả là " + ((50 * 1678) + (50 * 1734) + (100 * 2014) + (kWh - 200) * 2536)  + " đồng");
+        }
+        else if (kWh < 401) {
+            alert("Tiền điện phải trả là " + ((50 * 1678) + (50 * 1734) + (100 * 2014) + (100 * 2536) +
+                (kWh - 300) * 2834) + " đồng");
+        }
+        else
+        {
+            alert("Tiền điện phải trả là " + ((50 * 1678) + (50 * 1734) + (100 * 2014) + (100 * 2536) +
+                (100 * 2834) + (kWh - 400) * 2927) + " đồng");
+        }
+    </script>
+</body>
+</html>

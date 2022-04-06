@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" align="center" style="width: 250px" cellpadding="5" cellspacing="5">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="result" style="width: 240px; height: 50px; border-radius: 5px;">
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <button id="num1">1</button>
+            </td>
+            <td>
+                <button id="num2">2</button>
+            </td>
+            <td>
+                <button id="num3">3</button>
+            </td>
+            <td>
+                <button id="add">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="num4">4</button>
+            </td>
+            <td>
+                <button id="num5">5</button>
+            </td>
+            <td>
+                <button id="num6">6</button>
+            </td>
+            <td>
+                <button id="sub">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="num7">7</button>
+            </td>
+            <td>
+                <button id="num8">8</button>
+            </td>
+            <td>
+                <button id="num9">9</button>
+            </td>
+            <td>
+                <button id="mul">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="clear">C</button>
+            </td>
+            <td>
+                <button id="num0">0</button>
+            </td>
+            <td>
+                <button id="equal">=</button>
+            </td>
+            <td>
+                <button id="div">/</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function clickNumb(x) {
+            switch (x) {
+                case "num1":
+                    document.getElementById("result").innerText = "1";
+            }
+        }
+    </script>
+</body>
+</html>

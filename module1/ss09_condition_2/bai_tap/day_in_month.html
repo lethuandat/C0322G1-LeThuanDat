@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ngày trong 1 tháng</title>
+</head>
+<body>
+    <input type="text" id="month">
+    <input type="button" onclick="calDay()" value="Tính số ngày">
+    <p id="result"></p>
+    <script>
+        function calDay(){
+            let mont = parseInt(document.getElementById("month").value);
+            switch (mont) {
+                case 2:
+                    document.getElementById("result").innerText = "Tháng " + mont + " có 28 hoặc 29 ngày.";
+                    break;
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById("result").innerText = "Tháng " + mont + " có 31 ngày.";
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    document.getElementById("result").innerText = "Tháng " + mont + " có 30 ngày.";
+                    break;
+                default:
+                    document.getElementById("result").innerText = "Bạn nhập sai tháng ";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 1 - Bài 5</title>
+</head>
+<body>
+    <h2>Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</h2>
+    <input type="text" id="scoreTest" placeholder="Điểm kiểm tra">
+    <input type="text" id="scoreMidTerm" placeholder="Điểm thi giữa kì">
+    <input type="text" id="scoreFinal" placeholder="Điểm thi cuối kì">
+    <input type="button" onclick="caseFive()" value="Kết quả">
+    <p id="resultB5"></p>
+    <script>
+        function caseFive() {
+            let sTest = parseFloat(document.getElementById("scoreTest").value);
+            let sMidTerm = parseFloat(document.getElementById("scoreMidTerm").value);
+            let sFinal = parseFloat(document.getElementById("scoreFinal").value);
+            let sAverage = (sTest + sMidTerm*2 + sFinal*3 ) / 6;
+            if (sAverage >= 8) {
+                document.getElementById("resultB5").innerHTML = "Điểm trung bình của bạn là: " + sAverage + "<br>Xếp loại học lực giỏi";
+            }
+            else if (sAverage >= 6.5) {
+                document.getElementById("resultB5").innerHTML = "Điểm trung bình của bạn là: " + sAverage + "<br>Xếp loại học lực khá";
+            }
+            else if (sAverage >= 5) {
+                document.getElementById("resultB5").innerHTML = "Điểm trung bình của bạn là: " + sAverage + "<br>Xếp loại học lực trung bình";
+            }
+            else
+            {
+                document.getElementById("resultB5").innerHTML = "Điểm trung bình của bạn là: " + sAverage + "<br>Xếp loại học lực yếu";
+            }
+        }
+    </script>
+</body>
+</html>

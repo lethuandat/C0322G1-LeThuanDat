@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 1 - Bài 3</title>
+</head>
+<body>
+    <h2>Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0</h2>
+    <input type="text" id="numberN">
+    <input type="button" onclick="caseThree()" value="Kết quả">
+    <p id="resultB3"></p>
+    <script>
+        function caseThree() {
+            let numN = parseInt(document.getElementById("numberN").value);
+            if (numN > 0) {
+                document.getElementById("resultB3").innerText = numN + " là số dương (>0)";
+            }
+            else if (numN < 0) {
+                document.getElementById("resultB3").innerText = numN + " là số âm (<0)";
+            }
+            else
+            {
+                document.getElementById("resultB3").innerText = "Bạn vừa nhập vào là số " + numN;
+            }
+        }
+    </script>
+</body>
+</html>

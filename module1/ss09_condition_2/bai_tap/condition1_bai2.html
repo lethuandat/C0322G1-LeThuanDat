@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 1 - Bài 2</title>
+</head>
+<body>
+    <h2>Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10</h2>
+    <input type="text" id="age">
+    <input type="button" onclick="caseTwo()" value="Kết quả">
+    <p id="resultB2"></p>
+    <script>
+        function caseTwo() {
+            let numN = parseInt(document.getElementById("age").value);
+            if (numN === 15) {
+                document.getElementById("resultB2").innerText = "Học sinh này đủ tuổi vào học lớp 10 ";
+            }
+            else if (numN > 15 ) {
+                document.getElementById("resultB2").innerText = "Học sinh này quá tuổi vào học lớp 10 rồi";
+            }
+            else
+            {
+                document.getElementById("resultB2").innerText = "Học sinh này chưa đủ tuổi vào học lớp 10 ";
+            }
+        }
+    </script>
+</body>
+</html>

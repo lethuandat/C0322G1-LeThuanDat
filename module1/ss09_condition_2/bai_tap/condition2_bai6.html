@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 2 - Bài 6</title>
+</head>
+<body>
+    <h2>Bài 6: Giải phương trình bậc 1 (ax + b = 0)</h2>
+    <input type="text" id="soA"><span>X + </span><input type="text" id="soB"><span> = 0</span>
+    <br><br>
+    <input type="button" onclick="solve()" value="Kết quả">
+    <p id="result"></p>
+    <script>
+        function solve() {
+            let a = parseFloat(document.getElementById("soA").value);
+            let b = parseFloat(document.getElementById("soB").value);
+            if (a === 0) {
+                if (b === 0) {
+                    document.getElementById("result").innerText = "Phương trình có vô số nghiệm";
+                }
+                else
+                {
+                    document.getElementById("result").innerText = "Phương trình vô nghiệm";
+                }
+            }
+            else
+            {
+                document.getElementById("result").innerText = "Phương trình có nghiệm x = " + (-b / a);
+            }
+        }
+    </script>
+</body>
+</html>

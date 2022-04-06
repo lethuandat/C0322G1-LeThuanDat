@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition 2 - Bài 7</title>
+</head>
+<body>
+    <h2>Bài 7: Giải phương trình bậc 2 (ax<sup>2</sup> + bx + c = 0)</h2>
+    <input type="text" id="soA"><span>X<sup>2</sup>  + </span>
+    <input type="text" id="soB"><span>X + </span>
+    <input type="text" id="soC"><span> = 0</span>
+    <br><br>
+    <input type="button" onclick="solve()" value="Kết quả">
+    <p id="result"></p>
+    <script>
+        function solve() {
+            let a = parseFloat(document.getElementById("soA").value);
+            let b = parseFloat(document.getElementById("soB").value);
+            let c = parseFloat(document.getElementById("soC").value);
+            let delta = b*b - 4 * a * c;
+            if (delta < 0) {
+                document.getElementById("result").innerText = "Phương trình vô nghiệm";
+            }
+            else if (delta === 0) {
+                document.getElementById("result").innerHTML = "Phương trình có 1 nghiệm kép:<br>" +
+                    "x1 = x2 = " + (-b / (2 * a));
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = "Phương trình có 2 nghiệm phân biệt:<br>" +
+                    "x1 = " + (-b + Math.sqrt(delta))/ (2 * a) +
+                    "<br>x2 = " + (-b - Math.sqrt(delta))/ (2 * a);
+            }
+        }
+    </script>
+</body>
+</html>
