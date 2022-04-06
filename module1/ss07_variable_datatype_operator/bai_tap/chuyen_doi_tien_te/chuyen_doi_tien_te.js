@@ -9,11 +9,11 @@ function convertFunction() {
     {
         document.getElementById("resultCurrency").innerHTML = "Result = " + amountCur + " " + ToCur;
     }
-    if (FromCur == "USD" && ToCur == "VND")
+    if (FromCur === "USD" && ToCur === "VND")
     {
         document.getElementById("resultCurrency").innerHTML = "Result = " + amountCur * 23000 + " " + ToCur;
     }
-    if (FromCur == "VND" && ToCur == "USD")
+    if (FromCur === "VND" && ToCur === "USD")
     {
         document.getElementById("resultCurrency").innerHTML = "Result = " + amountCur / 23000 + " " + ToCur;
     }
