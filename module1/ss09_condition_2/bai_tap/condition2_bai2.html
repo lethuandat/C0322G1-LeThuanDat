@@ -8,7 +8,15 @@
     <script>
         let m = parseFloat(prompt("Nhập vào số mét: "));
         let ft = m * 3.2808;
-        alert(m + " mét = " + ft + " feet");
+        if (m > 0) {
+            alert(m + " mét = " + ft + " feet");
+        }
+        else
+        {
+            alert("Bạn nhập sai");
+        }
+
+
     </script>
 </body>
 </html>

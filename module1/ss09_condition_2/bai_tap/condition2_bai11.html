@@ -6,5 +6,63 @@
 </head>
 <body>
     <h2>Viết chương trình tính thuế thu nhập cá nhân</h2>
+    <input type="text" id="salary" placeholder="Thu nhập tháng">
+    <input type="text" id="salaryInsurance" placeholder="Lương đóng bảo hiểm">
+    <input type="text" id="numOfDependent" placeholder="Số người phụ thuộc">
+    <button onclick="taxSalary()">Tính</button>
+    <hr>
+    <p>Mức đóng: BHXH (8%), BHYT (1.5%), BHTN (1%)</p>
+    <p id="obligatoryInsurance">Bảo hiểm bắt buộc:</p>
+    <p>Giảm trừ bản thân = 11 000 000 VNĐ</p>
+    <p id="reduceDependent">Giảm trừ người phụ thuộc: </p>
+    <p id="taxSalary">Thu nhập tính thuế:</p>
+    <hr>
+    <p id="result"></p>
+    <script>
+        function taxSalary() {
+            let salary = parseFloat(document.getElementById("salary").value);
+            let salIns = parseFloat(document.getElementById("salaryInsurance").value);
+            let numOfDep = parseInt(document.getElementById("numOfDependent").value);
+            let taxSalary = salary - ((salIns * 8 + salIns * 1.5 + salIns * 1) / 100) - 11000000 - (numOfDep * 4400000);
+            document.getElementById("obligatoryInsurance").innerText = "Bảo hiểm bắt buộc: " +
+                ((salIns * 8 + salIns * 1.5 + salIns * 1) / 100) + " VNĐ";
+            document.getElementById("reduceDependent").innerText = "Giảm trừ người phụ thuộc: " +
+                (numOfDep * 4400000) + " VNĐ";
+            document.getElementById("taxSalary").innerText = "Thu nhập tính thuế: " + taxSalary + " VNĐ";
+            if (taxSalary <= 0) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    (taxSalary * 0) +  " VNĐ";
+            }
+            else if(taxSalary <= 5000000) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 5) / 100) +  " VNĐ";
+            }
+            else if(taxSalary <= 10000000) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 10) / 100 - 250000) +  " VNĐ";
+            }
+            else if(taxSalary <= 18000000) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 15) / 100 - 750000) +  " VNĐ";
+            }
+            else if(taxSalary <= 32000000) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 20) / 100 - 1650000) +  " VNĐ";
+            }
+            else if(taxSalary <= 52000000) {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 25) / 100 - 3250000) +  " VNĐ";
+            }
+            else if(taxSalary <= 80000000) {
+               document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 30) / 100 - 5850000) +  " VNĐ";
+            }
+            else
+            {
+                document.getElementById("result").innerText = "Thuế thu nhập cá nhân phải nộp: " +
+                    ((taxSalary * 35) / 100 - 9850000) +  " VNĐ";
+            }
+        }
+    </script>
 </body>
 </html>

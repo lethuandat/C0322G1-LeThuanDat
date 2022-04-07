@@ -18,18 +18,36 @@
             let b = parseFloat(document.getElementById("soB").value);
             let c = parseFloat(document.getElementById("soC").value);
             let delta = b*b - 4 * a * c;
-            if (delta < 0) {
-                document.getElementById("result").innerText = "Phương trình vô nghiệm";
-            }
-            else if (delta === 0) {
-                document.getElementById("result").innerHTML = "Phương trình có 1 nghiệm kép:<br>" +
-                    "x1 = x2 = " + (-b / (2 * a));
+            if (a === 0) {
+                if (b === 0) {
+                    if (c === 0) {
+                        document.getElementById("result").innerText = "Phương trình có vô số nghiệm";
+                    }
+                    else
+                    {
+                        document.getElementById("result").innerText = "Phương trình vô nghiệm";
+                    }
+                }
+                else
+                {
+                    document.getElementById("result").innerText = "Phương trình có nghiệm x = " + (-c / b);
+                }
             }
             else
             {
-                document.getElementById("result").innerHTML = "Phương trình có 2 nghiệm phân biệt:<br>" +
-                    "x1 = " + (-b + Math.sqrt(delta))/ (2 * a) +
-                    "<br>x2 = " + (-b - Math.sqrt(delta))/ (2 * a);
+                if (delta < 0) {
+                    document.getElementById("result").innerText = "Phương trình vô nghiệm";
+                }
+                else if (delta === 0) {
+                    document.getElementById("result").innerHTML = "Phương trình có 1 nghiệm kép:<br>" +
+                        "x1 = x2 = " + (-b / (2 * a));
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML = "Phương trình có 2 nghiệm phân biệt:<br>" +
+                        "x1 = " + (-b + Math.sqrt(delta))/ (2 * a) +
+                        "<br>x2 = " + (-b - Math.sqrt(delta))/ (2 * a);
+                }
             }
         }
     </script>

@@ -8,80 +8,86 @@
             width: 50px;
             height: 50px;
             border-radius: 5px;
+            background-color: #f8f9ff;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <table border="1" align="center" style="width: 250px" cellpadding="5" cellspacing="5">
+    <table border="1" align="center" style="background-color:#1e1513; width: 250px" cellpadding="5" cellspacing="5">
         <tr>
             <td colspan="4">
-                <input type="text" id="result" style="width: 240px; height: 50px; border-radius: 5px;">
+                <p style="height: 30px; text-align: center; margin: 0 0 8px 0; color: white; font-weight: bold; font-size: xx-large;">CASIO</p>
+                <input placeholder="0" readonly="readonly" id="result" style="font-weight: bold; background-color:#cbff0c; width: 240px; height: 50px; border-radius: 5px;">
             </td>
 
         </tr>
         <tr>
             <td>
-                <button id="num1">1</button>
+                <button id="num1" value="1" onclick="clickNumb(this.value)">1</button>
             </td>
             <td>
-                <button id="num2">2</button>
+                <button id="num2" value="2" onclick="clickNumb(this.value)">2</button>
             </td>
             <td>
-                <button id="num3">3</button>
+                <button id="num3" value="3" onclick="clickNumb(this.value)">3</button>
             </td>
             <td>
-                <button id="add">+</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button id="num4">4</button>
-            </td>
-            <td>
-                <button id="num5">5</button>
-            </td>
-            <td>
-                <button id="num6">6</button>
-            </td>
-            <td>
-                <button id="sub">-</button>
+                <button id="add" value="+" onclick="clickNumb(this.value)">+</button>
             </td>
         </tr>
         <tr>
             <td>
-                <button id="num7">7</button>
+                <button id="num4" value="4" onclick="clickNumb(this.value)">4</button>
             </td>
             <td>
-                <button id="num8">8</button>
+                <button id="num5" value="5" onclick="clickNumb(this.value)">5</button>
             </td>
             <td>
-                <button id="num9">9</button>
+                <button id="num6" value="6" onclick="clickNumb(this.value)">6</button>
             </td>
             <td>
-                <button id="mul">*</button>
+                <button id="sub" value="-" onclick="clickNumb(this.value)">-</button>
             </td>
         </tr>
         <tr>
             <td>
-                <button id="clear">C</button>
+                <button id="num7" value="7" onclick="clickNumb(this.value)">7</button>
             </td>
             <td>
-                <button id="num0">0</button>
+                <button id="num8" value="8" onclick="clickNumb(this.value)">8</button>
             </td>
             <td>
-                <button id="equal">=</button>
+                <button id="num9" value="9" onclick="clickNumb(this.value)">9</button>
             </td>
             <td>
-                <button id="div">/</button>
+                <button id="mul" value="*" onclick="clickNumb(this.value)">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="clear" value="remove" onclick="remove()">C</button>
+            </td>
+            <td>
+                <button id="num0" value="0" onclick="clickNumb(this.value)">0</button>
+            </td>
+            <td>
+                <button id="equal" value="=" onclick="result()">=</button>
+            </td>
+            <td>
+                <button id="div" value="/" onclick="clickNumb(this.value)">/</button>
             </td>
         </tr>
     </table>
     <script>
-        function clickNumb(x) {
-            switch (x) {
-                case "num1":
-                    document.getElementById("result").innerText = "1";
-            }
+        function clickNumb(num) {
+            document.getElementById("result").value += num;
+        }
+        function remove() {
+            document.getElementById("result").value = "";
+        }
+        function result() {
+            document.getElementById("result").value = eval(document.getElementById("result").value);
         }
     </script>
 </body>

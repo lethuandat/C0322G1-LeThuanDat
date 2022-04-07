@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me</title>
+</head>
+<body>
+    <h2 style="position: absolute; left: 360px; text-align: center">Do you love me?</h2>
+    <button onclick="alert('<3')" style="position: absolute; top: 200px; left: 300px; width: 150px; height: 50px;">Yes</button>
+    <button id="noLove" onmouseover="randomNo()" style="position: absolute; top: 200px; left: 500px; width: 150px; height: 50px;">No</button>
+    <script>
+        function randomNo() {
+            let x = Math.round(Math.random() * window.innerWidth);
+            let y = Math.round(Math.random() * window.innerHeight);
+           document.getElementById("noLove").style.left = x + "px";
+           document.getElementById("noLove").style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
