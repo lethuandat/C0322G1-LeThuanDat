@@ -14,26 +14,26 @@
         const CUOC_CD = 50000;
         function caseSeven() {
             let minute = parseInt(document.getElementById("mCall").value)
-            if (minute < 50) {
+            if (minute < 51) {
                 document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
                     + (CUOC_CD + minute*1200) + " VNĐ";
             }
-            else if (minute < 100) {
+            else if (minute < 101) {
                 document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
-                    + (CUOC_CD + minute*1200) + " VNĐ";
+                    + (CUOC_CD + 50*1200 + (minute - 50)*1000) + " VNĐ";
             }
-            else if (minute < 200) {
+            else if (minute < 201) {
                 document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
-                    + (CUOC_CD + minute*1000) + " VNĐ";
+                    + (CUOC_CD + 50*1200 + 50*1000 + (minute-100)*800) + " VNĐ";
             }
-            else if (minute < 400) {
+            else if (minute < 401) {
                 document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
-                    + (CUOC_CD + minute*800) + " VNĐ";
+                    + (CUOC_CD + 50*1200 + 50*1000 + 100*800 + (minute-200)*600) + " VNĐ";
             }
             else
             {
                 document.getElementById("resultB7").innerHTML = "Tiền cước điện thoại tháng này của bạn là: "
-                    + (CUOC_CD + minute*500) + " VNĐ";
+                    + (CUOC_CD + 50*1200 + 50*1000 + 100*800 + 200*600 + (minute - 400)*200) + " VNĐ";
             }
         }
     </script>
