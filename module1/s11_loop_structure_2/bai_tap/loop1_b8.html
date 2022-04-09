@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 1 - Bài 8</title>
+</head>
+<body>
+    <div align="center" style="position: absolute; left:45%; top:30%;">
+        <button style="width: 100px; height: 100px;" onclick="play()"> Chơi </button>
+    </div>
+    <script>
+        function  play() {
+            let range1 = parseInt(prompt("Bạn muốn đoán trong khoảng từ:"));
+            let range2 = parseInt(prompt("đến:"));
+            let n = Math.floor(Math.random()*range2) + range1;
+            console.log(n);
+            let i = 1;
+            while (i <= 3) {
+                let numberPredict = parseInt(prompt("Mời bạn chọn số:"));
+                if (numberPredict === n) {
+                    alert("Chúc mừng bạn đã đoán trúng!");
+                    break;
+                }
+                if (numberPredict > n)
+                {
+                    alert("Số bạn chọn lớn hơn, hãy chọn lại (Còn " + (3 - i) + " lượt)");
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    alert("Số bạn chọn bé hơn, hãy chọn lại (Còn " + (3 - i) + " lượt)");
+                    i++;
+                    continue;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

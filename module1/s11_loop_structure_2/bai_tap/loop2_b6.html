@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 2 - Bài 6</title>
+</head>
+<body>
+<script>
+    do {
+        let size = parseInt(prompt("Nhập kích cỡ trái tim (nên >= 6) "));
+        if (size >= 6) {
+            let i,j;
+            //Phần đầu
+            for (i = size/2; i <= size; i = i+2){
+                for (j = 1; j < size-i; j = j+2){
+                    document.write("&nbsp;&nbsp;");
+                }
+
+                for (j = 1; j <= i; j++) {
+                    document.write("*");
+                }
+
+                for (j = 1; j <= size-i; j++) {
+                    document.write("&nbsp;&nbsp;");
+                }
+
+                for (j = 1; j <= i; j++) {
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+            //Phần đuôi
+            for (i = size; i >= 0; i--){
+                for (j = i; j < size; j++){
+                    document.write("&nbsp;&nbsp;");
+                }
+                for (j = 1; j <= ((i * 2) - 1); j++) {
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+            break;
+        }
+        else
+        {
+            size = parseInt(prompt("Nhập kích cỡ trái tim (nên >= 6) "));
+        }
+    } while (true)
+</script>
+</body>
+</html>

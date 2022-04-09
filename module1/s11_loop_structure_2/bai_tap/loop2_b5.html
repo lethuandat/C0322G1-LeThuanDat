@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 2 - Bài 5</title>
+</head>
+<body>
+<script>
+    let moneyRate = 0;
+    do {
+        //Tiền gửi
+        let money = parseInt(prompt("Số tiền gửi ban đầu: "));
+        while (money <= 0) {
+            money = parseInt(prompt("Số tiền gửi nhập chưa đúng: "));
+        }
+        //Tháng cho vay
+        let month = parseInt(prompt("Số tháng cho vay: "));
+        while (month <= 0) {
+            month = parseInt(prompt("Số tháng cho vay chưa đúng: "));
+        }
+        //Lãi suất tháng
+        let rate = parseInt(prompt("Lãi suất hàng tháng: ")) / 100;
+        while (rate <= 0) {
+            rate = parseInt(prompt("Lãi suất hàng tháng nhập chưa đúng: "));
+        }
+        if (month > 0 && money > 0 && rate > 0) {
+            moneyRate = money * (Math.pow(1 + rate, month));
+            console.log(moneyRate);
+            alert("OK, bạn đã nhập đúng");
+            alert("Số tiền lãi nhận được là: " + (moneyRate - money) + " VNĐ");
+            break;
+        }
+
+    } while (true);
+
+</script>
+</body>
+</html>

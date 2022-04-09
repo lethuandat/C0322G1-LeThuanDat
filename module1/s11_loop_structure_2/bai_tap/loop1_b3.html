@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 1 - Bài 3</title>
+</head>
+<body>
+    <script>
+        let numbers = 20;
+        let number1 = 0;
+        let number2 = 1;
+        let nextTerm;
+        document.write(numbers + " số Fibonacci đầu tiên là: <br>");
+        for (let i = 1; i <= numbers; i++) {
+            document.writeln(number1 + "<br>");
+            nextTerm = number1 + number2;
+            number1 = number2;
+            number2 = nextTerm;
+        }
+    </script>
+</body>
+</html>

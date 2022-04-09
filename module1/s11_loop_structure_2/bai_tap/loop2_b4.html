@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 2 - Bài 4</title>
+</head>
+<body>
+<script>
+    let x = parseInt(prompt("Nhập chiều dài hình chữ nhật: "));
+    let y = parseInt(prompt("Nhập chiều rộng hình chữ nhật: "));
+    for (let i = 1; i <= y; i++){
+        for (let j = 1; j <= x; j++){
+            if (i > 1 && i < y && j > 1 && j < x) {
+                document.write("&nbsp;&nbsp;");
+            }
+            else
+            {
+                document.write("*");
+            }
+        }
+        document.write("<br>");
+    }
+</script>
+</body>
+</html>

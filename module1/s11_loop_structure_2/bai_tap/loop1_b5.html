@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 1 - Bài 5</title>
+</head>
+<body>
+    <script>
+        let numbers = 20;
+        let number1 = 0;
+        let number2 = 1;
+        let nextTerm;
+        let total = 0;
+        for (let i = 1; i <= numbers; i++) {
+            document.writeln(number1 + "<br>");
+            total += number1;
+            nextTerm = number1 + number2;
+            number1 = number2;
+            number2 = nextTerm;
+        }
+        document.write("Tổng 20 số Fibonacci đầu tiên là: " + total);
+    </script>
+</body>
+</html>

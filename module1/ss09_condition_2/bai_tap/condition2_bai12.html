@@ -5,20 +5,25 @@
     <title>Condition 2 - Bài 12</title>
 </head>
 <body>
-    <h2>Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng</h2>
-    <input type="text" id="money" placeholder="Tiền gốc">
-    <input type="text" id="month" placeholder="Số tháng cho vay">
-    <input type="text" id="rate" placeholder="Lãi suất tháng &percnt;">
-    <input type="button" onclick="countRate()" value="Tính lãi">
-    <p id="result"></p>
-    <script>
-        function countRate() {
+<h2>Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng
+    tháng</h2>
+<input type="text" id="money" placeholder="Tiền gốc">
+<input type="text" id="month" placeholder="Số tháng cho vay">
+<input type="text" id="rate" placeholder="Lãi suất tháng &percnt;">
+<input type="button" onclick="countRate()" value="Tính lãi">
+<p id="result"></p>
+<script>
+    function countRate() {
         let money = parseInt(document.getElementById("money").value);
         let month = parseInt(document.getElementById("month").value);
         let rate = parseFloat(document.getElementById("rate").value) / 100;
-        let a = money *  (Math.pow((1 + rate),month));
-        document.getElementById("result").innerText = "Số tiền lãi bạn nhận được là: " + (a - money) + " VNĐ";
+        if (money <= 0 || month <= 0 || rate <= 0) {
+            alert("Các ô nhập số chưa đúng");
+        } else {
+            let a = money * (Math.pow((1 + rate), month));
+            document.getElementById("result").innerText = "Số tiền lãi bạn nhận được là: " + (a - money) + " VNĐ";
         }
-    </script>
+    }
+</script>
 </body>
 </html>
