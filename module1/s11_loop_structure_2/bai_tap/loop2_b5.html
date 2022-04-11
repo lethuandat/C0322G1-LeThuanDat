@@ -24,7 +24,7 @@
             rate = parseInt(prompt("Lãi suất hàng tháng nhập chưa đúng: "));
         }
         if (month > 0 && money > 0 && rate > 0) {
-            moneyRate = money * (Math.pow(1 + rate, month));
+            moneyRate = money * Math.pow(1 + rate, month);
             console.log(moneyRate);
             alert("OK, bạn đã nhập đúng");
             alert("Số tiền lãi nhận được là: " + (moneyRate - money) + " VNĐ");
