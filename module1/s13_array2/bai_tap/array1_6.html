@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 6</title>
+</head>
+<body>
+    <script>
+        let a = [-4,54,10,-10,7,8,-6,67,97,-87];
+        let v = parseInt(prompt("Nhập số cần tìm"));
+        let ix = "";
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] === v) {
+                document.write(v + " is in the array at index " + i);
+                ix = i;
+                break;
+            }
+        }
+        if (ix === "") {
+            document.write(v + " is not in the array");
+        }
+    </script>
+</body>
+</html>

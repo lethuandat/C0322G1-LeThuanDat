@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <h2>Chơi caro</h2>
+    <p id="carogame"></p>
+    <input type="button" value="Change Value" onclick="changeValue()">
+    <input type="button" value="Who Win" onclick="win()">
+    <p id="win"></p>
+    <script>
+        let a = [];
+        let sym;
+
+        let caro ="";
+        for (let i = 0; i < 3; i++ ) {
+            a[i] = new Array(".",".",".",);
+        }
+        for (let i = 0; i < 3; i++) {
+            caro += "<br>";
+            for (let j = 0; j < 3; j++) {
+                caro += a[i][j] + "&nbsp; &nbsp;";
+
+            }
+        }
+        caro += "<br><br>";
+        document.getElementById("carogame").innerHTML = caro;
+
+        function changeValue() {
+            sym = prompt("Nhập kí hiệu chơi (X hoặc O)");
+            let xPosition = prompt("Nhập ví trí x");
+            let yPosition = prompt("Nhập ví trí y");
+
+            a[xPosition][yPosition] = sym;
+
+            let caro = "";
+            for (let i = 0; i < 3; i++) {
+                caro += "<br>";
+                for (let j = 0; j < 3; j++) {
+                    caro += a[i][j] + "&nbsp; &nbsp;";
+                }
+            }
+            caro += "<br><br>";
+            document.getElementById("carogame").innerHTML = caro;
+        }
+        function win() {
+            if (a[0][0] === sym && a[0][1] === sym && a[0][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi x thắng";
+            }
+            else if (a[1][0] === sym && a[1][1] === sym && a[1][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[2][0] === sym && a[2][1] === sym && a[2][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[0][0] === sym && a[1][0] === sym && a[2][0] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[0][1] === sym && a[1][1] === sym && a[2][1] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[0][2] === sym && a[1][2] === sym && a[2][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[0][0] === sym && a[1][1] === sym && a[2][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else if (a[2][0] === sym && a[1][1] === sym && a[0][2] === sym) {
+                document.getElementById("win").innerText = "Người chơi " +sym + " thắng";
+            }
+            else
+            {
+                document.getElementById("win").innerText = "Chưa xác định được";
+            }
+
+        }
+
+    </script>
+</body>
+</html>
