@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 2 - Bài 2</title>
+</head>
+<body>
+    <script>
+        let a = [ "c", "s", "c", "2", "6", "1" ];
+        document.write("Mảng lúc ban đầu:");
+        for (let i in a) {
+            document.write("<br>" + a[i]);
+        }
+        let swap;
+        let first = 0;
+        let last = a.length -1;
+        while (first < last) {
+            swap = a[first];
+            a[first] = a[last];
+            a[last] = swap;
+            first++;
+            last--;
+        }
+        document.write("<br>Mảng lúc sau:");
+        // document.write("<br>" + a.join(""));
+        for (let i in a) {
+            document.write("<br>" + a[i]);
+        }
+    </script>
+</body>
+</html>

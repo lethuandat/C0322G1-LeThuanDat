@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 5</title>
+</head>
+<body>
+    <script>
+        let str = "-1 -2 abc a xx -1.5  -5,7 uh -0 ok t57 -- -g";
+        let count = 0;
+        document.write("Chuỗi lúc ban đầu: ");
+        for (let i = 0; i < str.length; i++) {
+            document.write(str[i] + " ");
+            if (str[i] === "-" &&  str[i+2] !== "." && parseInt(str[i+1]) % 1 === 0 && parseInt(str[i+1]) !== 0 &&  str[i+2] !== ",") {
+                count ++;
+            }
+        }
+        document.write("<br>Chuỗi này có " + count + " số nguyên âm.");
+    </script>
+</body>
+</html>

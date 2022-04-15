@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị nhỏ nhất trong mảng</title>
+</head>
+<body>
+<script>
+    let a1 = [3, 5, 1, 8, -3, 7, 8];
+    let a2 = [7, 12, 6, 9, 20, 56, 89];
+    let a3 = [];
+    let a4 = [0, -1, 0, 0, 0, 0];
+    document.write("Mảng a1: " + a1);
+    document.write("<br>Mảng a2: " + a2);
+    document.write("<br>Mảng a3: " + a3);
+    document.write("<br>Mảng a4: " + a4);
+
+    function minSearch(a) {
+        let min = a[0];
+        if (a.length === 0) {
+            return "không có, vì mảng rỗng";
+        }
+        for (let i = 1; i < a.length; i++) {
+            if (min > a[i]) {
+                min = a[i];
+            }
+        }
+        return min;
+    }
+    let min1 = minSearch(a1);
+    let min2 = minSearch(a2);
+    let min3 = minSearch(a3);
+    let min4 =minSearch(a4);
+    document.write("<br>Giá trị nhỏ nhất trong mảng a1 là " + min1);
+    document.write("<br>Giá trị nhỏ nhất trong mảng mảng a2 là " + min2);
+    document.write("<br>Giá trị nhỏ nhất trong mảng mảng a3 là " + min3);
+    document.write("<br>Giá trị nhỏ nhất trong mảng mảng a4 là " + min4);
+</script>
+</body>
+</html>

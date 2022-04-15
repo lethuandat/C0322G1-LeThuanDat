@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 9</title>
+</head>
+<body>
+    <script>
+        let a = [-4,54,10,-10,7,8,-6,67,97,-87];
+        let b = [42,45,5,65,97,-6,0,12,-28,64];
+        let c = [];
+        document.write("Mảng a là:");
+        for (let i = 0; i < a.length; i++) {
+            document.write("<br>" + a[i]);
+        }
+        document.write("<br>Mảng b là:");
+        for (let i = 0; i < b.length; i++) {
+            document.write("<br>" + b[i]);
+        }
+        for (let i = 0; i < a.length; i++) {
+            c[i] = a[i];
+            for (let  j = 0; j < b.length; j++) {
+                c[a.length + j] = b[j];
+            }
+        }
+        document.write("<br>Mảng c là:");
+        for (let i = 0; i < c.length; i++) {
+            document.write("<br>" + c[i]);
+        }
+    </script>
+</body>
+</html>

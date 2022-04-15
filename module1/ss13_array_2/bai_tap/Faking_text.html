@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea on Typing</title>
+</head>
+<body>
+    <h2 >Type anything slowly</h2>
+    <textarea cols="50" rows="10" oninput="fakeText()" id="textArea"></textarea>
+    <script>
+        let fakeArray = new Array();
+        fakeArray[0] = "T";
+        fakeArray[1] = "R";
+        fakeArray[2] = "I";
+        fakeArray[3] = "C";
+        fakeArray[4] = "K";
+        let s = "";
+        let t;
+        function fakeText() {
+            t = document.getElementById("textArea").value;
+            let i = t.length;
+            if (i > 0) {
+                for (let j = 0; j <= i; j++) {
+                    s += fakeArray[j];
+                    if (i === 4) {
+                        s ="";
+                        t = "";
+                    }
+                }
+            }
+            t = s;
+            s = "";
+        }
+    </script>
+</body>
+</html>

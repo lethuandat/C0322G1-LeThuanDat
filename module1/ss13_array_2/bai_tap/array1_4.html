@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 3</title>
+</head>
+<body>
+    <script>
+        let a = [4, 8, 57, 0, 6, 12, 75];
+        document.write("Mảng lúc ban đầu:");
+        for (let i = 0; i < a.length; i++) {
+            document.write("<br>" + a[i]);
+        }
+        let first = 0;
+        let last = a.length - 1;
+        while (first < last) {
+            let swap = a[first];
+            a[first] = a[last];
+            a[last] = swap;
+            first++;
+            last--;
+        }
+        document.write("<br>Mảng sau khi đảo ngược " + a);
+    </script>
+</body>
+</html>

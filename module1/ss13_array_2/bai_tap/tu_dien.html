@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+    <input type="text" id="words" placeholder="Nhập từ">
+    <input type="button" value="Dịch" onclick="translation()">
+    <p id="complete"></p>
+    <script>
+        let eng = [
+            "spring", "summer", "autumn", "winter",
+            "chicken", "fish", "pork", "egg"
+        ]
+        let vnm = [
+            "mùa xuân", "mùa hè", "mùa thu", "mùa đông",
+            "thịt gà", "cá", "thịt heo", "trứng"
+        ]
+        function translation() {
+            let words = document.getElementById("words").value;
+            for (let i = 0; i < eng.length; i++) {
+                if (words === eng[i]) {
+                    document.getElementById("complete").innerText = vnm[i];
+                    break;
+                } else if (words === vnm[i]) {
+                    document.getElementById("complete").innerText = eng[i];
+                    break;
+                } else {
+                    document.getElementById("complete").innerText = "Không tìm thấy";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

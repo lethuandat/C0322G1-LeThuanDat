@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm 2 - Bài 9</title>
+</head>
+<body>
+    <script>
+        function findCharInArray(x, c) {
+            let count = 0;
+            for (let i = 0; i <  x.length; i++) {
+                if (x[i] === c) {
+                    count++;
+                }
+            }
+            if (count === 0) {
+                return -1;
+            }
+            else
+            {
+                return count;
+            }
+        }
+        let arr = [];
+        let long = prompt("Nhập số phần tử của mảng ");
+        for (let i = 0; i < long; i++) {
+            arr[i] = prompt("Nhập phần tử " + i + " ");
+        }
+        alert("Mảng kí tự vừa nhập " + arr);
+        let char = prompt("Nhập kí tự muốn tìm ");
+        let quantity = findCharInArray(arr, char);
+        if (quantity === -1) {
+            alert("Kí tự " + char + " không có trong mảng");
+        }
+        else
+        {
+            alert("Có " + quantity + " kí tự " + char + " trong mảng");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 2 - Bài 4</title>
+</head>
+<body>
+    <script>
+        let a = "Viết một chương trình để đếm số từ trong một chuỗi";
+        let count = 0;
+        document.write("Mảng ban đầu: ");
+        for (let i = 0; i < a.length; i++) {
+            document.write(a[i]);
+            if (a[i] === " ") {
+                count += 1;
+            }
+        }
+        document.write("<br>Mảng này có " + (count + 1) + " từ");
+    </script>
+</body>
+</html>

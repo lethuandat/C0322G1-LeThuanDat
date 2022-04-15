@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 7</title>
+</head>
+<body>
+    <script>
+        let a = [-4,54,10,-10,7,8,-6,67,97,-87];
+        let swap;
+        document.write("Mảng ban đầu: ");
+        for (let i = 0; i < a.length; i++) {
+            document.write(" " + a[i]);
+        }
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j <= i; j++) {
+                if (a[i] > a[j] ) { // Giảm dần: a[i] > a[j] ; Tăng dần: a[i] < a[j]
+                    swap = a[i];
+                    a[i] = a[j];
+                    a[j] = swap;
+                }
+            }
+        }
+        document.write("<br>Mảng sau khi đã sắp xếp giảm dần: ");
+        for (let i = 0; i < a.length; i++) {
+            document.write(" " + a[i]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm 2 - Bài 4</title>
+</head>
+<body>
+    <script>
+        function isNumber(n) {
+            if (n % 1 === 0) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        let char = prompt("Nhập kí tự muốn kiểm tra");
+        if (isNumber(char)) {
+            alert(char + " là kí tự số");
+        }
+        else
+        {
+            alert(char + " không phải là kí tự số");
+        }
+    </script>
+</body>
+</html>

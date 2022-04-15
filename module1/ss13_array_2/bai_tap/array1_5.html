@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 5</title>
+</head>
+<body>
+    <script>
+        let a = "Viết chương trình đếm số nguyên âm trong một chuỗi";
+        a = a.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        a = a.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        a = a.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        a = a.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        a = a.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        a = a.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        a = a.replace(/đ/g, "d");
+        a = a.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+        a = a.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+        a = a.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+        a = a.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+        a = a.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+        a = a.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+        a = a.replace(/Đ/g, "D");
+        let count = 0;
+        document.write("Chuỗi ban đầu: ");
+        for (let i = 0; i < a.length; i++) {
+            document.write(a[i]);
+            let ch = a.charAt(i);
+            if (ch === "a" || ch === "o" || ch === "e" || ch === "u" || ch === "i" ) {
+                count += 1;
+            }
+        }
+        document.write("<br>Số lượng nguyên âm trong chuỗi là " + count);
+    </script>
+</body>
+</html>

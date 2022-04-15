@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1 - Bài 2</title>
+</head>
+<body>
+    <script>
+        let a = [0,54,10,10,7,8,6,67,97,87];
+        let max = a[0];
+        let index = 0;
+        document.write("Mảng lúc ban đầu:");
+        for (let i = 0; i < a.length; i++) {
+            document.write(" " + a[i]);
+            if (a[i] > max) {
+                max = a[i];
+                index = i;
+            }
+        }
+        document.write("<br>Phần tử có giá trị lớn nhất là " + max + " nằm ở vị trí thứ " + index);
+    </script>
+</body>
+</html>

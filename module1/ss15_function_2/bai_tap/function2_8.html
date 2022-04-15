@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm 2 - Bài 8</title>
+</head>
+<body>
+    <script>
+       function reserveArray(x) {
+           let first = 0;
+           let last = x.length - 1;
+           while (first < last) {
+               let s = x[first];
+               x[first] = x[last];
+               x[last] = s;
+               first++;
+               last--;
+           }
+       }
+       let arr = [];
+       let long = prompt("Nhập số phần tử của mảng ");
+       for (let i = 0; i < long; i++) {
+           arr[i] = prompt("Nhập phần tử " + i + " ");
+       }
+       alert("Mảng lúc ban đầu: " + arr);
+       reserveArray(arr);
+       alert("Mảng lúc sau: " + arr);
+    </script>
+</body>
+</html>

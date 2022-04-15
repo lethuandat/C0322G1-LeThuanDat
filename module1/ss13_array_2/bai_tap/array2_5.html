@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 2 - Bài 5</title>
+</head>
+<body>
+    <script>
+        let a = "Viết một chương trình nhập vào 2 chuỗi";
+        let b = "Viết một chương trình nhập vào 1 chuỗi";
+        document.write("Chuỗi a: ");
+        for (let i = 0; i < a.length; i++) {
+            document.write(a[i]);
+        }
+        document.write("<br>Chuỗi b: ");
+        for (let i = 0; i < b.length; i++) {
+            document.write(b[i]);
+        }
+        let count = 0;
+        if (a.length === b.length){
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] === b[i]) {
+                    count += 1;
+                }
+            }
+            if (count === a.length) {
+                document.write("<br>Result:2 chuỗi giống nhau");
+            }
+            else
+            {
+                document.write("<br>Result: 2 chuỗi khác nhau");
+            }
+        }
+        else
+        {
+            document.write("<br>Result: 2 chuỗi khác nhau");
+        }
+    </script>
+</body>
+</html>

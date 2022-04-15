@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm 2 - Bài 7</title>
+</head>
+<body>
+    <script>
+        function swapNumber(a, b) {
+            let swap = a;
+            a = b;
+            b= swap;
+            let result = a + " " + b;
+            return result;
+        }
+        let num1 = parseInt(prompt("Nhập vào số thứ nhất"));
+        let num2 = parseInt(prompt("Nhập vào số thứ hai"));
+        alert("Thứ tự lúc đầu là " + num1 + " " + num2);
+        alert("Thứ tự lúc sau là " + swapNumber(num1, num2));
+    </script>
+</body>
+</html>

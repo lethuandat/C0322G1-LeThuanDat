@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm 2 - Bài 3</title>
+</head>
+<body>
+    <script>
+        function getFactorial(n) {
+            let factorial = 1;
+            for (let i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+            return factorial;
+        }
+        let numb = parseInt(prompt("Nhập số vào: "));
+        if (numb <= 0) {
+            alert("Số nhập vào sai");
+        }
+        else
+        {
+            alert(numb + " giai thừa bằng " + getFactorial(numb));
+        }
+    </script>
+</body>
+</html>
