@@ -8,8 +8,14 @@
     <script>
         let n = parseInt(prompt("Nhập số nguyên dương bằng:"));
         let factorials = 1;
-        for (let i = n; i > 0; i--) {
-            factorials *= i;
+        if (n < 0) {
+            document.write("Bạn nhập sai, chỉ được nhập số nguyên dương >= 0");
+        }
+        else
+        {
+            for (let i = n; i > 0; i--) {
+                factorials *= i;
+            }
         }
         document.write(n + "! = " + factorials);
     </script>
