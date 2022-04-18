@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+    <script>
+        let num1 = 2;
+        let num2 = 3;
+        let nextNum;
+        document.write("Các số nhỏ hơn 10000 thuộc dãy fibonacci và là số nguyên tố: ");
+        while (num1 < 10000) {
+            let flag = true;
+            for (let i = 2; i < num1; i++) {
+                if (num1 % i === 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                document.write(num1 + " ");
+            }
+            nextNum = num1 + num2;
+            num1 = num2;
+            num2 = nextNum;
+        }
+    </script>
+</body>
+</html>

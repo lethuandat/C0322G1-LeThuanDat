@@ -5,22 +5,42 @@
     <title>Luyện tập mảng 2 - Bài 6</title>
 </head>
 <body>
-    <script>
-        let a = ["C","-","O","-","D","-","E","-","G","-","Y","-","M"];
-        document.write("Mảng ban đầu: ");
-        for (let i = 0; i < a.length; i++) {
-            document.write(a[i]);
+<script>
+    let arr = [];
+    let n;
+    do {
+        n = prompt("Nhập số lượng phần tử cho mảng: ");
+        if (n > 0) {
+            break;
         }
-        for (let i = 0; i < a.length; i++) {
-            if (a[i] === "-")
-            {
-                a[i] = "_";
+        else
+        {
+            alert("Nhập sai, nhập lại !!!");
+        }
+    } while (true);
+    for (let i = 0; i < n; i++) {
+        do {
+            arr[i] = prompt("Nhập phần tử " + i);
+            if (arr[i].length === 1) {
+                break;
+            } else {
+                alert("Nhập không phải kí tự, nhập lại");
             }
+        } while (true);
+    }
+    document.write("Mảng ban đầu: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]);
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "-") {
+            arr[i] = "_";
         }
-        document.write("<br>Mảng lúc sau: ");
-        for (let i = 0; i < a.length; i++) {
-            document.write(a[i]);
-        }
-    </script>
+    }
+    document.write("<br>Mảng lúc sau: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]);
+    }
+</script>
 </body>
 </html>

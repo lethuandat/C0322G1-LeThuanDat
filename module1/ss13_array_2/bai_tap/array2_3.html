@@ -13,7 +13,7 @@
             document.write('"' + a[i]  + '"<br>');
         }
         for (let i = 0; i < a.length; i++) {
-            if (parseInt(a[i]) % 1 === 0) {
+            if (parseInt(a[i]) % 1 === 0 && a[i].length === 1) {
                 count += 1;
                 document.write(a[i] + " là kí tự số, nằm ở vị trí thứ " + i + "<br>");
             }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+    <script>
+        let str;
+        do {
+            str = prompt("Nhập chuỗi bất kì: ");
+            if (str[0] === " " && str[str.length - 1] === " ") {
+                alert("Nhập sai, nhập lại, kí tự đầu tiên và cuối cùng không được dùng dấu cách!");
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+        let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        // let sym = "0123456789`~!@#$%^&*()-_+=[]{};:'<>,./?";
+        let countWords = 0;
+        let countChar = 0;
+        document.write("Chuỗi ban đầu: ");
+        for (let i = 0; i < str.length; i++) {
+            document.write(str[i]);
+            if (str[i] === " ") {
+                countWords++;
+            }
+            for (let j = 0; j < char.length; j++) {
+                if (str[i] === char[j]) {
+                    countChar ++;
+                }
+            }
+        }
+        document.write("<br>Số từ trong chuỗi là " + (countWords + 1) + " và số kí tự chữ trong chuỗi là " + countChar);
+    </script>
+</body>
+</html>

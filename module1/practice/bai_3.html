@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+    <script>
+        let n;
+        do {
+            n = prompt("Nhập số n = ");
+            if (n > 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại !!!");
+            }
+        } while (true);
+        let count = 0;
+        document.write("Số không phải số nguyên tố từ 0 đến " + n + " là: <br>");
+        for (let i = 0; i <= n; i++) {
+            if (i === 0 || i === 1) {
+                document.write(i + " ");
+                continue;
+            }
+            for (let j = 2; j < i-1; j++) {
+                if (i % j === 0) {
+                    document.write(i + " ");
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

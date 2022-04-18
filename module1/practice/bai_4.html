@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+    <script>
+        let n;
+        do
+        {
+            n = parseInt(prompt("Nhập chiều dài mảng: "));
+            if (n > 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập số sai, nhập lại!");
+            }
+        } while (true);
+        let arr = [];
+        let count = 1;
+        for (let i = 0; i < n; i++) {
+            do
+            {
+                arr[i] = parseInt(prompt("Phần tử thứ " + i + " là: "));
+                if (arr[i] >= 0 || arr[i] < 0) {
+                    break;
+                }
+                else
+                {
+                    alert("Nhập sai, phải nhập số nguyên!");
+                }
+            } while (true);
+        }
+        document.write("Mảng lúc ban đầu: ");
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + " ");
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === "") {
+                continue;
+            }
+            for (let j = i + 1; j < arr.length; j++) {
+
+                if (arr[i] === arr[j]) {
+                    count += 1;
+                    arr[j] = "";
+                }
+            }
+            document.write("<br>" + arr[i] + ": " + count + " lần");
+            count = 1;
+        }
+    </script>
+</body>
+</html>

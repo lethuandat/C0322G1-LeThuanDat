@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7</title>
+</head>
+<body>
+    <script>
+        let n;
+        do {
+            n = prompt("Nhập số lượng phần tử cho mảng: ");
+            if (n > 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại !!!");
+            }
+        } while (true);
+        let arr = [];
+        document.write("Mảng lúc ban đầu: ");
+        for (let i = 0; i < n; i++) {
+            do {
+                arr[i] = parseInt(prompt("Phần tử thứ " + i + " là: "));
+                if (arr[i] >=0 || arr[i] < 0) {
+                    document.write(arr[i] + " ");
+                    break;
+                }
+                else
+                {
+                    alert("Nhập sai, nhập lại !!!");
+                }
+
+            } while (true);
+        }
+        let numb;
+        do {
+            numb = prompt("Nhập số bất kì: ");
+            if (numb > 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại !!!");
+            }
+        } while (true);
+        document.write("<br>Số bất kì: " + numb);
+        if (numb % 2 === 0) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 !== 0 ) {
+                    arr[i] += 1;
+                }
+            }
+        }
+        else
+        {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0 ) {
+                    arr[i] += 1;
+                }
+            }
+        }
+        document.write("<br>Mảng lúc sau: ");
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + " ");
+        }
+    </script>
+</body>
+</html>
