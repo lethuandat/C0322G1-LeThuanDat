@@ -16,10 +16,37 @@
             }
             return min;
         }
-        let n1 = prompt("Nhập số thứ nhất:");
-        let n2 = prompt("Nhập số thứ hai:");
-        let n3 = prompt("Nhập số thứ ba:");
-        alert("Số nhỏ nhất trong 3 số là: " + minThreeNumber(n1, n2, n3));
+        let n1;
+        do {
+            n1 = prompt("Nhập số thứ nhất:");
+            if (n1 >= 0 || n1 < 0) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        let n2;
+        do {
+            n2 = prompt("Nhập số thứ hai:");
+            if (n2 >= 0 || n2 < 0) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        let n3;
+        do {
+            n3 = prompt("Nhập số thứ ba:");
+            if (n3 >= 0 || n3 < 0) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        alert("Số nhỏ nhất trong 3 số " + n1 + " " + n2 + " " + n3 + " là " + minThreeNumber(n1, n2, n3));
     </script>
 </body>
 </html>

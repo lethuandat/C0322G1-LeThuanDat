@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng và Loop</title>
+</head>
+<body>
+    <script>
+        let a = [7,2,5,3,4,5,3];
+        let b = [7,2,5,4,4,6,3,7,0,-10,84,4,4,4,4,5,3];
+        let c = [];
+        document.write("Mảng a " + a + "<br>");
+        document.write("Mảng b " + b + "<br>");
+
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < b.length; j++) {
+                if (a[i] === b[j]) {
+                    b.splice(j,1);
+                }
+            }
+        }
+
+        c[0] = b[0];
+        for (let i = 1; i < b.length; i++) {
+            if (b[0] !== b[i]) {
+                c.push(b[i]);
+            }
+        }
+
+        for (let i = 0; i < c.length; i++) {
+            for (let j = 0; j <= i; j++) {
+                if (c[i] < c[j] ) {
+                    swap = c[i];
+                    c[i] = c[j];
+                    c[j] = swap;
+                }
+            }
+        }
+        document.write("Mảng đã được sắp xếp tăng chứa các phần tử xuất hiện trong mảng b nhưng lại không xuất hiện a " + c + "<br>");
+    </script>
+</body>
+</html>

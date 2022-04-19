@@ -16,15 +16,32 @@
                first++;
                last--;
            }
+           return x;
        }
        let arr = [];
-       let long = prompt("Nhập số phần tử của mảng ");
-       for (let i = 0; i < long; i++) {
-           arr[i] = prompt("Nhập phần tử " + i + " ");
+       let n;
+       do {
+           n = prompt("Nhập số phần tử của mảng ");
+           if (n > 0) {
+               break;
+           }
+           else {
+               alert("Nhập sai, nhập lại");
+           }
+       } while (true);
+       for (let i = 0; i < n; i++) {
+           do {
+               arr[i] = prompt("Nhập phần tử " + i + " ");
+               if (arr[i] >= 0 || arr[i] < 0) {
+                   break;
+               }
+               else {
+                   alert("Nhập sai, nhập lại");
+               }
+           } while (true);
        }
        alert("Mảng lúc ban đầu: " + arr);
-       reserveArray(arr);
-       alert("Mảng lúc sau: " + arr);
+       alert("Mảng lúc sau: " + reserveArray(arr));
     </script>
 </body>
 </html>

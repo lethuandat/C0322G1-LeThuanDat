@@ -9,7 +9,18 @@
         function getSquare(n) {
             return n * n;
         }
-        let numb = parseInt(prompt("Nhập số vào: "));
+        let numb;
+        do {
+            numb = parseInt(prompt("Nhập số vào: "));
+            if (numb >= 0 || numb < 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+
         alert(numb + " bình phương = " + getSquare(numb));
     </script>
 </body>

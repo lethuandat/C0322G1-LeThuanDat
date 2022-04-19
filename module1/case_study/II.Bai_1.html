@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>If và switch case</title>
+</head>
+<body>
+    <script>
+        let salary;
+        let tax;
+        let netSalary;
+        do {
+            salary = parseInt(prompt("Nhập lương nhân viên "));
+            if (salary > 0) {
+                break;
+            } else {
+                alert("Nhập sai, nhập lại");
+            }
+        }while (true);
+
+        if (salary >= 15000000) {
+            tax = 20;
+            netSalary = salary - (salary * tax) / 100;
+        } else if (salary >= 7000000) {
+            tax = 10;
+            netSalary = salary - (salary * tax) / 100;
+        } else {
+            tax = 5;
+            netSalary = salary - (salary * tax) / 100;
+        }
+        alert("Lương ròng của nhân viên là " + netSalary);
+    </script>
+</body>
+</html>

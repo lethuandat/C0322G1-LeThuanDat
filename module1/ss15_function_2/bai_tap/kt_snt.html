@@ -6,27 +6,25 @@
 </head>
 <body>
     <script>
+        let n = 0;
         function isPrime(number) {
-            let flag = true;
             if (number <= 1) {
-                flag = false;
+                return false;
             }
             for (let i = 2; i < number; i++) {
                 if (number % i === 0) {
-                    flag = false;
-                    break;
+                    return false;
                 }
             }
-            if (flag) {
-                return number + " là số nguyên tố";
-            }
-            else
-            {
-                return number + " không phải là số nguyên tố";
-            }
+            return true;
         }
-        let a = prompt("Nhập số muốn kiểm tra");
-        document.write(isPrime(a));
+        document.write("Các số nguyên tố nhỏ hơn 10000: <br>")
+        while (n < 10000) {
+            if (isPrime(n)) {
+                document.write(n + " ");
+            }
+            n++;
+        }
     </script>
 </body>
 </html>

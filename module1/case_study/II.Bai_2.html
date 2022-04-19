@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>If và switch case</title>
+</head>
+<body>
+    <script>
+        let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let char;
+        let vowel = "ueoaiUEOAI";
+        do {
+            let flag = false;
+            char = prompt("Nhập kí tự bất kì ");
+            for (let i = 0; i < alphabet.length; i++) {
+                if (char === alphabet[i]) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                break;
+            } else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        let flag = false;
+       for (let i = 0; i < vowel.length; i++) {
+           if (char === vowel[i]) {
+               flag = true;
+               break;
+           }
+       }
+        if (flag) {
+            alert(char + " là nguyên âm");
+        } else {
+            alert(char + " không phải là nguyên âm");
+        }
+    </script>
+</body>
+</html>

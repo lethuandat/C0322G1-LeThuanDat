@@ -16,10 +16,10 @@
     document.write("<br>Mảng a4: " + a4);
 
     function minSearch(a) {
-        let min = a[0];
         if (a.length === 0) {
             return "không có, vì mảng rỗng";
         }
+        let min = a[0];
         for (let i = 1; i < a.length; i++) {
             if (min > a[i]) {
                 min = a[i];
@@ -30,7 +30,7 @@
     let min1 = minSearch(a1);
     let min2 = minSearch(a2);
     let min3 = minSearch(a3);
-    let min4 =minSearch(a4);
+    let min4 = minSearch(a4);
     document.write("<br>Giá trị nhỏ nhất trong mảng a1 là " + min1);
     document.write("<br>Giá trị nhỏ nhất trong mảng mảng a2 là " + min2);
     document.write("<br>Giá trị nhỏ nhất trong mảng mảng a3 là " + min3);

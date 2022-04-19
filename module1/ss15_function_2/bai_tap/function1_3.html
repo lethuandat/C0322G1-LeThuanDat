@@ -15,8 +15,29 @@
                 return alert("Tổng của 2 số là " + (a + b));
             }
         }
-        let num1 = parseInt(prompt("Nhập số thứ nhất: "));
-        let num2 = parseInt(prompt("Nhập số thứ hai: "));
+        let num1;
+        let num2;
+        do {
+            num1 = parseInt(prompt("Nhập số thứ nhất: "));
+            if (num1 >= 0 || num1 < 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại !!!");
+            }
+        } while (true);
+
+        do {
+            num2 = parseInt(prompt("Nhập số thứ hai: "));
+            if (num2 >= 0 || num2 < 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại !!!");
+            }
+        } while (true);
         getNumber(num1, num2);
     </script>
 </body>

@@ -22,12 +22,38 @@
             }
         }
         let arr = [];
-        let long = prompt("Nhập số phần tử của mảng ");
-        for (let i = 0; i < long; i++) {
-            arr[i] = prompt("Nhập phần tử " + i + " ");
+        let n;
+        do {
+            n = prompt("Nhập số phần tử của mảng ");
+            if (n > 0) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        for (let i = 0; i < n; i++) {
+            do {
+                arr[i] = prompt("Nhập phần tử " + i + " ");
+                if (arr[i].length === 1) {
+                    break;
+                }
+                else {
+                    alert("Nhập sai, nhập lại");
+                }
+            } while (true);
         }
         alert("Mảng kí tự vừa nhập " + arr);
-        let char = prompt("Nhập kí tự muốn tìm ");
+        let char;
+        do {
+            char = prompt("Nhập kí tự muốn tìm ");
+            if (char.length === 1) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
         let quantity = findCharInArray(arr, char);
         if (quantity === -1) {
             alert("Kí tự " + char + " không có trong mảng");

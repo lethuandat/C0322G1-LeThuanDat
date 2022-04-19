@@ -13,14 +13,18 @@
             }
             return factorial;
         }
-        let numb = parseInt(prompt("Nhập số vào: "));
-        if (numb <= 0) {
-            alert("Số nhập vào sai");
-        }
-        else
-        {
-            alert(numb + " giai thừa bằng " + getFactorial(numb));
-        }
+        let numb;
+        do {
+            numb = prompt("Nhập số vào: ");
+            if (numb > 0) {
+                break;
+            }
+            else
+            {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
+        alert(numb + " giai thừa bằng " + getFactorial(numb));
     </script>
 </body>
 </html>

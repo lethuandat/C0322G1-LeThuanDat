@@ -7,20 +7,23 @@
 <body>
     <script>
         function isPostive(n) {
-            if (n > 0) {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            let n2 = parseInt(n);
+            return n2 === Number(n) && n > 0;
         }
-        let numb = prompt("Nhập số cần kiểm tra:");
+        let numb;
+        do {
+            numb = prompt("Nhập số cần kiểm tra:");
+            if (numb >= 0 || numb < 0) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
         if (isPostive(numb)) {
             alert(numb + " là số nguyên dương");
         }
-        else
-        {
+        else {
             alert(numb + " không phải là số nguyên dương");
         }
     </script>

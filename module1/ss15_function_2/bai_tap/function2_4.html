@@ -7,20 +7,22 @@
 <body>
     <script>
         function isNumber(n) {
-            if (n % 1 === 0) {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return n % 1 === 0;
         }
-        let char = prompt("Nhập kí tự muốn kiểm tra");
+        let char;
+        do {
+            char = prompt("Nhập kí tự muốn kiểm tra");
+            if (char.length === 1) {
+                break;
+            }
+            else {
+                alert("Nhập sai, nhập lại");
+            }
+        } while (true);
         if (isNumber(char)) {
             alert(char + " là kí tự số");
         }
-        else
-        {
+        else {
             alert(char + " không phải là kí tự số");
         }
     </script>

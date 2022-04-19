@@ -7,17 +7,17 @@
 <body>
 <form>
     <p>
-        <label>Fahrenheit</label>
+        <label for="inputFahrenheit">Fahrenheit</label>
         <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
-               oninput="temperatureConverter(this.value)"
-               onchange="temperatureConverter(this.value)">
+                                                    oninput="temperatureConverter(this.value)"
+                                                    onchange="temperatureConverter(this.value)">
     </p>
     <p>Celsius: <span id="outputCelsius"></span></p>
 </form>
 <script>
     function temperatureConverter(valNum) {
         valNum = parseFloat(valNum);
-        document.getElementById("outputCelsius").innerHTML = (valNum - 32) / 1.8;
+        document.getElementById("outputCelsius").innerHTML = (valNum - 32) / 1.8 + " <sup>o</sup>C";
     }
 </script>
 </body>

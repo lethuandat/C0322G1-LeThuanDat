@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ hình *</title>
+</head>
+<body>
+    <script>
+        let h = parseInt(prompt("Nhập chiều cao h = "));
+        for (let i = 1; i <= h; i++) {
+            for (let k = h; k > i; k--) {
+                document.write("&nbsp;&nbsp;");
+            }
+            for (let j = 1; j <= i*2 - 1 ; j++) {
+                if (i === h || j === i*2 -1 || j === 1) {
+                    document.write("*");
+                }
+                else {
+                    document.write("&nbsp;&nbsp;");
+                }
+
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

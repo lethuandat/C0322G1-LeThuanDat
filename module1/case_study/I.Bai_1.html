@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ hình *</title>
+</head>
+<body>
+    <h2>
+        Bài 1: Vẽ hình chữ nhật rỗng chiều dài n và chiều rộng m theo hình dưới đây.
+    </h2>
+    <script>
+        let x = prompt("Nhập x = ");
+        let y = prompt("Nhập y = ");
+        for (let i = 1; i <= x; i++) {
+            for (let j = 1; j <= y; j++) {
+                if (j > 1 && j < y && i > 1 && i < x) {
+                    document.write("&nbsp;&nbsp;");
+                }
+                else {
+                    document.write("*");
+                }
+
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

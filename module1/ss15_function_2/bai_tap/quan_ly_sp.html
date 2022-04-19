@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+    <style>
+        .btn {
+            background-color: #4aa41e;
+            border-radius: 5px;
+            color: white;
+            width: 60px;
+            height: 25px;
+        }
+        table {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<h4>Add New Product</h4>
+<p><label for="newProduct"></label><input type="text" id="newProduct" placeholder="New Product">
+    <button class="btn" type="button" onclick="addProduct(productArr)">Add</button>
+</p>
+
+<h2>Display All Product</h2>
+<p id="listProduct"><br></p>
+
+<script>
+
+    let productArr = ["Sony", "Samsung", "Xiaomi", "Apple", "Fujitsu", "Oppo"];
+    let listProduct = document.getElementById("listProduct");
+
+    function displayProduct(productArr) {
+        let str = "<table>";
+        for (let i = 0; i < productArr.length; i++) {
+            str += "<tr>";
+            for (let j = 1; j <= 3; j++) {
+                if (j === 1) {
+                    str += "<td>" + (i + j) + "</td>";
+                }
+                if (j === 2) {
+                    str += "<td>" + productArr[i] + "</td>";
+                }
+                if (j === 3) {
+                    str += "<td>  <button class='btn' type='button' onclick=" + "editProduct(" + i + ")>Edit</button>" +
+                        "<button class='btn' type='button' onclick=" + "deleteProduct(" + i + ")>Delete</button></td>";
+                }
+            }
+            str += "</tr>";
+        }
+        str += "</table>";
+        return str;
+    }
+
+    function addProduct(productArr) {
+        let newProduct = document.getElementById("newProduct").value;
+        productArr.push(newProduct);
+        listProduct.innerHTML = displayProduct(productArr);
+        alert("OK");
+        document.getElementById("newProduct").value = "";
+    }
+
+    function editProduct(i) {
+        productArr[i] = prompt("Sửa thành: ");
+        listProduct.innerHTML = displayProduct(productArr);
+    }
+
+    function deleteProduct(i) {
+        productArr.splice(i,1);
+        listProduct.innerHTML = displayProduct(productArr);
+    }
+    listProduct.innerHTML  = displayProduct(productArr);
+</script>
+</body>
+</html>
