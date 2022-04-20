@@ -6,56 +6,53 @@
 </head>
 <body>
     <script>
-        let MyDate = function(day, month, year) {
-            this.day = day;
-            this.month = month;
-            this.year = year;
+        class MyDate {
+            constructor(day, month, year) {
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
 
-            this.getDay = function() {
+            getDay(){
                 return this.day;
             }
-            this.getMonth = function() {
+            getMonth(){
                 return this.month;
             }
-            this.getYear = function() {
+            getYear(){
                 return this.year;
             }
-            this.getDate = function() {
-                return this.Date;
+
+            setDay(day){
+                this.day = day;
+            }
+            setMonth(month){
+                this.month = month;
+            }
+            setYear(year){
+                this.year = year;
             }
 
-            this.setDay = function(day) {
-                this.day  = day;
+            setDate(day, month, year){
+                this.day = day;
+                this.month = month;
+                this.year = year;
             }
-            this.setMonth = function(month) {
-                this.month  = month;
+            toStringS() {
+                return this.day + "/" + this.month + "/" + this.year;
             }
-            this.setYear = function(year) {
-                this.year  = year;
-            }
-            this.setDate = function (day, month, year) {
-                this.day  = day;
-                this.month  = month;
-                this.year  = year;
-            }
-
-        };
-
-        let date = new MyDate(7, 7, 2057);
+        }
+        let date = new MyDate(5,5,2022);
         let day = date.getDay();
         let month = date.getMonth();
         let year = date.getYear();
-        document.write(day + "/" + month + "/" + year);
-
-        date.setDay(19);
-        date.setMonth(4);
-        date.setYear(2022);
-
-        day = date.getDay();
-        month = date.getMonth();
-        year = date.getYear();
-
-        document.write("<br>" + day + "/" + month + "/" + year);
+        alert(day + "/" + month + "/" + year);
+        date.setDay(10);
+        date.setMonth(10);
+        date.setYear(2019);
+        alert(date.day + "/" + date.month + "/" + date.year);
+        date.setDate(20, 6, 1999);
+        alert(date.toStringS());
     </script>
 </body>
 </html>

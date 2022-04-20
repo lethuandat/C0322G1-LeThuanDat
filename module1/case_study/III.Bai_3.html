@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng và Loop</title>
+</head>
+<body>
+    <script>
+        let numerators = [5, 2, 5, 8, 12, 9];
+        let denominators = [6, 3, 4, 2, 4, 5];
+        document.write("Tử số: " + numerators);
+        document.write("<br>Mẫu số: " + denominators);
+        let max = numerators[0]/denominators[0];
+        let index = "";
+        for (let i = 1; i < numerators.length; i++) {
+            if (max < numerators[i]/denominators[i]) {
+                max = numerators[i]/denominators[i];
+                index = i;
+            }
+        }
+        document.write("<br>Phân số lớn nhất là " + numerators[index] + "/" + denominators[index]
+            + " có chỉ số " + index);
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng và Loop</title>
+</head>
+<body>
+    <h2>Menu thức uống </h2>
+    <p id="listDrinks"></p>
+    <button type="button" onclick="choiceDrinks()">Chọn thức uống </button>
+    <script>
+        let menu = ["Cafe", "Cam vắt", "Nước ép cà rốt", "Nước ép cà chua", "Nước lọc", "Nước dừa", "Thoát gọi món"];
+        let price = [15000, 16000, 14000, 15000, 10000, 16000, 0];
+        let listDrinks = "";
+        for (let i = 0; i < menu.length; i++) {
+            listDrinks += (i + 1) + " " + menu[i] + "<br>";
+        }
+        document.getElementById("listDrinks").innerHTML = listDrinks;
+        function choiceDrinks() {
+            let choice;
+            let quantity;
+            let totalPrice = 0;
+            do {
+                choice = parseInt(prompt("Mời bạn chọn thức uống "));
+                if (choice === 7) {
+                    alert("Hẹn gặp lại");
+                    break;
+                } else if (choice > 0 && choice < 7) {
+                    for (let i = 0; i < menu.length; i++) {
+                        if (choice - 1 === i) {
+                            quantity = parseInt(prompt(menu[i] + " giá " + price[i] + " VND. Mời bạn nhập số lượng: "));
+                            totalPrice += quantity * price[i];
+                            alert("Tổng tiền phải trả " + totalPrice);
+                            break;
+                        }
+                    }
+                } else {
+                    alert("Bạn chọn danh sách không có trong menu ");
+                }
+            } while (true);
+        }
+    </script>
+</body>
+</html>
