@@ -8,10 +8,22 @@
     <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
     <script>
         class Rectangle {
-            constructor(x, y, long, wide,) {
+            constructor(x, y, long, wide) {
                 this.long = long;
                 this.wide = wide;
                 this.x = x;
+                this.y = y;
+            }
+            setLong(long) {
+                this.long = long;
+            }
+            setWide(wide) {
+                this.wide = wide;
+            }
+            setX(x) {
+                this.x = x;
+            }
+            setY(y) {
                 this.y = y;
             }
             getPerimeter() {
@@ -24,16 +36,17 @@
         let rectangle = new Rectangle(400, 400, 400, 100);
         function createRectangle(rectangle) {
             let ctx = document.getElementById("myCanvas").getContext("2d");
-
             ctx.beginPath();
             ctx.fillRect(rectangle.x, rectangle.y, rectangle.long, rectangle.wide);
             ctx.fill();
         }
+        rectangle.setLong(1000);
+        rectangle.setWide(220);
+        rectangle.setX(220);
+        rectangle.setY(220);
         createRectangle(rectangle);
-        let perimeter = rectangle.getPerimeter();
-        let area = rectangle.getArea();
-        document.write("Chu vi hình chữ nhật: " + perimeter + "<br>");
-        document.write("Diện tích hình chữ nhật: " + area + "<br>");
+        document.write("Chu vi hình chữ nhật: " + rectangle.getPerimeter() + "<br>");
+        document.write("Diện tích hình chữ nhật: " + rectangle.getArea() + "<br>");
     </script>
 </body>
 </html>
