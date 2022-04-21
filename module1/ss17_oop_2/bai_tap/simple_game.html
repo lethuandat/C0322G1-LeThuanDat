@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đơn giản - di chuyển đối tượng</title>
+</head>
+<body>
+    <div id="game"></div>
+    <script>
+        class Game {
+            constructor(image, top, left, size, speed) {
+                this.image = image;
+                this.top = top;
+                this.left = left;
+                this.size = size;
+                this.speed = speed;
+            }
+
+            getHeroElement() {
+                return '<img width="' + this.size + '"' +
+                    ' height="' + this.size + '"' +
+                    ' src="' + this.image + '"' +
+                    ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;"  alt="No image"/>';
+            }
+
+            setLeft(left) {
+                this.left = left;
+            }
+            setTop(top) {
+                this.top = top;
+            }
+            getLeft() {
+                return this.left ;
+            }
+            getTop() {
+                return this.top;
+            }
+            moveRight() {
+                this.left += this.speed;
+                console.log('ok: ' + this.left);
+            }
+            moveLeft() {
+                this.left -= this.speed;
+                console.log('ok: ' + this.left);
+            }
+            moveUp() {
+                this.top -= this.speed;
+                console.log('ok: ' + this.top);
+            }
+            moveDown() {
+                this.top += this.speed;
+                console.log('ok: ' + this.top);
+            }
+        }
+        let hero = new Game("../rocketracoon.jpg", 20, 20, 100, 100);
+        function startRight(){
+            if (hero.left < window.innerWidth - hero.size){
+                hero.moveRight();
+            }
+            document.getElementById('game').innerHTML = hero.getHeroElement();
+            setTimeout(startRight, 500);
+        }
+        function startLeft(){
+            if (hero.left > hero.size){
+                hero.moveLeft();
+            }
+            document.getElementById('game').innerHTML = hero.getHeroElement();
+            setTimeout(startLeft, 500);
+        }
+
+        function startUp(){
+            if (hero.top > hero.size){
+                hero.moveUp();
+            }
+            document.getElementById('game').innerHTML = hero.getHeroElement();
+            setTimeout(startUp, 500);
+        }
+        function startDown(){
+            if (hero.top < window.innerHeight - hero.size){
+                hero.moveDown();
+            }
+            document.getElementById('game').innerHTML = hero.getHeroElement();
+            setTimeout(startDown, 500);
+        }
+        hero.setLeft(20);
+        hero.setTop(600);
+        hero.getLeft();
+        hero.getTop();
+        startUp();
+        // startLeft();
+        // startDown();
+        // startRight();
+        </script>
+</body>
+</html>
