@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+    <h2 align="center">Danh sách tài khoản ngân hàng</h2>
+    <p id="display"></p>
+    <div style="width: 50%; margin: 0 auto 4%">
+        <button type="button" style="float: right; width: auto;" onclick="addAccount()">Thêm tài khoản</button>
+    </div>
+
+    <script>
+        class BankAccount {
+            constructor(id, name, bank, money) {
+                this._id = id;
+                this._name = name;
+                this._bank = bank;
+                this._money = money;
+            }
+
+            getId() {
+                return this._id;
+            }
+
+            setId(value) {
+                this._id = value;
+            }
+
+            getName() {
+                return this._name;
+            }
+
+            setName(value) {
+                this._name = value;
+            }
+
+            getBank() {
+                return this._bank;
+            }
+
+            setBank(value) {
+                this._bank = value;
+            }
+
+            getMoney() {
+                return this._money;
+            }
+
+            setMoney(value) {
+                this._money = value;
+            }
+        }
+        let acc1 = new BankAccount("Acc1", "Lê Văn A", "Agribank", 50000000);
+        let acc2 = new BankAccount("Acc2", "Lê Văn B", "Vietinbank", 60000000);
+        let acc3 = new BankAccount("Acc3", "Lê Văn C", "Vietcombank", 80000000);
+        let acc4 = new BankAccount("Acc4", "Lê Văn D", "Sacombank", 150000000);
+        let arr = [];
+        arr.push(acc1);
+        arr.push(acc2);
+        arr.push(acc3);
+        arr.push(acc4);
+        function displayAccount(arr) {
+            let sout = "<table border='1' cellpadding='5px' cellspacing='0'style='border-collapse: collapse; margin: 0 auto;' width='50%'>\n" +
+                "        <tr>\n" +
+                "            <th>STT</th>\n" +
+                "            <th>Mã tài khoản</th>\n" +
+                "            <th>Tên chủ tài khoản</th>\n" +
+                "            <th>Tên ngân hàng</th>\n" +
+                "            <th>Tổng tiền tài khoản</th>\n" +
+                "            <th>Cập nhật</th>\n" +
+                "        </tr>";
+            for (let i = 0; i < arr.length; i++) {
+                sout += "<tr><td>" + (i + 1) + "</td>" +
+                "<td>" + arr[i].getId() + "</td>" +
+                "<td>" + arr[i].getName() + "</td>" +
+                "<td>" + arr[i].getBank() + "</td>" +
+                "<td>" + arr[i].getMoney() + "</td>" +
+                    "<td>" + "<button type=\"button\" onclick=\"updateAccount(" + i + ")\">Sửa</button>\n" +
+                    "    <button type=\"button\" onclick=\"deleteAccount(" + i + ")\">Xóa</button>" + "</td></tr>";
+            }
+            sout += "</table>";
+            document.getElementById("display").innerHTML = sout;
+        }
+        function addAccount() {
+            let idAcc = prompt("Nhập ID: ");
+            let name = prompt("Nhập tên chủ tài khoản: ");
+            let bank = prompt("Nhập tên ngân hàng: ");
+            let money = prompt("Nhập tổng số tiền gửi: ");
+            let newAcc = new BankAccount(idAcc, name, bank, money);
+            arr.push(newAcc);
+            alert("Thêm thành công");
+            displayAccount(arr);
+        }
+        function updateAccount(i) {
+            let idAcc = prompt("Nhập ID: ");
+            let name = prompt("Nhập tên chủ tài khoản: ");
+            let bank = prompt("Nhập tên ngân hàng: ");
+            let money = prompt("Nhập tổng số tiền gửi: ");
+            arr[i] = new BankAccount(idAcc, name, bank, money);
+            alert("Sửa thành công");
+            displayAccount(arr);
+        }
+        function deleteAccount(i) {
+            let choose = confirm("Bạn muốn xóa tài khoản " + arr[i].getName() + " ?");
+            if (choose) {
+                arr.splice(i,1);
+                alert("Xóa thành công");
+            } else {
+                alert("OK, không xóa nữa ");
+            }
+            displayAccount(arr);
+        }
+        displayAccount(arr);
+    </script>
+</body>
+</html>

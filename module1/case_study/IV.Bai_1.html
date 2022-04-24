@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        let s = prompt("Nhập chuỗi vào");
+        document.write("Chuỗi ban đầu: " + s + "<br>");
+        function getNormalize(s) {
+            let UP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let b = s.toLowerCase();
+            let a = b.split(" ");
+            let c = [];
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] !== "") {
+                    for (let j = 0; j < a[i].length; j++) {
+                        if (j === 0) {
+                            x = a[i][0].toUpperCase();
+                            c.push(x);
+                            continue;
+                        }
+                        c.push(a[i][j]);
+                    }
+                }
+            }
+            let q = [];
+            q[0] = c[0];
+            for (let i = 1; i < c.length ; i++) {
+                for (let j = 0; j < UP.length ; j++) {
+                    if (c[i] === UP[j]) {
+                        q.push(" ");
+                        break;
+                    }
+                }
+                q.push(c[i]);
+            }
+            for (let i = 0; i <q.length ; i++) {
+                document.write(q[i]);
+            }
+        }
+        function longInString(s) {
+            let a = s.split(" ");
+            let max = a[0].length;
+            let idx = 0;
+            for (let i = 1; i < a.length ; i++) {
+                if (a[i].length > max) {
+                    max = a[i].length;
+                    idx = i;
+                }
+            }
+            document.write("<br>Từ dài nhất trong chuỗi là " + a[idx]);
+        }
+        document.write("Chuỗi sau khi chuẩn hóa: ");
+        getNormalize(s);
+        longInString(s);
+    </script>
+</body>
+</html>

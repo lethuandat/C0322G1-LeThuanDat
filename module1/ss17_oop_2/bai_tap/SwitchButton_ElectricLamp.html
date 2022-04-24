@@ -10,14 +10,23 @@
             constructor(status) {
                 this.status = status;
             }
+            getStatus() {
+                return this.status;
+            }
+
+            setStatus(status) {
+                this.status = status;
+            }
             connectToLamp(electricLamp) {
                 this.electricLamp = electricLamp;
             }
             switchOff() {
-                 return this.electricLamp.turnOff();
+                this.status = false;
+                return this.electricLamp.turnOff();
 
             }
             switchOn() {
+                this.status = true;
                 return this.electricLamp.turnOn();
             }
         }

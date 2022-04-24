@@ -14,6 +14,10 @@
         table {
             width: 500px;
         }
+        td {
+            width: 33.33333%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -32,45 +36,49 @@
     let listProduct = document.getElementById("listProduct");
 
     function displayProduct(productArr) {
-        let str = "<table>";
+        let str = "<table> " +
+            "<tr>" +
+            "<th>STT</th>" +
+            "<th>Sản phẩm</th>" +
+            "<th>" + productArr.length + " sản phẩm</th>" +
+            "</tr>";
         for (let i = 0; i < productArr.length; i++) {
             str += "<tr>";
-            for (let j = 1; j <= 3; j++) {
-                if (j === 1) {
-                    str += "<td>" + (i + j) + "</td>";
-                }
-                if (j === 2) {
-                    str += "<td>" + productArr[i] + "</td>";
-                }
-                if (j === 3) {
-                    str += "<td>  <button class='btn' type='button' onclick=" + "editProduct(" + i + ")>Edit</button>" +
-                        "<button class='btn' type='button' onclick=" + "deleteProduct(" + i + ")>Delete</button></td>";
-                }
-            }
+            str += "<td>" + (i + 1) + "</td>" +
+                "<td>" + productArr[i] + "</td>"
+                + "<td>  <button class='btn' type='button' onclick=" + "editProduct(" + i + ")>Edit</button>" +
+                "<button class='btn' type='button' onclick=" + "deleteProduct(" + i + ")>Delete</button></td>";
             str += "</tr>";
         }
         str += "</table>";
-        return str;
+        listProduct.innerHTML = str;
     }
 
     function addProduct(productArr) {
         let newProduct = document.getElementById("newProduct").value;
         productArr.push(newProduct);
-        listProduct.innerHTML = displayProduct(productArr);
+        displayProduct(productArr);
         alert("OK");
         document.getElementById("newProduct").value = "";
     }
 
     function editProduct(i) {
         productArr[i] = prompt("Sửa thành: ");
-        listProduct.innerHTML = displayProduct(productArr);
+        alert("Sửa thành công");
+        displayProduct(productArr);
     }
 
     function deleteProduct(i) {
-        productArr.splice(i,1);
-        listProduct.innerHTML = displayProduct(productArr);
+        let choose = confirm("Bạn muốn xóa " + productArr[i] + " ?");
+        if (choose) {
+            productArr.splice(i,1);
+            alert("Xóa thành công");
+            displayProduct(productArr);
+        } else {
+            alert("Không xóa nữa");
+        }
     }
-    listProduct.innerHTML  = displayProduct(productArr);
+    displayProduct(productArr);
 </script>
 </body>
 </html>

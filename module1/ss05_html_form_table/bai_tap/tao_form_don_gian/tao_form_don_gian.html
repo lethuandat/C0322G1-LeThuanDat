@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tao Form</title>
+    <title>Tạo Form</title>
 </head>
 <body>
         <form action="tao_form_don_gian.html" method="get">
@@ -12,26 +12,51 @@
             </tr>
             <tr>
                 <td style="float: right;color: blue; padding: 0">Họ và tên </td>
-                <td colspan="3"><input type="text" name="yourname"></td>
+                <td colspan="3"><label>
+                    <input type="text" name="yourname">
+                </label></td>
             </tr>
             <tr>
                 <td style="float: right;color: blue">Email</td>
-                <td colspan="3"><input type="email" name="email"></td>
+                <td colspan="3"><label>
+                    <input type="email" name="email">
+                </label></td>
             </tr>
             <tr>
                 <td style="float: right; color: blue">Sở thích </td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Thể thao</td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Âm nhạc</td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Đọc sách</td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Thể thao
+                </label> Thể thao</td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Âm nhạc
+                </label> Âm nhạc</td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Đọc sách
+                </label> Đọc sách</td>
             </tr>
             <tr>
                 <td rowspan="3"></td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Lướt web</td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Chơi game</td>
-                <td style="color:orange"><input type="checkbox" name="hobby"> Điện ảnh </td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Lướt web
+                </label> Lướt web</td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Chơi game
+                </label> Chơi game</td>
+                <td style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Điện ảnh
+                </label> Điện ảnh </td>
             </tr>
             <tr>
-                <td colspan="3" style="color:orange"><input type="checkbox" name="hobby"> Du lịch</td>
+                <td colspan="3" style="color:orange"><label>
+                    <input type="checkbox" name="hobby">
+                    Du lịch
+                </label> Du lịch</td>
             </tr>
             <tr>
                 <td style="float: right"><input type="submit" name="submitForm" value="Gửi thông tin"></td>
@@ -47,43 +72,61 @@
             </tr>
             <tr>
                 <td style="color: dodgerblue">Họ và tên</td>
-                <td><input type="text" name="username"></td>
+                <td><label>
+                    <input type="text" name="username">
+                </label></td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Ngày sinh</td>
-                <td><input type="date" name="dob"></td>
+                <td><label>
+                    <input type="date" name="dob">
+                </label></td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Giới tính</td>
                 <td>
-                    <input type="radio" name="gender" checked> Nam
-                    <input type="radio" name="gender"> Nữ
+                    <label>
+                        <input type="radio" name="gender" checked>
+                        Nam
+                    </label>
+                    <label>
+                        <input type="radio" name="gender">
+                        Nữ
+                    </label>
                 </td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Địa chỉ</td>
-                <td><textarea cols="30" rows="3" name="address"></textarea></td>
+                <td><label>
+                    <textarea cols="30" rows="3" name="address"></textarea>
+                </label></td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Lớp</td>
                 <td>
-                    <select name="class">
-                        <option> -- Chọn lớp --</option>
-                        <option value="6A">6A</option>
-                        <option value="6B">6B</option>
-                        <option value="6C">6C</option>
-                        <option value="6D">6D</option>
-                        <option value="6E">6E</option>
-                    </select>
+                    <label>
+                        <select name="class">
+                            <option> -- Chọn lớp --</option>
+                            <option value="6A">6A</option>
+                            <option value="6B">6B</option>
+                            <option value="6C">6C</option>
+                            <option value="6D">6D</option>
+                            <option value="6E">6E</option>
+                        </select>
+                    </label>
                 </td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Email</td>
-                <td><input type="email" name="email"></td>
+                <td><label>
+                    <input type="email" name="email">
+                </label></td>
             </tr>
             <tr>
                 <td style="color: dodgerblue">Điện thoại</td>
-                <td><input type="number" name="phone"></td>
+                <td><label>
+                    <input type="number" name="phone">
+                </label></td>
             </tr>
             <tr>
                 <td></td>

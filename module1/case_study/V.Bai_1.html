@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng 2 chiều</title>
+</head>
+<body>
+    <script>
+        let m = parseInt(prompt("Nhập m = "));
+        let n = parseInt(prompt("Nhập n = "));
+        let arr2d=[];
+        let sum = 0;
+        for (let i = 0; i < m; i++) {
+            arr2d[i]=[];
+            for (let j = 0; j < n; j++) {
+                arr2d[i][j] = parseInt(prompt("Nhập phần tử thứ " + i + j));
+            }
+        }
+        document.write("Mảng lúc ban đầu:<br>");
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                document.write(arr2d[i][j] + " ");
+                if (arr2d[i][j] % 2 === 0) {
+                    sum += arr2d[i][j];
+                }
+            }
+            document.write("<br>");
+        }
+        document.write("Tổng các số chẵn trong ma trận: " + sum);
+    </script>
+</body>
+</html>

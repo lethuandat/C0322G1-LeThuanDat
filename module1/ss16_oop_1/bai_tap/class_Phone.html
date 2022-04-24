@@ -8,35 +8,108 @@
     <script>
         class Mobile {
             constructor(battery, staging, inbox, sent) {
-                this.battery = battery;
-                this.staging = staging;
-                this.inbox = inbox;
-                this.sent = sent;
+                this._battery = battery;
+                this._staging = staging;
+                this._inbox = inbox;
+                this._sent = sent;
             }
-            getStatus() {
 
+            getBattery() {
+                return this._battery;
             }
-            getTurn() {
-
+            setBattery(value) {
+                this._battery = value;
             }
-            getCharge() {
 
+            getStaging() {
+                return this._staging;
             }
-            getCompose() {
 
+            setStaging(value) {
+                this._staging = value;
             }
-            receiveMessage() {
 
+            getInbox() {
+                return this._inbox;
+            }
+
+            setInbox(value) {
+                this._inbox = value;
+            }
+
+            getSent() {
+                return this._sent;
+            }
+
+            setSent(value) {
+                this._sent = value;
+            }
+            checkStatus() {
+                if (this._battery > 0) {
+                    return this.status = true;
+                } else {
+                    return this.status = false;
+                }
+            }
+            turnOn() {
+                this.status = true;
+            }
+            turnOff() {
+                this.status = false;
+            }
+            chargeBattery() {
+                if (this._battery < 100) {
+                    this._battery++;
+                }
+            }
+            writeMessage(msg) {
+               msg = prompt("Soạn tin nhắn ");
+               return msg;
+            }
+            receivedMessage(msg) {
+                alert("Nhận được 1 tin nhắn");
+                return msg;
             }
             sendMessage() {
-
+               alert("Đã gửi tin nhắn ");
             }
-            receiveInbox() {
-
+            seeInboxMessage(value) {
+                alert(value);
             }
-            sendInbox() {
-
+            seeSentMessage(value) {
+                this._sent = value;
             }
+            useMobile() {
+                if (this._battery > 0) {
+                    this._battery--;
+                }
+            }
+        }
+        let nokia = new Mobile(100, 10, 15, 10);
+        let iphone = new Mobile(80, 100, 45, 20);
+        let msg;
+        if (nokia.checkStatus()) {
+            alert("Nokia đã bật, pin còn " + nokia.getBattery());
+            msg = nokia.writeMessage(msg);
+            nokia.useMobile();
+            alert("Pin nokia còn " + nokia.getBattery());
+            nokia.sendMessage();
+            nokia.useMobile();
+            alert("Pin nokia còn " + nokia.getBattery());
+            if (iphone.checkStatus()) {
+                alert("Iphone đã bật, pin còn " + iphone.getBattery());
+                iphone.receivedMessage(msg);
+                iphone.useMobile();
+                alert("Pin iphone còn " + iphone.getBattery());
+                iphone.seeInboxMessage(msg);
+                iphone.useMobile();
+                alert("Pin iphone còn " + iphone.getBattery());
+            } else {
+                iphone.turnOn();
+            }
+
+        } else {
+            nokia.turnOn();
         }
     </script>
 </body>

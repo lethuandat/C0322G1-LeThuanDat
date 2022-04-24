@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng 2 chiều</title>
+</head>
+<body>
+    <script>
+        let arr2d = [
+            [7, 4, 2, 17, 15],
+            [0,18, 6, 22, 10],
+            [41, 5, 26, 8, 19]
+        ]
+        let count = 0;
+        function isPrime(number) {
+            if (number <= 1) {
+                return false;
+            }
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        document.write("Mảng lúc ban đầu:<br>");
+        for (let i = 0; i < arr2d.length; i++) {
+            for (let j = 0; j < arr2d[i].length; j++) {
+                document.write(arr2d[i][j] + " ");
+            }
+            document.write("<br>");
+        }
+        document.write("<hr>");
+        for (let i = 0; i < arr2d.length; i++) {
+            for (let j = 0; j < arr2d[i].length; j++) {
+                if (isPrime(arr2d[i][j])) {
+                    count++;
+                    document.write(arr2d[i][j] +" ");
+                }
+            }
+        }
+        document.write("<br>Mảng có " + count + " số nguyên tố");
+    </script>
+</body>
+</html>

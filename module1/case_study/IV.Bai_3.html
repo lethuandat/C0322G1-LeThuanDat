@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tìm kí tự giống nhau trong 2 chuỗi kí tự</title>
+    <title>String</title>
 </head>
 <body>
+    <h2>
+        Tìm số kí tự giống nhau trong 2 chuỗi kí tự.
+    </h2>
     <script>
         let str1 = "aabcc";
         let str2 = "adcaa";
         let count = 0;
+        document.write("Chuỗi kí tự 1: " + str1);
+        document.write("<br>Chuỗi kí tự 2: " + str2);
         for (let i = 0; i < str1.length; i++) {
             for (let j = 0; j < str2.length; j++) {
                     if (str1[i] === str2[j]) {
@@ -18,7 +23,7 @@
                     }
                 }
         }
-        alert("Số kí tự giống là " + count);
+        document.write("<br>Số lượng kí tự giống nhau trong 2 chuỗi: " + count);
     </script>
 </body>
 </html>
