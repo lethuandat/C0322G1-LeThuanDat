@@ -11,16 +11,16 @@
     <script>
         let words = ["một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", "không"];
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-        let n;
+        let numb;
         do {
-            n = prompt("Nhập số n = ");
-            if (n >= 0 || n < 0) {
+            numb = prompt("Nhập số n = ");
+            if (numb >= 0 && numb !== "") {
                 break;
             } else {
                 alert("Nhập sai, nhập lại ");
             }
         } while (true);
-        let arr = n.split("");
+        let arr = numb.split("");
         let str = "";
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < numbers.length; j++)
@@ -28,7 +28,7 @@
                 str += words[j] + " ";
             }
         }
-        document.write(n + " : " + str);
+        document.write(numb + " : " + str);
     </script>
 </body>
 </html>

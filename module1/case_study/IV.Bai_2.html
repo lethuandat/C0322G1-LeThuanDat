@@ -9,16 +9,27 @@
         Cho xâu kí tự. Hãy đếm số lượng kí tự khác nhau trong xâu đó.
     </h2>
     <script>
-        let s = "cabca";
-        let count = 0;
-        for (let i = 1; i < s.length; i++) {
-            if (s[0] !== s[i]) {
-                count++;
-                s = s.replace(/s[i]/g,"");
+        let str = prompt("Nhập xâu cần kiểm tra");
+        //Cách 1:
+        // let arr = str.split("");
+        // document.write("Xâu kí tự: " + str);
+        // for (let i = 0; i < arr.length; i++) {
+        //     for (let j = i + 1; j < arr.length ; j++) {
+        //         if (arr[i] === arr[j]) {
+        //             arr.splice(j,1);
+        //              j--;
+        //         }
+        //     }
+        // }
+        //Cách 2:
+        let arr2 = [];
+        for (let i = 0; i < str.length ; i++) {
+            if (arr2.indexOf(str[i]) === -1) {
+                arr2.push(str[i]);
             }
         }
-        document.write("Xâu kí tự: " + s);
-        document.write("<br>Số lượng kí tự khác nhau trong xâu: " + count);
+        document.write("<br>Số kí tự khác nhau: " + arr2);
+        document.write("<br>Số lượng kí tự khác nhau trong xâu: " + arr2.length);
     </script>
 </body>
 </html>

@@ -4,82 +4,86 @@
     <meta charset="UTF-8">
     <title>Xây dựng giao diện </title>
     <style>
+        .header {
+            width: 100%;
+            height: 80px;
+        }
+        img {
+            width: 60px;
+            height: 60px;
+        }
+        h2 {
+            display: inline-block;
+            margin: auto 400px;
+        }
         table {
             width: 100%;
-            height: 550px;
+            border-collapse: collapse;
         }
-        .img_header img {
-            width: 50px;
+        .list_practice {
+            width: 15%;
             height: 50px;
         }
-        td {
-            margin-left: 20px;
-        }
-        .footer {
-            background-color: gray;
+        .content {
+            width: 85%;
         }
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th class="img_header"><img src="google.png" alt="Not image"></th>
-            <th>Hệ thống quản lý bài tập Casestudy module 1</th>
-        </tr>
-        <tr>
-            <td>
-                <label>
-                    <select>
-                        <option value="Bài tập 1"> Bài tập 1</option>
-                        <option value="Bài tập 1"> Bài tập 1</option>
-                    </select>
-                </label>
-            </td>
-            <td rowspan="5">
+    <div class="app">
+        <header class="header">
+            <img src="google.png" alt="Không tìm thấy ảnh" >
+            <h2>Hệ thống quản lý bài tập Casestudy module 1</h2>
+        </header>
+        <div class="body">
+            <table cellpadding="20px" border="1">
+                <tr>
+                    <td class="list_practice">
+                        <label>
+                            <select name="practice1">
+                            <option>Bài tập 1</option>
+                            </select>
+                        </label>
+                    </td>
+                    <td rowspan="5" class="content"></td>
+                </tr>
+                <tr>
+                    <td class="list_practice" ><label>
+                        <select name="practice2">
+                            <option>Bài tập 2</option>
+                        </select>
+                    </label></td>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>
-                    <select>
-                        <option value="Bài tập 2"> Bài tập 2</option>
-                        <option value="Bài tập 2"> Bài tập 2</option>
-                    </select>
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>
-                    <select>
-                        <option value="Bài tập 3"> Bài tập 3</option>
-                        <option value="Bài tập 3"> Bài tập 3</option>
-                    </select>
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>
-                    <select>
-                        <option value="Bài tập 4"> Bài tập 4</option>
-                        <option value="Bài tập 4"> Bài tập 4</option>
-                    </select>
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>
-                    <select>
-                        <option value="Bài tập 5"> Bài tập 5</option>
-                        <option value="Bài tập 5"> Bài tập 5</option>
-                    </select>
-                </label>
-            </td>
-        </tr>
-        <tr><td colspan="2" class="footer"></td></tr>
-    </table>
+                </tr>
+                <tr>
+                    <td class="list_practice" ><label>
+                        <select name="practice3">
+                            <option>Bài tập 3</option>
+                        </select>
+                    </label></td>
+
+                </tr>
+                <tr>
+                    <td class="list_practice" ><label>
+                        <select name="practice4">
+                            <option>Bài tập 4</option>
+                        </select>
+                    </label></td>
+
+                </tr>
+                <tr>
+                    <td class="list_practice" ><label>
+                        <select name="practice5">
+                            <option>Bài tập 5</option>
+                        </select>
+                    </label></td>
+
+                </tr>
+            </table>
+        </div>
+        <footer class="footer">
+
+        </footer>
+    </div>
 </body>
 </html>

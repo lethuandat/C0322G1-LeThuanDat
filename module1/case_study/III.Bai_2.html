@@ -6,37 +6,28 @@
 </head>
 <body>
     <script>
-        let a = [7,2,5,3,4,5,3];
-        let b = [7,2,5,4,4,6,3,7,0,-10,84,4,4,4,4,5,3];
-        let c = [];
-        document.write("Mảng a " + a + "<br>");
-        document.write("Mảng b " + b + "<br>");
+        let arr1 = [7,2,5,3,4,5,3,0,-10,84,4,4,4,4,5,3];
+        let arr2 = [7,2,5,4,4,6,3,7];
+        let sortedArr = [];
+        document.write("Mảng 1: " + arr1 + "<br>");
+        document.write("Mảng 2: " + arr2 + "<br>");
 
-        for (let i = 0; i < a.length; i++) {
-            for (let j = 0; j < b.length; j++) {
-                if (a[i] === b[j]) {
-                    b.splice(j,1);
-                }
+        for (let i = 0; i < arr2.length; i++) {
+            if(arr1.indexOf(arr2[i]) === -1 && sortedArr.indexOf(arr2[i]) === -1) {
+                sortedArr.push(arr2[i]);
             }
         }
 
-        c[0] = b[0];
-        for (let i = 1; i < b.length; i++) {
-            if (b[0] !== b[i]) {
-                c.push(b[i]);
-            }
-        }
-
-        for (let i = 0; i < c.length; i++) {
+        for (let i = 0; i < sortedArr.length; i++) {
             for (let j = 0; j <= i; j++) {
-                if (c[i] < c[j] ) {
-                    swap = c[i];
-                    c[i] = c[j];
-                    c[j] = swap;
+                if (sortedArr[i] < sortedArr[j] ) {
+                    swap = sortedArr[i];
+                    sortedArr[i] = sortedArr[j];
+                    sortedArr[j] = swap;
                 }
             }
         }
-        document.write("Mảng đã được sắp xếp tăng chứa các phần tử xuất hiện trong mảng b nhưng lại không xuất hiện a " + c + "<br>");
+        document.write("Mảng đã được sắp xếp tăng chứa các phần tử xuất hiện trong mảng 2 nhưng lại không xuất hiện 1 là: " + sortedArr + "<br>");
     </script>
 </body>
 </html>

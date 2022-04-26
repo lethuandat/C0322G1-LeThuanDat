@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let grades = [73, 67, 38, 33];
+        let arr = [];
+        for (let i = 0; i < grades.length; i++) {
+            if (grades[i] < 40) {
+                if (40 - grades[i] >= 3) {
+                    arr.push(grades[i]);
+                    break;
+                } else {
+                    arr.push(40);
+                }
+            } else {
+                if (grades[i] % 5 === 0) {
+                    arr.push(grades[i]);
+                }
+                if (grades[i] % 5 === 3) {
+                    arr.push(grades[i] + 2);
+                }
+                if (grades[i] % 5 === 4) {
+                    arr.push(grades[i] + 1);
+                }
+                if (grades[i] % 5 < 3) {
+                    arr.push(grades[i]);
+                }
+            }
+        }
+        document.write(arr);
+    </script>
+</body>
+</html>

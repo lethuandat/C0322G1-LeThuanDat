@@ -4,11 +4,255 @@
     <meta charset="UTF-8">
     <title>OOP</title>
     <style>
+        #btn1, #btn2, #btn3, #btn4, #btn5, #btn6  {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            border-color: red;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h3>Xổ số CodeGym</h3>
+    <input type="button" id="btn1" onclick="chooseNumberOne()" value="00">
+    <input type="button" id="btn2" onclick="chooseNumberTwo()" value="00">
+    <input type="button" id="btn3" onclick="chooseNumberThree()" value="00">
+    <input type="button" id="btn4" onclick="chooseNumberFour()" value="00">
+    <input type="button" id="btn5" onclick="chooseNumberFive()" value="00">
+    <input type="button" id="btn6" onclick="chooseNumberSix()" value="00">
+    <p id="randomNumbers">Kết quả quay số:</p>
+    <p id="notify">Thông báo:</p>
+
+    <input type="button" value="Mua vé" onclick="buyTickets()">
+    <input type="button" value="Xem kết quả" onclick="resultLottery()">
     <script>
+        class Lottery {
+            constructor(num1, num2, num3, num4, num5, num6) {
+                this._num1 = num1;
+                this._num2 = num2;
+                this._num3 = num3;
+                this._num4 = num4;
+                this._num5 = num5;
+                this._num6 = num6;
+            }
+
+            getNum1() {
+                return this._num1;
+            }
+
+            setNum1(value) {
+                this._num1 = value;
+            }
+
+            getNum2() {
+                return this._num2;
+            }
+
+            setNum2(value) {
+                this._num2 = value;
+            }
+
+            getNum3() {
+                return this._num3;
+            }
+
+            setNum3(value) {
+                this._num3 = value;
+            }
+
+            getNum4() {
+                return this._num4;
+            }
+
+            setNum4(value) {
+                this._num4 = value;
+            }
+
+            getNum5() {
+                return this._num5;
+            }
+
+            setNum5(value) {
+                this._num5 = value;
+            }
+
+            getNum6() {
+                return this._num6;
+            }
+
+            setNum6(value) {
+                this._num6 = value;
+            }
+        }
+        function buyTickets() {
+            let choose;
+            do {
+                choose = parseInt(prompt("Bạn có 2 lựa chọn:\n" +
+                    "1. Bạn muốn tự chọn số.\n" +
+                    "2. Hệ thống tự random."));
+                if (choose === 1) {
+                    // let num1 = chooseNumberOne();
+                    // let num2 = chooseNumberTwo();
+                    // let num3 = chooseNumberThree();
+                    // let num4 = chooseNumberFour();
+                    // let num5 = chooseNumberFive();
+                    // let num6 = chooseNumberSix();
+                    // let electiveTickets = new Lottery(num1, num2, num3, num4, num5, num6);
+                    // alert("Số bạn chọn là: " + electiveTickets.getNum1() + " "
+                    // + electiveTickets.getNum2() + " "
+                    // + electiveTickets.getNum3() + " "
+                    // + electiveTickets.getNum4() + " "
+                    // + electiveTickets.getNum5() + " "
+                    // + electiveTickets.getNum6() + " ");
+                    alert("Bạn hãy click vào từng ô tròn để chọn số! ");
+                    document.getElementById("btn1").style.display = "inline-block";
+                    document.getElementById("btn1").style.display = "inline-block";
+                    document.getElementById("btn2").style.display = "inline-block";
+                    document.getElementById("btn3").style.display = "inline-block";
+                    document.getElementById("btn4").style.display = "inline-block";
+                    document.getElementById("btn5").style.display = "inline-block";
+                    document.getElementById("btn6").style.display = "inline-block";
+                    break;
+                } else if (choose === 2) {
+                    let num1 = Math.floor(Math.random()*99);
+                    let num2 = Math.floor(Math.random()*99);
+                    let num3 = Math.floor(Math.random()*99);
+                    let num4 = Math.floor(Math.random()*99);
+                    let num5 = Math.floor(Math.random()*99);
+                    let num6 = Math.floor(Math.random()*99);
+                    let randomTickets = new Lottery(num1, num2, num3, num4, num5, num6);
+                    alert("Số hệ thống chọn cho bạn là: " + randomTickets.getNum1() + " "
+                        + randomTickets.getNum2() + " "
+                        + randomTickets.getNum3() + " "
+                        + randomTickets.getNum4() + " "
+                        + randomTickets.getNum5() + " "
+                        + randomTickets.getNum6() + " ");
+                    document.getElementById("btn1").value = randomTickets.getNum1();
+                    document.getElementById("btn2").value = randomTickets.getNum2();
+                    document.getElementById("btn3").value = randomTickets.getNum3();
+                    document.getElementById("btn4").value = randomTickets.getNum4();
+                    document.getElementById("btn5").value = randomTickets.getNum5();
+                    document.getElementById("btn6").value = randomTickets.getNum6();
+                    document.getElementById("btn1").style.display = "inline-block";
+                    document.getElementById("btn2").style.display = "inline-block";
+                    document.getElementById("btn3").style.display = "inline-block";
+                    document.getElementById("btn4").style.display = "inline-block";
+                    document.getElementById("btn5").style.display = "inline-block";
+                    document.getElementById("btn6").style.display = "inline-block";
+                    break;
+                } else {
+                    alert("Bạn phải chọn 1 hoặc 2, khộng nhập thứ khác");
+                }
+            } while (true);
+
+        }
+        function resultLottery() {
+            let num1 = Math.floor(Math.random()*99);
+            let num2 = Math.floor(Math.random()*99);
+            let num3 = Math.floor(Math.random()*99);
+            let num4 = Math.floor(Math.random()*99);
+            let num5 = Math.floor(Math.random()*99);
+            let num6 = Math.floor(Math.random()*99);
+            let resultTickets = new Lottery(num1, num2, num3, num4, num5, num6);
+            let value ="Kết quả quay số: " + resultTickets.getNum1() + " " + resultTickets.getNum2() + " "
+                + resultTickets.getNum3() + " " + resultTickets.getNum4() + " "
+                + resultTickets.getNum5() + " " + resultTickets.getNum6();
+            document.getElementById("randomNumbers").innerHTML = value;
+            if (resultTickets.getNum1() === document.getElementById("btn1").value &&
+                resultTickets.getNum2() === document.getElementById("btn2").value &&
+                resultTickets.getNum3() === document.getElementById("btn3").value &&
+                resultTickets.getNum4() === document.getElementById("btn4").value &&
+                resultTickets.getNum5() === document.getElementById("btn5").value &&
+                resultTickets.getNum6() === document.getElementById("btn6").value) {
+                document.getElementById("notify").innerText = ("Thông báo: Bạn trúng giải nhất: 50 triệu đồng!");
+            } else if (resultTickets.getNum2() === document.getElementById("btn2").value &&
+                resultTickets.getNum3() === document.getElementById("btn3").value &&
+                resultTickets.getNum4() === document.getElementById("btn4").value &&
+                resultTickets.getNum5() === document.getElementById("btn5").value &&
+                resultTickets.getNum6() === document.getElementById("btn6").value) {
+                document.getElementById("notify").innerText = ("Thông báo: Bạn trúng giải nhì:  20 triệu đồng!");
+            } else if (resultTickets.getNum4() === document.getElementById("btn4").value &&
+                resultTickets.getNum5() === document.getElementById("btn5").value &&
+                resultTickets.getNum6() === document.getElementById("btn6").value) {
+                document.getElementById("notify").innerText = ("Thông báo: Bạn trúng giải khuyến khích:  10 triệu đồng!");
+            } else {
+                document.getElementById("notify").innerText = ("Thông báo: Bạn không trúng giải nào cả");
+            }
+
+        }
+        function chooseNumberOne() {
+            let num1;
+            do {
+                num1 = prompt("Chọn số thứ nhất (từ 0->99): ");
+                if (num1 >= 0 && num1 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+           document.getElementById("btn1").value = num1;
+        }
+        function chooseNumberTwo() {
+            let num2;
+            do {
+                num2 = parseInt(prompt("Chọn số thứ hai (từ 0->99): "));
+                if (num2 >= 0 && num2 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+            document.getElementById("btn2").value = num2;
+        }
+        function chooseNumberThree() {
+            let num3;
+            do {
+                num3 = parseInt(prompt("Chọn số thứ ba (từ 0->99): "));
+                if (num3 >= 0 && num3 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+            document.getElementById("btn3").value = num3;
+        }
+        function chooseNumberFour() {
+            let num4;
+            do {
+                num4 = parseInt(prompt("Chọn số thứ tư (từ 0->99): "));
+                if (num4 >= 0 && num4 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+            document.getElementById("btn4").value = num4;
+        }
+        function chooseNumberFive() {
+            let num5;
+            do {
+                num5 = parseInt(prompt("Chọn số thứ năm (từ 0->99): "));
+                if (num5 >= 0 && num5 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+            document.getElementById("btn5").value = num5;
+        }
+        function chooseNumberSix() {
+            let num6;
+            do {
+                num6 = parseInt(prompt("Chọn số thứ sáu (từ 0->99): "));
+                if (num6 >= 0 && num6 <= 99) {
+                    break;
+                } else {
+                    alert("Chọn số sai, chọn lại");
+                }
+            } while (true);
+            document.getElementById("btn6").value = num6;
+        }
 
     </script>
 </body>

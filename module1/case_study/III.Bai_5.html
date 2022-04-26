@@ -8,12 +8,17 @@
     <h2>Menu thức uống </h2>
     <p id="listDrinks"></p>
     <button type="button" onclick="choiceDrinks()">Chọn thức uống </button>
+    <p id="totalMoney"></p>
     <script>
         let menu = ["Cafe", "Cam vắt", "Nước ép cà rốt", "Nước ép cà chua", "Nước lọc", "Nước dừa", "Thoát gọi món"];
-        let price = [15000, 16000, 14000, 15000, 10000, 16000, 0];
+        let price = [15000, 16000, 14000, 15000, 10000, 16000, "Exit"];
         let listDrinks = "";
         for (let i = 0; i < menu.length; i++) {
-            listDrinks += (i + 1) + " " + menu[i] + "<br>";
+            if ( i === 6) {
+                listDrinks += (i + 1) + ". " + menu[i] + " - " + price[i];
+                continue;
+            }
+            listDrinks += (i + 1) + ". " + menu[i] + " - " + price[i] + "đ<br>" ;
         }
         document.getElementById("listDrinks").innerHTML = listDrinks;
         function choiceDrinks() {
@@ -28,9 +33,18 @@
                 } else if (choice > 0 && choice < 7) {
                     for (let i = 0; i < menu.length; i++) {
                         if (choice - 1 === i) {
-                            quantity = parseInt(prompt(menu[i] + " giá " + price[i] + " VND. Mời bạn nhập số lượng: "));
+                            do {
+                                quantity = parseInt(prompt(menu[i] + " giá " + price[i] + "đ. Mời bạn nhập số lượng: "));
+                                if (quantity >= 0) {
+                                    break;
+                                } else {
+                                    alert("Nhập sai, nhập lại");
+                                }
+                            } while (true);
+
                             totalPrice += quantity * price[i];
-                            alert("Tổng tiền phải trả " + totalPrice);
+                            alert("Tổng tiền phải trả " + totalPrice + "đ.");
+                            document.getElementById("totalMoney").innerText = "Tổng tiền phải trả: " + totalPrice + "đ.";
                             break;
                         }
                     }

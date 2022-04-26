@@ -6,55 +6,41 @@
 </head>
 <body>
     <script>
-        let s = prompt("Nhập chuỗi vào");
-        document.write("Chuỗi ban đầu: " + s + "<br>");
-        function getNormalize(s) {
-            let UP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let b = s.toLowerCase();
-            let a = b.split(" ");
-            let c = [];
-            for (let i = 0; i < a.length; i++) {
-                if (a[i] !== "") {
-                    for (let j = 0; j < a[i].length; j++) {
+        let char = prompt("Nhập chuỗi vào");
+        document.write("Chuỗi ban đầu: " + char + "<br>");
+        function getNormalize(char) {
+            let arr = char.toLowerCase().split(" ");
+            let arr2 = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] !== "") {
+                    for (let j = 0; j < arr[i].length; j++) {
                         if (j === 0) {
-                            x = a[i][0].toUpperCase();
-                            c.push(x);
+                            arr2.push(" ");
+                            arr2.push(arr[i][j].toUpperCase());
                             continue;
                         }
-                        c.push(a[i][j]);
+                        arr2.push(arr[i][j]);
                     }
                 }
             }
-            let q = [];
-            q[0] = c[0];
-            for (let i = 1; i < c.length ; i++) {
-                for (let j = 0; j < UP.length ; j++) {
-                    if (c[i] === UP[j]) {
-                        q.push(" ");
-                        break;
-                    }
-                }
-                q.push(c[i]);
-            }
-            for (let i = 0; i <q.length ; i++) {
-                document.write(q[i]);
-            }
+            return arr2;
         }
-        function longInString(s) {
-            let a = s.split(" ");
-            let max = a[0].length;
-            let idx = 0;
-            for (let i = 1; i < a.length ; i++) {
-                if (a[i].length > max) {
-                    max = a[i].length;
-                    idx = i;
+        function longInString(char) {
+            let arr = char.split(" ");
+            let max = arr[0].length;
+            let index = 0;
+            for (let i = 1; i < arr.length ; i++) {
+                if (arr[i].length > max) {
+                    max = arr[i].length;
+                    index = i;
                 }
             }
-            document.write("<br>Từ dài nhất trong chuỗi là " + a[idx]);
+            document.write("<br>Từ dài nhất trong chuỗi là: " + arr[index] + " có " + max + " kí tự");
         }
-        document.write("Chuỗi sau khi chuẩn hóa: ");
-        getNormalize(s);
-        longInString(s);
+
+        let arr2 = getNormalize(char);
+        document.write("Chuỗi sau khi chuẩn hóa: " + arr2.join(""));
+        longInString(char);
     </script>
 </body>
 </html>

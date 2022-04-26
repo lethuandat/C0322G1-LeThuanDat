@@ -18,7 +18,7 @@
         <tr>
             <td colspan="4">
                 <p style="height: 30px; text-align: center; margin: 0 0 8px 0; color: white; font-weight: bold; font-size: xx-large;">CASIO</p>
-                <input placeholder="0" readonly="readonly" id="result" style="font-weight: bold; background-color:#cbff0c; width: 240px; height: 50px; border-radius: 5px;">
+                <label for="result"></label><input placeholder="0" readonly="readonly" id="result" style="font-weight: bold; background-color:#cbff0c; width: 240px; height: 50px; border-radius: 5px;">
             </td>
 
         </tr>
@@ -66,13 +66,13 @@
         </tr>
         <tr>
             <td>
-                <button id="clear" value="remove" onclick="remove()">C</button>
+                <button id="clear" value="remove" onclick="clickNumb(this.value)">C</button>
             </td>
             <td>
                 <button id="num0" value="0" onclick="clickNumb(this.value)">0</button>
             </td>
             <td>
-                <button id="equal" value="=" onclick="result()">=</button>
+                <button id="equal" value="=" onclick="clickNumb(this.value)">=</button>
             </td>
             <td>
                 <button id="div" value="/" onclick="clickNumb(this.value)">/</button>
@@ -80,14 +80,42 @@
         </tr>
     </table>
     <script>
+        //Dùng hàm ngắn gọn:
+        // function clickNumb(num) {
+        //     document.getElementById("result").value += num;
+        // }
+        // function remove() {
+        //     document.getElementById("result").value = "";
+        // }
+        // function result() {
+        //     document.getElementById("result").value = eval(document.getElementById("result").value);
+        // }
+        //Dùng theo lệnh điều kiện:
         function clickNumb(num) {
-            document.getElementById("result").value += num;
-        }
-        function remove() {
-            document.getElementById("result").value = "";
-        }
-        function result() {
-            document.getElementById("result").value = eval(document.getElementById("result").value);
+            switch (num) {
+                case "0":
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                    document.getElementById("result").value += num;
+                    break;
+                case "remove":
+                    document.getElementById("result").value = "";
+                    break;
+                case "=":
+                    document.getElementById("result").value = eval(document.getElementById("result").value);
+                    break;
+            }
         }
     </script>
 </body>
