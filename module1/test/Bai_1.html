@@ -37,7 +37,12 @@
             }
         }
         let avg = sum / count;
-        document.write("<br>Kết quả trung bình của các phần tử chia hết cho 5 ở vị trí chia hết cho 3 là: " + avg);
+        if (avg >= 0) {
+            document.write("<br>Kết quả trung bình của các phần tử chia hết cho 5 ở vị trí chia hết cho 3 là: " + avg);
+        } else {
+            document.write("<br>Không có số nào chia hết cho 5 ở vị trí chia hết cho 3 trong mảng.");
+        }
+
     </script>
 </body>
 </html>

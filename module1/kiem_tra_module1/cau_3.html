@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 3</title>
+</head>
+<body>
+    <script>
+        function fibonacciNumber(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return fibonacciNumber(n-2) + fibonacciNumber(n-1);
+            }
+        }
+        function isFibonacci(numb) {
+            let flag = false;
+            for (let i = 0; i <= numb; i++) {
+                if (fibonacciNumber(i) === numb) {
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
+        let number;
+        do {
+            number = parseInt(prompt("Nhập số nguyên cần kiểm tra "));
+            if (Number.isInteger(parseInt(number)) && number >= 0) {
+                document.write("Số nguyên cần kiểm tra: " + number);
+                break;
+            } else {
+                alert("Nhập sai, phải nhập số nguyên");
+            }
+        } while (true);
+        let check = isFibonacci(number);
+        if (check) {
+            document.write("<br>" + number + " là số fibonacci");
+        } else {
+            document.write("<br>" + number + " không phải là số fibonacci");
+        }
+    </script>
+</body>
+</html>

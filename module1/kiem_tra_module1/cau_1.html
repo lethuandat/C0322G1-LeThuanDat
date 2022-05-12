@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 1</title>
+</head>
+<body>
+    <script>
+        function findMax(arr) {
+            let max = arr[0];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > max) {
+                   max = arr[i];
+                }
+            }
+            return max;
+        }
+
+        let numbers = prompt("Nhập số lượng điểm thi của danh sách: ");
+        let arrPoint = [];
+        document.write("Mảng điểm thi: ")
+
+        for (let i = 0; i < numbers; i++) {
+            do {
+                arrPoint[i] = parseFloat(prompt("Nhập điểm thi người thứ " + (i+1)));
+                if (arrPoint[i] >= 0 && arrPoint[i] <=10) {
+                    break;
+                } else {
+                    alert("Nhập sai, điểm thi phải từ 0 - 10");
+                }
+            } while (true);
+            document.write(arrPoint[i] + " ");
+        }
+
+        let maxPoint = findMax(arrPoint);
+        document.write("<br>Điểm số cao nhất: " + maxPoint);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mật mã Ceaser</title>
+</head>
+<body>
+    <script>
+        let s = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+        let h = "azz";
+        let k = 2;
+        let n = 0;
+        let x = "";
+
+        for (let i = 0; i < h.length; i++) {
+           n = s.indexOf(h[i]) + k;
+           x += s[n];
+        }
+        console.log(x);
+    </script>
+</body>
+</html>

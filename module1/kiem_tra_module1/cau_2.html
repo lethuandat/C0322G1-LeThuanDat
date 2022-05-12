@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+    <script>
+        let numbers;
+        do {
+            numbers = prompt("Nhập số lượng phần tử của mảng");
+            if (Number.isInteger(parseInt(numbers)) && numbers > 0) {
+                break;
+            } else {
+                alert("Nhập sai, phải nhập số nguyên");
+            }
+        } while (true);
+        let arrInt = [];
+        document.write("Mảng số nguyên ban đầu: ");
+        for (let i = 0; i < numbers; i++) {
+
+            do {
+                arrInt[i] = prompt("Nhập phần tử thứ " + (i+1));
+                if (Number.isInteger(parseInt(arrInt[i])) && arrInt[i] > 0) {
+                    document.write(arrInt[i] + " ");
+                    break;
+                } else {
+                    alert("Nhập sai, phải nhập số nguyên");
+                }
+            } while (true);
+        }
+        function tryRemoveFromArray(arr, x) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === x) {
+                    arr.splice(i,1);
+                }
+            }
+            return arr;
+        }
+        let x;
+        do {
+            x = prompt("Nhập số nguyên x = ");
+            if (Number.isInteger(parseInt(x)) && x > 0) {
+                document.write("<br>Số nguyên x: " + x);
+                break;
+            } else {
+                alert("Nhập sai, phải nhập số nguyên");
+            }
+        } while (true);
+        document.write("<br>Mảng lúc sau: " + tryRemoveFromArray(arrInt, x));
+    </script>
+</body>
+</html>

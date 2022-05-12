@@ -9,25 +9,29 @@
         let m = parseInt(prompt("Nhập m = "));
         let n = parseInt(prompt("Nhập n = "));
         let arr2d=[];
-        let sum = 0;
+        let sumEvenNumber = 0;
         for (let i = 0; i < m; i++) {
             arr2d[i]=[];
             for (let j = 0; j < n; j++) {
                 arr2d[i][j] = parseInt(prompt("Nhập phần tử thứ " + i + j));
             }
         }
+        function sumEven(number) {
+            let sum = 0;
+            if (number % 2 === 0) {
+                sum += number;
+            }
+            return sum;
+        }
         document.write("Mảng lúc ban đầu:<br>");
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < n; j++) {
                 document.write(arr2d[i][j] + " ");
-                if (arr2d[i][j] % 2 === 0) {
-                    sum += arr2d[i][j];
-                }
+                sumEvenNumber += sumEven(arr2d[i][j]);
             }
             document.write("<br>");
         }
-        console.log(arr2d.length);
-        document.write("Tổng các số chẵn trong ma trận: " + sum);
+        document.write("Tổng các số chẵn trong ma trận: " + sumEvenNumber);
     </script>
 </body>
 </html>

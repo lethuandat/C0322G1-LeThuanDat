@@ -10,7 +10,9 @@
     <div style="width: 50%; margin: 0 auto 4%">
         <button type="button" style="float: right; width: auto;" onclick="addAccount()">Thêm tài khoản</button>
     </div>
-
+    <div style="width: 50%; margin: 0 auto 4%">
+        <button type="button" style="float: right; width: auto;" onclick="searchAccount(arr)">Tìm kiếm</button>
+    </div>
     <script>
         class BankAccount {
             constructor(id, name, bank, money) {
@@ -51,11 +53,16 @@
             setMoney(value) {
                 this._money = value;
             }
+
+            toString() {
+                return alert("Tài khoản: " + this.getId() + "\nChủ tài khoản: " + this.getName() +
+                "\nNgân hàng: " + this.getBank() + " hiện đang gửi " + this.getMoney() + "VNĐ");
+            }
         }
-        let acc1 = new BankAccount("Acc1", "Lê Văn A", "Agribank", 50000000);
-        let acc2 = new BankAccount("Acc2", "Lê Văn B", "Vietinbank", 60000000);
-        let acc3 = new BankAccount("Acc3", "Lê Văn C", "Vietcombank", 80000000);
-        let acc4 = new BankAccount("Acc4", "Lê Văn D", "Sacombank", 150000000);
+        let acc1 = new BankAccount("34224", "Lê Văn A", "Agribank", 50000000);
+        let acc2 = new BankAccount("12424", "Lê Văn B", "Vietinbank", 60000000);
+        let acc3 = new BankAccount("68235", "Lê Văn C", "Vietcombank", 80000000);
+        let acc4 = new BankAccount("23353", "Lê Văn D", "Sacombank", 150000000);
         let arr = [];
         arr.push(acc1);
         arr.push(acc2);
@@ -84,13 +91,22 @@
             document.getElementById("display").innerHTML = sout;
         }
         function addAccount() {
-            let idAcc = prompt("Nhập ID: ");
+            let idAcc;
+            do {
+                idAcc = prompt("Nhập ID: ");
+                if (idAcc.length === 5 && Number.isInteger(parseInt(idAcc)) && idAcc > 0) {
+                    break;
+                } else {
+                    alert("Nhập sai, nhập lại:\n ID là số có 5 chữ số liền nhau");
+                }
+            } while (true);
             let name = prompt("Nhập tên chủ tài khoản: ");
             let bank = prompt("Nhập tên ngân hàng: ");
             let money = prompt("Nhập tổng số tiền gửi: ");
             let newAcc = new BankAccount(idAcc, name, bank, money);
             arr.push(newAcc);
             alert("Thêm thành công");
+            newAcc.toString();
             displayAccount(arr);
         }
         function updateAccount(i) {
@@ -100,6 +116,7 @@
             let money = prompt("Nhập tổng số tiền gửi: ");
             arr[i] = new BankAccount(idAcc, name, bank, money);
             alert("Sửa thành công");
+            arr[i].toString();
             displayAccount(arr);
         }
         function deleteAccount(i) {
@@ -111,6 +128,47 @@
                 alert("OK, không xóa nữa ");
             }
             displayAccount(arr);
+        }
+        function searchAccount() {
+            let choose = prompt("Tìm theo:\n1. ID\n2. Tên\n3. Ngân hàng\n4. Tiền gửi");
+            switch (choose) {
+                case "1":
+                    let searchID = prompt("Nhập ID: ");
+                    let sout = "<table border='1' cellpadding='5px' cellspacing='0'style='border-collapse: collapse; margin: 0 auto;' width='50%'>\n" +
+                        "        <tr>\n" +
+                        "            <th>STT</th>\n" +
+                        "            <th>Mã tài khoản</th>\n" +
+                        "            <th>Tên chủ tài khoản</th>\n" +
+                        "            <th>Tên ngân hàng</th>\n" +
+                        "            <th>Tổng tiền tài khoản</th>\n" +
+                        "            <th>Cập nhật</th>\n" +
+                        "        </tr>";
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].getId() === searchID) {
+                                sout += "<tr><td>" + (i + 1) + "</td>" +
+                                    "<td>" + arr[i].getId() + "</td>" +
+                                    "<td>" + arr[i].getName() + "</td>" +
+                                    "<td>" + arr[i].getBank() + "</td>" +
+                                    "<td>" + arr[i].getMoney() + "</td>" +
+                                    "<td>" + "<button type=\"button\" onclick=\"updateAccount(" + i + ")\">Sửa</button>\n" +
+                                    "    <button type=\"button\" onclick=\"deleteAccount(" + i + ")\">Xóa</button>" + "</td></tr>";
+                        }
+                    }
+                    sout += "</table>";
+                    document.getElementById("display").innerHTML = sout;
+                    break;
+                case "2":
+                    let searchName = prompt("Nhập tên khách hàng: ");
+                    break;
+                case "3":
+                    let searchBank = prompt("Nhập ngân hàng: ");
+                    break;
+                case "4":
+                    let searchMoney = prompt("Nhập số tiền gửi: ");
+                    break;
+                default:
+                    alert("Chọn tìm kiếm theo 1 trong 4 cách trên thôi");
+            }
         }
         displayAccount(arr);
     </script>

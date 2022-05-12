@@ -18,16 +18,34 @@
             }
             document.write("<br>");
         }
-        let max = arr2d[0][0];
-        let min = arr2d[0][0];
+        function maxValue(arr2D) {
+            let max = arr2D[0][0];
+            for (let i = 0; i < arr2D.length; i++) {
+                for (let j = 0; j < arr2D[i].length ; j++) {
+                    if (arr2D[i][j] > max) {
+                        max = arr2D[i][j];
+                    }
+                }
+            }
+            return max;
+        }
+        function minValue(arr2D) {
+            let min = arr2D[0][0];
+            for (let i = 0; i < arr2D.length; i++) {
+                for (let j = 0; j < arr2D[i].length ; j++) {
+                    if (arr2D[i][j] < min) {
+                        min = arr2D[i][j];
+                    }
+                }
+            }
+            return min;
+        }
+        let max;
+        let min;
         for (let i = 0; i < arr2d.length; i++) {
             for (let j = 0; j < arr2d[i].length; j++) {
-                if (arr2d[i][j] < min) {
-                    min = arr2d[i][j];
-                }
-                if (arr2d[i][j] > max) {
-                    max = arr2d[i][j];
-                }
+                max = maxValue(arr2d);
+                min = minValue(arr2d);
             }
         }
         document.write("Giá trị lớn nhất trong mảng là " + max);

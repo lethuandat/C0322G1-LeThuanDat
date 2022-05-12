@@ -6,12 +6,11 @@
 </head>
 <body>
     <script>
-        arr = [1, 5, 6, 13, 9, 12, 8, 0, 5, 1];
+        arr = [1, 2, 5, 6, 13, 9, 12, 8, 0, 5, 1];
+        document.write("Mảng ban đầu: " + arr);
         //Hàm in ra số fibonacci thứ n trong dãy fibonacci
         function fibonacciNumber(n) {
-            if (n === 0 ) {
-                return 0;
-            } else if (n === 1) {
+            if (n === 0 || n === 1) {
                 return 1;
             } else {
                 return fibonacciNumber(n-2) + fibonacciNumber(n-1);
@@ -38,7 +37,7 @@
             }
             return arrFib;
         }
-        document.write("Mảng số fibonacci trong mảng ban đầu là: " + fibInArray(arr));
+        document.write("<br>Mảng số fibonacci trong mảng ban đầu là: " + fibInArray(arr));
     </script>
 </body>
 </html>
