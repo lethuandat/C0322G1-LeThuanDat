@@ -1,6 +1,6 @@
 package models;
 
-public class Room extends Facility{
+public class Room extends Facility {
     private String freeServiceWith;
 
     public Room() {
@@ -21,8 +21,7 @@ public class Room extends Facility{
 
     @Override
     public String toString() {
-        return "Room{" + super.toString() +
-                "freeServiceWith='" + freeServiceWith + '\'' +
-                '}';
+        return "Room " + super.toString() +
+                ", free service: " + freeServiceWith;
     }
 }

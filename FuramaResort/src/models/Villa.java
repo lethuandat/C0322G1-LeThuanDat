@@ -1,6 +1,6 @@
 package models;
 
-public class Villa extends Facility{
+public class Villa extends Facility {
     private String standardRoom;
     private double poolArea;
     private int floorQuantity;
@@ -41,10 +41,9 @@ public class Villa extends Facility{
 
     @Override
     public String toString() {
-        return "Villa{" + super.toString() +
-                "standardRoom='" + standardRoom + '\'' +
-                ", poolArea=" + poolArea +
-                ", floorQuantity=" + floorQuantity +
-                '}';
+        return "Villa " + super.toString() +
+                ", standard room: " + standardRoom +
+                ", area pool: " + poolArea +
+                ", floor of quantity: " + floorQuantity;
     }
 }

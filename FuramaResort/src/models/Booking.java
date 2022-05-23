@@ -2,22 +2,24 @@ package models;
 
 public class Booking {
     private int bookingID;
-    private int dayStart;
-    private int dayEnd;
+    private String dayStart;
+    private String dayEnd;
     private int customerID;
     private String serviceName;
     private String serviceType;
+    public static int countBookingID = 0;
 
     public Booking() {
     }
 
-    public Booking(int bookingID, int dayStart, int dayEnd, int customerID, String serviceName, String serviceType) {
+    public Booking(int bookingID, String dayStart, String dayEnd, int customerID, String serviceName, String serviceType) {
         this.bookingID = bookingID;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
         this.customerID = customerID;
         this.serviceName = serviceName;
         this.serviceType = serviceType;
+        countBookingID++;
     }
 
     public int getBookingID() {
@@ -28,19 +30,19 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public int getDayStart() {
+    public String getDayStart() {
         return dayStart;
     }
 
-    public void setDayStart(int dayStart) {
+    public void setDayStart(String dayStart) {
         this.dayStart = dayStart;
     }
 
-    public int getDayEnd() {
+    public String getDayEnd() {
         return dayEnd;
     }
 
-    public void setDayEnd(int dayEnd) {
+    public void setDayEnd(String dayEnd) {
         this.dayEnd = dayEnd;
     }
 
@@ -70,13 +72,11 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "bookingID='" + bookingID + '\'' +
-                ", dayStart=" + dayStart +
-                ", dayEnd=" + dayEnd +
-                ", customerID=" + customerID +
-                ", serviceName='" + serviceName + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                '}';
+        return "ID:" + bookingID +
+                ", dayStart: " + dayStart +
+                ", dayEnd: " + dayEnd +
+                ", customer ID: " + customerID +
+                ", service Name: " + serviceName +
+                ", service Type: " + serviceType;
     }
 }

@@ -1,6 +1,6 @@
 package models;
 
-public class House extends Facility{
+public class House extends Facility {
     private String standardRoom;
     private int floorQuantity;
 
@@ -31,9 +31,8 @@ public class House extends Facility{
 
     @Override
     public String toString() {
-        return "House{" + super.toString() +
-                "standardRoom='" + standardRoom + '\'' +
-                ", floorQuantity=" + floorQuantity +
-                '}';
+        return "House " + super.toString() +
+                ", standard room:" + standardRoom +
+                ", floor of quantity:" + floorQuantity;
     }
 }

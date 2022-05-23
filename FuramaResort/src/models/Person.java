@@ -2,18 +2,18 @@ package models;
 
 public abstract class Person {
     private String name;
-    private int date;
+    private int age;
     private boolean gender;
-    private int identity;
-    private int phoneNumber;
+    private long identity;
+    private long phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String name, int date, boolean gender, int identity, int phoneNumber, String email) {
+    public Person(String name, int age, boolean gender, long identity, long phoneNumber, String email) {
         this.name = name;
-        this.date = date;
+        this.age = age;
         this.gender = gender;
         this.identity = identity;
         this.phoneNumber = phoneNumber;
@@ -28,12 +28,12 @@ public abstract class Person {
         this.name = name;
     }
 
-    public int getDate() {
-        return date;
+    public int getAge() {
+        return age;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isGender() {
@@ -44,19 +44,19 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getIdentity() {
+    public long getIdentity() {
         return identity;
     }
 
-    public void setIdentity(int identity) {
+    public void setIdentity(long identity) {
         this.identity = identity;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -70,13 +70,11 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", date=" + date +
-                ", gender=" + gender +
-                ", identity=" + identity +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+        return ", name: " + name +
+                ", age: " + age +
+                ", gender: " + (gender ? "Nam" : "Nữ") +
+                ", identity: " + identity +
+                ", phoneNumber: " + phoneNumber +
+                ", email: " + email;
     }
 }

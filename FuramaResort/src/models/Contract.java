@@ -6,6 +6,7 @@ public class Contract {
     private int customerID;
     private double deposit;
     private double totalMoney;
+    public static int countContract = 0;
 
     public Contract() {
     }
@@ -16,6 +17,7 @@ public class Contract {
         this.customerID = customerID;
         this.deposit = deposit;
         this.totalMoney = totalMoney;
+        countContract++;
     }
 
     public int getContractID() {
@@ -60,12 +62,10 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract{" +
-                "contractID=" + contractID +
-                ", bookingID=" + bookingID +
-                ", customerID=" + customerID +
-                ", deposit=" + deposit +
-                ", totalMoney=" + totalMoney +
-                '}';
+        return "Contract ID: " + contractID +
+                ", booking ID: " + bookingID +
+                ", customer ID: " + customerID +
+                ", deposit money: " + deposit +
+                ", total money:" + totalMoney;
     }
 }
