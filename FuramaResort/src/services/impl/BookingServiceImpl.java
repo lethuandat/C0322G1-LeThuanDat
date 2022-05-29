@@ -3,68 +3,109 @@ package services.impl;
 import models.*;
 import services.BookingService;
 import utils.BookingComparator;
+import utils.ReadAndWrite;
 
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
+    private static final String BOOKING_FILE_PATH = "src\\data\\booking.csv";
+    private static final String CUSTOMER_FILE_PATH = "src\\data\\customer.csv";
+    private static final String VILLA_FILE_PATH = "src\\data\\villa.csv";
+    private static final String HOUSE_FILE_PATH = "src\\data\\house.csv";
+    private static final String ROOM_FILE_PATH = "src\\data\\room.csv";
     static Scanner scanner = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+    private static List<String[]> list = new ArrayList<>();
     static List<Customer> customerList = new LinkedList<>();
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
 
-    static {
-        Customer customer1 = new Customer("Nguyễn Thị Hoa", 23, false, 32312332, 91234345, "hoadn@gmail.com", 1, "Gold", "Đà Nẵng");
-        Customer customer2 = new Customer("Nguyễn Văn Vĩnh", 22, false, 32388332, 91874345, "vinhpro@gmail.com", 2, "Platinum", "Hà Nội");
-        Customer customer3 = new Customer("Nguyễn Thị Hồng", 28, false, 37312332, 91754345, "honghong@gmail.com", 3, "Silver", "Huế");
-        customerList.add(customer1);
-        customerList.add(customer2);
-        customerList.add(customer3);
-        Villa villa1 = new Villa("Đa Phước", 500, 6000000, 20, "Day", "5*", 150, 4);
-        House house1 = new House("Gió Biển", 200, 2000000, 6, "Month", "4*", 3);
-        Room room1 = new Room("Cá chép", 40, 300000, 2, "Year", "wifi và nước lọc");
-        facilityIntegerMap.put(house1, 1);
-        facilityIntegerMap.put(room1, 1);
-        facilityIntegerMap.put(villa1, 2);
-    }
-
-    public Set<Booking> getBookingSet() {
-        return bookingSet;
-    }
-
     @Override
     public void display() {
+        list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
+        bookingSet.clear();
+
+        for (String[] item : list) {
+            Booking booking = new Booking(Integer.parseInt(item[0]),
+                    item[1],
+                    item[2],
+                    Integer.parseInt(item[3]),
+                    item[4],
+                    item[5]);
+            bookingSet.add(booking);
+        }
+
+        System.out.println("Lists of booking: ");
         for (Booking booking : bookingSet) {
             System.out.println(booking);
         }
-        System.out.println("Number of booking: " + Booking.countBookingID);
+        System.out.println("Number of booking: " + bookingSet.size());
     }
 
     @Override
-    public void add() {
+    public void addNewBooking() {
+        list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
+        bookingSet.clear();
+
+        for (String[] item : list) {
+            Booking booking = new Booking(Integer.parseInt(item[0]),
+                    item[1],
+                    item[2],
+                    Integer.parseInt(item[3]),
+                    item[4],
+                    item[5]);
+            bookingSet.add(booking);
+        }
+
         System.out.println("Enter day start:");
         String dayStart = scanner.nextLine();
         System.out.println("Enter day end:");
         String dayEnd = scanner.nextLine();
         int customerID = chooseCustomer();
-        String facility = chooseFacility();
+        String facilityID = chooseFacility();
         System.out.println("Enter type of service:");
         String typeService = scanner.nextLine();
 
-        Booking booking = new Booking(Booking.countBookingID + 1, dayStart, dayEnd, customerID, facility, typeService);
+        Booking booking = new Booking(bookingSet.size() + 1, dayStart, dayEnd, customerID, facilityID, typeService);
         bookingSet.add(booking);
-    }
-
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void remove() {
-
+        String line = "";
+        int count = 1;
+        for (Booking value : bookingSet) {
+            if (count == bookingSet.size()) {
+                line += value.getBookingID() + "," +
+                        value.getDayStart() + "," +
+                        value.getDayEnd() + "," +
+                        value.getCustomerID() + "," +
+                        value.getServiceID() + "," +
+                        value.getServiceType();
+                break;
+            }
+            line += value.getBookingID() + "," +
+                    value.getDayStart() + "," +
+                    value.getDayEnd() + "," +
+                    value.getCustomerID() + "," +
+                    value.getServiceID() + "," +
+                    value.getServiceType() + "\n";
+            count++;
+        }
+        ReadAndWrite.writeTextFile(BOOKING_FILE_PATH, line);
+        System.out.println("Add successful!");
     }
 
     public static int chooseCustomer() {
+        list = ReadAndWrite.readTextFile(CUSTOMER_FILE_PATH);
+        customerList.clear();
+        for (String[] value : list) {
+            Customer customer = new Customer(value[0],
+                    Integer.parseInt(value[1]),
+                    Boolean.parseBoolean(value[2]),
+                    Long.parseLong(value[3]),
+                    Long.parseLong(value[4]),
+                    value[5],
+                    Integer.parseInt(value[6]),
+                    value[7],
+                    value[8]);
+            customerList.add(customer);
+        }
         System.out.println("List customer having:");
         for (Customer customer : customerList) {
             System.out.println(customer);
@@ -85,24 +126,69 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public static String chooseFacility() {
-        System.out.println("List facility having:");
-        for (Map.Entry<Facility, Integer> item : facilityIntegerMap.entrySet()) {
-            System.out.println("Service " + item.getKey());
+        list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+        for (String[] value : list) {
+            Villa villa = new Villa(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Double.parseDouble(value[7]),
+                    Integer.parseInt(value[8]));
+            int numUsed = Integer.parseInt(value[9]);
+            facilityIntegerMap.put(villa, numUsed);
+        }
+        list.clear();
+
+        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+        for (String[] value : list) {
+            House house = new House(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Integer.parseInt(value[7]));
+            int numUsed = Integer.parseInt(value[8]);
+            facilityIntegerMap.put(house, numUsed);
+        }
+        list.clear();
+
+        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+        for (String[] value : list) {
+            Room room = new Room(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6]);
+            int numUsed = Integer.parseInt(value[7]);
+            facilityIntegerMap.put(room, numUsed);
+        }
+        list.clear();
+
+        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+            System.out.println(entry.getKey() + ", Numbers of used: " + entry.getValue());
         }
 
-        System.out.println("Enter service name facility:");
-        String serviceName = scanner.nextLine();
+
+        System.out.println("Enter service ID facility:");
+        String serviceID = scanner.nextLine();
 
         do {
             for (Map.Entry<Facility, Integer> item : facilityIntegerMap.entrySet()) {
-                if (item.getKey().getServiceName().equals(serviceName)) {
-                    return item.getKey().getServiceName();
+                if (item.getKey().getServiceID().equals(serviceID)) {
+                    return item.getKey().getServiceID();
                 }
             }
 
-            System.out.println("Service name wrong, try again.");
-            System.out.println("Enter service name facility:");
-            serviceName = scanner.nextLine();
+            System.out.println("Service ID wrong, try again.");
+            System.out.println("Enter service ID facility:");
+            serviceID = scanner.nextLine();
         } while (true);
     }
 }

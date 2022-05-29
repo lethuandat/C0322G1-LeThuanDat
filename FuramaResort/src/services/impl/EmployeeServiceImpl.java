@@ -2,37 +2,63 @@ package services.impl;
 
 import models.Employee;
 import services.EmployeeService;
+import utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
+    private static final String EMPLOYEE_FILE_PATH = "src\\data\\employee.csv";
     private static int choice;
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
+    private static List<String[]> list = new ArrayList<>();
     private static List<Employee> employeeList = new ArrayList<>();
-
-    static {
-        Employee employee1 = new Employee("Nguyễn Văn Long", 30, true, 208349834, 986782374, "long@gmail.com", 1, "University", "Manager", 40000000);
-        Employee employee2 = new Employee("Nguyễn Thị Linh", 29, false, 19343234, 904938424, "ntlinh@gmail.com", 2, "University", "Supervisor", 30000000);
-        Employee employee3 = new Employee("Trần Văn Hùng", 31, true, 208779834, 902732445, "hungtv@gmail.com", 3, "University", "Expert", 20000000);
-        employeeList.add(employee1);
-        employeeList.add(employee2);
-        employeeList.add(employee3);
-    }
 
     @Override
     public void display() {
+        list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
+        employeeList.clear();
+        for (String[] value : list) {
+            Employee employee = new Employee(value[0],
+                    Integer.parseInt(value[1]),
+                    Boolean.parseBoolean(value[2]),
+                    Long.parseLong(value[3]),
+                    Long.parseLong(value[4]),
+                    value[5],
+                    Integer.parseInt(value[6]),
+                    value[7],
+                    value[8],
+                    Double.parseDouble(value[9]));
+            employeeList.add(employee);
+        }
+        System.out.println("List employees: ");
         for (Employee employee : employeeList) {
             System.out.println(employee);
         }
-        System.out.println("List employees: " + Employee.countEmployee + " person.");
+        System.out.println("List employees: " + employeeList.size() + " person.");
     }
 
     @Override
-    public void add() {
+    public void addNewEmployee() {
+        list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
+        employeeList.clear();
+        for (String[] value : list) {
+            Employee employee = new Employee(value[0],
+                    Integer.parseInt(value[1]),
+                    Boolean.parseBoolean(value[2]),
+                    Long.parseLong(value[3]),
+                    Long.parseLong(value[4]),
+                    value[5],
+                    Integer.parseInt(value[6]),
+                    value[7],
+                    value[8],
+                    Double.parseDouble(value[9]));
+            employeeList.add(employee);
+        }
+
         System.out.println("-----Add new employee:");
-        System.out.println("Enter name:");
+        System.out.println("Enter name employee:");
         String name = scanner.nextLine();
         System.out.println("Enter age:");
         int age = Integer.parseInt(scanner.nextLine());
@@ -51,14 +77,56 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("Enter salary:");
         double salary = Double.parseDouble(scanner.nextLine());
 
-
-        Employee employee = new Employee(name, age, gender, identity, phoneNumber, email, Employee.countEmployee + 1, level, rank, salary);
+        Employee employee = new Employee(name, age, gender, identity, phoneNumber, email, (list.size() + 1), level, rank, salary);
         employeeList.add(employee);
+        String line = "";
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (i == (employeeList.size() - 1)) {
+                line += employeeList.get(i).getName() + "," +
+                        employeeList.get(i).getAge() + "," +
+                        employeeList.get(i).isGender() + "," +
+                        employeeList.get(i).getIdentity() + "," +
+                        employeeList.get(i).getPhoneNumber() + "," +
+                        employeeList.get(i).getEmail() + "," +
+                        employeeList.get(i).getEmployeeID() + "," +
+                        employeeList.get(i).getLevel() + "," +
+                        employeeList.get(i).getRank() + "," +
+                        employeeList.get(i).getSalary();
+            } else {
+                line += employeeList.get(i).getName() + "," +
+                        employeeList.get(i).getAge() + "," +
+                        employeeList.get(i).isGender() + "," +
+                        employeeList.get(i).getIdentity() + "," +
+                        employeeList.get(i).getPhoneNumber() + "," +
+                        employeeList.get(i).getEmail() + "," +
+                        employeeList.get(i).getEmployeeID() + "," +
+                        employeeList.get(i).getLevel() + "," +
+                        employeeList.get(i).getRank() + "," +
+                        employeeList.get(i).getSalary() + "\n";
+            }
+        }
+        ReadAndWrite.writeTextFile(EMPLOYEE_FILE_PATH, line);
         System.out.println("Add successful!");
     }
 
     @Override
-    public void edit() {
+    public void editEmployee() {
+        list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
+        employeeList.clear();
+        for (String[] value : list) {
+            Employee employee = new Employee(value[0],
+                    Integer.parseInt(value[1]),
+                    Boolean.parseBoolean(value[2]),
+                    Long.parseLong(value[3]),
+                    Long.parseLong(value[4]),
+                    value[5],
+                    Integer.parseInt(value[6]),
+                    value[7],
+                    value[8],
+                    Double.parseDouble(value[9]));
+            employeeList.add(employee);
+        }
+
         System.out.println("Enter ID employee want update: ");
         int idUpdate = Integer.parseInt(scanner.nextLine());
         boolean check = false;
@@ -102,15 +170,37 @@ public class EmployeeServiceImpl implements EmployeeService {
             employeeList.get(index).setRank(rank);
             employeeList.get(index).setSalary(salary);
 
+            String line = "";
+            for (int i = 0; i < employeeList.size(); i++) {
+                if (i == (employeeList.size() - 1)) {
+                    line += employeeList.get(i).getName() + "," +
+                            employeeList.get(i).getAge() + "," +
+                            employeeList.get(i).isGender() + "," +
+                            employeeList.get(i).getIdentity() + "," +
+                            employeeList.get(i).getPhoneNumber() + "," +
+                            employeeList.get(i).getEmail() + "," +
+                            employeeList.get(i).getEmployeeID() + "," +
+                            employeeList.get(i).getLevel() + "," +
+                            employeeList.get(i).getRank() + "," +
+                            employeeList.get(i).getSalary();
+                } else {
+                    line += employeeList.get(i).getName() + "," +
+                            employeeList.get(i).getAge() + "," +
+                            employeeList.get(i).isGender() + "," +
+                            employeeList.get(i).getIdentity() + "," +
+                            employeeList.get(i).getPhoneNumber() + "," +
+                            employeeList.get(i).getEmail() + "," +
+                            employeeList.get(i).getEmployeeID() + "," +
+                            employeeList.get(i).getLevel() + "," +
+                            employeeList.get(i).getRank() + "," +
+                            employeeList.get(i).getSalary() + "\n";
+                }
+            }
+            ReadAndWrite.writeTextFile(EMPLOYEE_FILE_PATH, line);
             System.out.println("Update successful!");
         } else {
             System.out.println("This ID does not exist.");
         }
-    }
-
-    @Override
-    public void remove() {
-
     }
 
     public String addEmployeeLevel() {
@@ -123,21 +213,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         try {
             choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    return "Intermediate";
+                case 2:
+                    return "Colleges";
+                case 3:
+                    return "University";
+                case 4:
+                    return "After University";
+                default:
+                    System.out.println("This option is not available.");
+                    addEmployeeLevel();
+            }
         } catch (NumberFormatException e) {
-            e.getMessage();
-        }
-        switch (choice) {
-            case 1:
-                return "Intermediate";
-            case 2:
-                return "Colleges";
-            case 3:
-                return "University";
-            case 4:
-                return "After University";
-            default:
-                System.out.println("Wrong choice");
-                addEmployeeLevel();
+            System.out.println("Cannot enter the character.");
+            addEmployeeLevel();
         }
         return null;
     }
@@ -154,25 +245,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         try {
             choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    return "Receptionist";
+                case 2:
+                    return "Servants";
+                case 3:
+                    return "Expert";
+                case 4:
+                    return "Supervisor";
+                case 5:
+                    return "Manager";
+                case 6:
+                    return "Director";
+                default:
+                    System.out.println("This option is not available.");
+                    addEmployeeRank();
+            }
         } catch (NumberFormatException e) {
-            e.getMessage();
-        }
-        switch (choice) {
-            case 1:
-                return "Receptionist";
-            case 2:
-                return "Servants";
-            case 3:
-                return "Expert";
-            case 4:
-                return "Supervisor";
-            case 5:
-                return "Manager";
-            case 6:
-                return "Director";
-            default:
-                System.out.println("Wrong choice");
-                addEmployeeRank();
+            System.out.println("Cannot enter the character.");
+            addEmployeeRank();
         }
         return null;
     }

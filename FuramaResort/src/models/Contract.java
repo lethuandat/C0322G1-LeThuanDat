@@ -6,7 +6,6 @@ public class Contract {
     private int customerID;
     private double deposit;
     private double totalMoney;
-    public static int countContract = 0;
 
     public Contract() {
     }
@@ -17,7 +16,6 @@ public class Contract {
         this.customerID = customerID;
         this.deposit = deposit;
         this.totalMoney = totalMoney;
-        countContract++;
     }
 
     public int getContractID() {

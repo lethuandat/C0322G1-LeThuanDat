@@ -21,32 +21,32 @@ public class FuramaController {
         System.out.println("Enter your choice: ");
         try {
             choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    displayEmployeeMenu();
+                    break;
+                case 2:
+                    displayCustomerMenu();
+                    break;
+                case 3:
+                    displayFacilityMenu();
+                    break;
+                case 4:
+                    displayBookingMenu();
+                    break;
+                case 5:
+                    displayPromotionMenu();
+                    break;
+                case 6:
+                    System.exit(6);
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayMainMenu();
+            }
         } catch (NumberFormatException e) {
-            e.getMessage();
-        }
-
-        switch (choice) {
-            case 1:
-                displayEmployeeMenu();
-                break;
-            case 2:
-                displayCustomerMenu();
-                break;
-            case 3:
-                displayFacilityMenu();
-                break;
-            case 4:
-                displayBookingMenu();
-                break;
-            case 5:
-                displayPromotionMenu();
-                break;
-            case 6:
-                System.exit(6);
-                break;
-            default:
-                System.out.println("Input wrong");
-                displayMainMenu();
+            System.out.println("Cannot enter the character.");
+            displayMainMenu();
         }
     }
 
@@ -63,25 +63,25 @@ public class FuramaController {
             System.out.println("Enter your choice: ");
             try {
                 choice = Integer.parseInt(input.nextLine());
+                switch (choice) {
+                    case 1:
+                        employeeService.display();
+                        break;
+                    case 2:
+                        employeeService.addNewEmployee();
+                        break;
+                    case 3:
+                        employeeService.editEmployee();
+                        break;
+                    case 4:
+                        displayMainMenu();
+                        break;
+                    default:
+                        System.out.println("This option is not available.");
+                        displayEmployeeMenu();
+                }
             } catch (NumberFormatException e) {
-                e.getMessage();
-            }
-            switch (choice) {
-                case 1:
-                    employeeService.display();
-                    break;
-                case 2:
-                    employeeService.add();
-                    break;
-                case 3:
-                    employeeService.edit();
-                    break;
-                case 4:
-                    displayMainMenu();
-                    break;
-                default:
-                    System.out.println("Input wrong");
-                    displayEmployeeMenu();
+                System.out.println("Cannot enter the character.");
             }
         } while (true);
     }
@@ -98,25 +98,25 @@ public class FuramaController {
             System.out.println("Enter your choice: ");
             try {
                 choice = Integer.parseInt(input.nextLine());
+                switch (choice) {
+                    case 1:
+                        customerService.display();
+                        break;
+                    case 2:
+                        customerService.addNewCustomer();
+                        break;
+                    case 3:
+                        customerService.editCustomer();
+                        break;
+                    case 4:
+                        displayMainMenu();
+                        break;
+                    default:
+                        System.out.println("This option is not available.");
+                        displayCustomerMenu();
+                }
             } catch (NumberFormatException e) {
-                e.getMessage();
-            }
-            switch (choice) {
-                case 1:
-                    customerService.display();
-                    break;
-                case 2:
-                    customerService.add();
-                    break;
-                case 3:
-                    customerService.edit();
-                    break;
-                case 4:
-                    displayMainMenu();
-                    break;
-                default:
-                    System.out.println("Input wrong");
-                    displayCustomerMenu();
+                System.out.println("Cannot enter the character.");
             }
         } while (true);
     }
@@ -134,58 +134,22 @@ public class FuramaController {
             System.out.println("Enter your choice: ");
             try {
                 choice = Integer.parseInt(input.nextLine());
+                switch (choice) {
+                    case 1:
+                        facilityService.display();
+                        break;
+                    case 2:
+                        facilityService.addNewFacility();
+                        break;
+                    case 4:
+                        displayMainMenu();
+                        break;
+                    default:
+                        System.out.println("This option is not available.");
+                        displayFacilityMenu();
+                }
             } catch (NumberFormatException e) {
-                e.getMessage();
-            }
-            switch (choice) {
-                case 1:
-                    facilityService.display();
-                    break;
-                case 2:
-                    addNewFacility();
-                    break;
-                case 4:
-                    displayMainMenu();
-                    break;
-                default:
-                    System.out.println("Input wrong");
-                    displayFacilityMenu();
-            }
-        } while (true);
-    }
-
-    public static void addNewFacility() {
-        FacilityService facilityService = new FacilityServiceImpl();
-
-        do {
-            System.out.println("---Add new facility:");
-            System.out.println("\t1.\tAdd new villa");
-            System.out.println("\t2.\tAdd new house");
-            System.out.println("\t3.\tAdd new room");
-            System.out.println("\t4.\tReturn facility menu");
-
-            System.out.println("Enter your choice: ");
-            try {
-                choice = Integer.parseInt(input.nextLine());
-            } catch (NumberFormatException e) {
-                e.getMessage();
-            }
-            switch (choice) {
-                case 1:
-                    facilityService.addNewVilla();
-                    break;
-                case 2:
-                    facilityService.addNewHouse();
-                    break;
-                case 3:
-                    facilityService.addNewRoom();
-                    break;
-                case 4:
-                    displayFacilityMenu();
-                    break;
-                default:
-                    System.out.println("Input wrong");
-                    addNewFacility();
+                System.out.println("Cannot enter the character.");
             }
         } while (true);
     }
@@ -206,57 +170,64 @@ public class FuramaController {
             System.out.println("Enter your choice: ");
             try {
                 choice = Integer.parseInt(input.nextLine());
+                switch (choice) {
+                    case 1:
+                        bookingService.addNewBooking();
+                        break;
+                    case 2:
+                        bookingService.display();
+                        break;
+                    case 3:
+                        contractService.createNewContract();
+                        break;
+                    case 4:
+                        contractService.display();
+                        break;
+                    case 5:
+                        contractService.editContract();
+                        break;
+                    case 6:
+                        displayMainMenu();
+                        break;
+                    default:
+                        System.out.println("This option is not available.");
+                        displayBookingMenu();
+                }
             } catch (NumberFormatException e) {
-                e.getMessage();
-            }
-            switch (choice) {
-                case 1:
-                    bookingService.add();
-                    break;
-                case 2:
-                    bookingService.display();
-                    break;
-                case 3:
-                    contractService.add();
-                    break;
-                case 4:
-                    contractService.display();
-                    break;
-                case 5:
-                    contractService.edit();
-                    break;
-                case 6:
-                    displayMainMenu();
-                    break;
-                default:
-                    System.out.println("Input wrong");
-                    displayBookingMenu();
+                System.out.println("Cannot enter the character.");
             }
         } while (true);
-
     }
 
     public static void displayPromotionMenu() {
-        System.out.println("5.\tPromotion Management SubMenu");
-        System.out.println("\t1.\tDisplay list customers use service");
-        System.out.println("\t2.\tDisplay list customers get voucher");
-        System.out.println("\t3.\tReturn main menu");
+        PromotionService promotionService = new PromotionServiceImpl();
 
-        System.out.println("Enter your choice: ");
-        try {
-            choice = Integer.parseInt(input.nextLine());
-        } catch (NumberFormatException e) {
-            e.getMessage();
-        }
-        switch (choice) {
-            case 1:
-                break;
-            case 3:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("Input wrong");
-                displayPromotionMenu();
-        }
+        do {
+            System.out.println("5.\tPromotion Management SubMenu");
+            System.out.println("\t1.\tDisplay list customers use service");
+            System.out.println("\t2.\tDisplay list customers get voucher");
+            System.out.println("\t3.\tReturn main menu");
+
+            System.out.println("Enter your choice: ");
+            try {
+                choice = Integer.parseInt(input.nextLine());
+                switch (choice) {
+                    case 1:
+                        promotionService.displayCustomerUseService();
+                        break;
+                    case 2:
+                        promotionService.displayCustomerGetVoucher();
+                        break;
+                    case 3:
+                        displayMainMenu();
+                        break;
+                    default:
+                        System.out.println("This option is not available.");
+                        displayPromotionMenu();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Cannot enter the character.");
+            }
+        } while (true);
     }
 }

@@ -4,7 +4,6 @@ public class Customer extends Person {
     private int customerID;
     private String customerType;
     private String address;
-    public static int countCustomer = 0;
 
     public Customer() {
     }
@@ -14,7 +13,6 @@ public class Customer extends Person {
         this.customerID = customerID;
         this.customerType = customerType;
         this.address = address;
-        countCustomer++;
     }
 
     public int getCustomerID() {

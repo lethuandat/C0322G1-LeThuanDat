@@ -5,21 +5,19 @@ public class Booking {
     private String dayStart;
     private String dayEnd;
     private int customerID;
-    private String serviceName;
+    private String serviceID;
     private String serviceType;
-    public static int countBookingID = 0;
 
     public Booking() {
     }
 
-    public Booking(int bookingID, String dayStart, String dayEnd, int customerID, String serviceName, String serviceType) {
+    public Booking(int bookingID, String dayStart, String dayEnd, int customerID, String serviceID, String serviceType) {
         this.bookingID = bookingID;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
         this.customerID = customerID;
-        this.serviceName = serviceName;
+        this.serviceID = serviceID;
         this.serviceType = serviceType;
-        countBookingID++;
     }
 
     public int getBookingID() {
@@ -54,12 +52,12 @@ public class Booking {
         this.customerID = customerID;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getServiceID() {
+        return serviceID;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setServiceID(String serviceName) {
+        this.serviceID = serviceName;
     }
 
     public String getServiceType() {
@@ -76,7 +74,7 @@ public class Booking {
                 ", dayStart: " + dayStart +
                 ", dayEnd: " + dayEnd +
                 ", customer ID: " + customerID +
-                ", service Name: " + serviceName +
+                ", service ID: " + serviceID +
                 ", service Type: " + serviceType;
     }
 }

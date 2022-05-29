@@ -5,7 +5,6 @@ public class Employee extends Person {
     private String level;
     private String rank;
     private double salary;
-    public static int countEmployee = 0;
 
     public Employee() {
     }
@@ -25,7 +24,6 @@ public class Employee extends Person {
         this.level = level;
         this.rank = rank;
         this.salary = salary;
-        countEmployee++;
     }
 
     public int getEmployeeID() {
