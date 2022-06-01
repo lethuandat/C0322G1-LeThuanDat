@@ -325,7 +325,68 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacilityMaintenance() {
+        villaIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+        for (String[] value : list) {
+            Villa villa = new Villa(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Double.parseDouble(value[7]),
+                    Integer.parseInt(value[8]));
+            int numUser = Integer.parseInt(value[9]);
+            villaIntegerMap.put(villa, numUser);
+        }
+        list.clear();
+        houseIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+        for (String[] value : list) {
+            House house = new House(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Integer.parseInt(value[7]));
+            int numUser = Integer.parseInt(value[8]);
+            houseIntegerMap.put(house, numUser);
+        }
+        list.clear();
+        roomIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+        for (String[] value : list) {
+            Room room = new Room(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6]);
+            int numUser = Integer.parseInt(value[7]);
+            roomIntegerMap.put(room, numUser);
+        }
+        list.clear();
 
+        System.out.println("List facility: ");
+        for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
+             if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey());
+             }
+        }
+        for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey());
+             }
+        }
+        for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey());
+             }
+        }
     }
 
     public String addRentType() {
