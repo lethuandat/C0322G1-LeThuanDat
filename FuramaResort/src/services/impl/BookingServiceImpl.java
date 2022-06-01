@@ -147,7 +147,6 @@ public class BookingServiceImpl implements BookingService {
                     entry.getKey().getMaxCustomer() + "," +
                     entry.getKey().getRentType() + "," +
                     entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getPoolArea() + "," +
                     entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
         }
         ReadAndWrite.writeTextFile(HOUSE_FILE_PATH, line);
@@ -165,9 +164,7 @@ public class BookingServiceImpl implements BookingService {
                     entry.getKey().getRentPrice() + "," +
                     entry.getKey().getMaxCustomer() + "," +
                     entry.getKey().getRentType() + "," +
-                    entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getPoolArea() + "," +
-                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+                    entry.getKey().getFreeServiceWith() + "," + entry.getValue() + "\n";
         }
         ReadAndWrite.writeTextFile(ROOM_FILE_PATH, line);
         
