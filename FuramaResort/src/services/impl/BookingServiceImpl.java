@@ -119,8 +119,58 @@ public class BookingServiceImpl implements BookingService {
                 entry.setValue(entry.getValue() + 1);
             }
         }
-        
+        String line = "";
+        for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
+            line += entry.getKey().getServiceID() + "," +
+                    entry.getKey().getServiceName() + "," +
+                    entry.getKey().getArea() + "," +
+                    entry.getKey().getRentPrice() + "," +
+                    entry.getKey().getMaxCustomer() + "," +
+                    entry.getKey().getRentType() + "," +
+                    entry.getKey().getStandardRoom() + "," +
+                    entry.getKey().getPoolArea() + "," +
+                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+        }
+        ReadAndWrite.writeTextFile(VILLA_FILE_PATH, line);
 
+        for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
+            if (entry.getKey().getServiceID().equals(facilityID)) {
+                entry.setValue(entry.getValue() + 1);
+            }
+        }
+        line = "";
+        for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
+            line += entry.getKey().getServiceID() + "," +
+                    entry.getKey().getServiceName() + "," +
+                    entry.getKey().getArea() + "," +
+                    entry.getKey().getRentPrice() + "," +
+                    entry.getKey().getMaxCustomer() + "," +
+                    entry.getKey().getRentType() + "," +
+                    entry.getKey().getStandardRoom() + "," +
+                    entry.getKey().getPoolArea() + "," +
+                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+        }
+        ReadAndWrite.writeTextFile(HOUSE_FILE_PATH, line);
+
+        for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
+            if (entry.getKey().getServiceID().equals(facilityID)) {
+                entry.setValue(entry.getValue() + 1);
+            }
+        }
+        line = "";
+        for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
+            line += entry.getKey().getServiceID() + "," +
+                    entry.getKey().getServiceName() + "," +
+                    entry.getKey().getArea() + "," +
+                    entry.getKey().getRentPrice() + "," +
+                    entry.getKey().getMaxCustomer() + "," +
+                    entry.getKey().getRentType() + "," +
+                    entry.getKey().getStandardRoom() + "," +
+                    entry.getKey().getPoolArea() + "," +
+                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+        }
+        ReadAndWrite.writeTextFile(ROOM_FILE_PATH, line);
+        
 
         System.out.println("Enter type of service:");
         String typeService = scanner.nextLine();
