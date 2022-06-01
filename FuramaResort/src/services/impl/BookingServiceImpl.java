@@ -18,6 +18,9 @@ public class BookingServiceImpl implements BookingService {
     private static List<String[]> list = new ArrayList<>();
     static List<Customer> customerList = new LinkedList<>();
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    private static Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
+    private static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
+    private static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
 
     @Override
     public void display() {
@@ -78,7 +81,7 @@ public class BookingServiceImpl implements BookingService {
                     Double.parseDouble(value[7]),
                     Integer.parseInt(value[8]));
             int numUsed = Integer.parseInt(value[9]);
-            facilityIntegerMap.put(villa, numUsed);
+            villaIntegerMap.put(villa, numUsed);
         }
         list.clear();
 
@@ -93,7 +96,7 @@ public class BookingServiceImpl implements BookingService {
                     value[6],
                     Integer.parseInt(value[7]));
             int numUsed = Integer.parseInt(value[8]);
-            facilityIntegerMap.put(house, numUsed);
+            houseIntegerMap.put(house, numUsed);
         }
         list.clear();
 
@@ -108,14 +111,16 @@ public class BookingServiceImpl implements BookingService {
                     value[5],
                     value[6]);
             int numUsed = Integer.parseInt(value[7]);
-            facilityIntegerMap.put(room, numUsed);
+            roomIntegerMap.put(room, numUsed);
         }
         list.clear();
-        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+        for (Map.Entry<Villa, Integer> entry : facilityIntegerMap.entrySet()) {
             if (entry.getKey().getServiceID().equals(facilityID)) {
                 entry.setValue(entry.getValue() + 1);
             }
         }
+        
+
 
         System.out.println("Enter type of service:");
         String typeService = scanner.nextLine();
