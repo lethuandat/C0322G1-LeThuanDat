@@ -58,10 +58,65 @@ public class BookingServiceImpl implements BookingService {
 
         System.out.println("Enter day start:");
         String dayStart = scanner.nextLine();
+
         System.out.println("Enter day end:");
         String dayEnd = scanner.nextLine();
+
         int customerID = chooseCustomer();
+
         String facilityID = chooseFacility();
+        list.clear();
+        list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+        for (String[] value : list) {
+            Villa villa = new Villa(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Double.parseDouble(value[7]),
+                    Integer.parseInt(value[8]));
+            int numUsed = Integer.parseInt(value[9]);
+            facilityIntegerMap.put(villa, numUsed);
+        }
+        list.clear();
+
+        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+        for (String[] value : list) {
+            House house = new House(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Integer.parseInt(value[7]));
+            int numUsed = Integer.parseInt(value[8]);
+            facilityIntegerMap.put(house, numUsed);
+        }
+        list.clear();
+
+
+        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+        for (String[] value : list) {
+            Room room = new Room(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6]);
+            int numUsed = Integer.parseInt(value[7]);
+            facilityIntegerMap.put(room, numUsed);
+        }
+        list.clear();
+        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+            if (entry.getKey().getServiceID().equals(facilityID)) {
+                entry.setValue(entry.getValue() + 1);
+            }
+        }
+
         System.out.println("Enter type of service:");
         String typeService = scanner.nextLine();
 
@@ -69,7 +124,9 @@ public class BookingServiceImpl implements BookingService {
         bookingSet.add(booking);
         String line = "";
         int count = 1;
-        for (Booking value : bookingSet) {
+    
+
+    for (Booking value : bookingSet) {
             if (count == bookingSet.size()) {
                 line += value.getBookingID() + "," +
                         value.getDayStart() + "," +
