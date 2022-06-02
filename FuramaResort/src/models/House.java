@@ -47,6 +47,6 @@ public class House extends Facility {
                 super.getMaxCustomer() + Comma.COMMA +
                 super.getRentType() + Comma.COMMA +
                 this.getStandardRoom() + Comma.COMMA +
-                this.getFloorQuantity() + Comma.COMMA + "\n";
+                this.getFloorQuantity() + "\n";
     }
 }

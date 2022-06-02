@@ -74,6 +74,6 @@ public class Contract {
                 this.bookingID + Comma.COMMA +
                 this.customerID + Comma.COMMA +
                 this.deposit + Comma.COMMA +
-                this.totalMoney + Comma.COMMA + "\n";
+                this.totalMoney + "\n";
     }
 }

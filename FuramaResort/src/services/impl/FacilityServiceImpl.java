@@ -327,10 +327,7 @@ public class FacilityServiceImpl implements FacilityService {
     public void displayFacilityMaintenance() {
         villaIntegerMap.clear();
         list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
-<<<<<<< HEAD
 
-=======
->>>>>>> 72c3cd7d5d502da13780b1ef35df8dd095ae5ad7
         for (String[] value : list) {
             Villa villa = new Villa(value[0],
                     value[1],
@@ -344,17 +341,11 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[9]);
             villaIntegerMap.put(villa, numUser);
         }
-<<<<<<< HEAD
 
         list.clear();
         houseIntegerMap.clear();
         list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
 
-=======
-        list.clear();
-        houseIntegerMap.clear();
-        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
->>>>>>> 72c3cd7d5d502da13780b1ef35df8dd095ae5ad7
         for (String[] value : list) {
             House house = new House(value[0],
                     value[1],
@@ -367,17 +358,11 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[8]);
             houseIntegerMap.put(house, numUser);
         }
-<<<<<<< HEAD
 
         list.clear();
         roomIntegerMap.clear();
         list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
 
-=======
-        list.clear();
-        roomIntegerMap.clear();
-        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
->>>>>>> 72c3cd7d5d502da13780b1ef35df8dd095ae5ad7
         for (String[] value : list) {
             Room room = new Room(value[0],
                     value[1],
@@ -390,7 +375,6 @@ public class FacilityServiceImpl implements FacilityService {
             roomIntegerMap.put(room, numUser);
         }
         list.clear();
-<<<<<<< HEAD
 
         System.out.println("List facility maintaince: ");
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
@@ -408,25 +392,7 @@ public class FacilityServiceImpl implements FacilityService {
                 System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
             }
         }
-=======
->>>>>>> 72c3cd7d5d502da13780b1ef35df8dd095ae5ad7
 
-        System.out.println("List facility: ");
-        for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
-             if (entry.getValue() >= 5) {
-                System.out.println(entry.getKey());
-             }
-        }
-        for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
-            if (entry.getValue() >= 5) {
-                System.out.println(entry.getKey());
-             }
-        }
-        for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
-            if (entry.getValue() >= 5) {
-                System.out.println(entry.getKey());
-             }
-        }
     }
 
     public String addRentType() {

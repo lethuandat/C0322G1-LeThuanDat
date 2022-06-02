@@ -80,6 +80,6 @@ public class Employee extends Person {
                 this.getEmployeeID() + Comma.COMMA +
                 this.getLevel() + Comma.COMMA +
                 this.getRank() + Comma.COMMA +
-                this.getRank() + Comma.COMMA + "\n";
+                this.getSalary() + "\n";
     }
 }

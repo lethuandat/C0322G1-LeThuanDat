@@ -59,6 +59,6 @@ public class Villa extends Facility {
                 super.getRentType() + Comma.COMMA +
                 this.getStandardRoom() + Comma.COMMA +
                 this.getPoolArea() + Comma.COMMA +
-                this.getFloorQuantity() + Comma.COMMA + "\n";
+                this.getFloorQuantity() + "\n";
     }
 }

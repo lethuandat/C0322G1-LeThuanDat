@@ -76,7 +76,7 @@ public class Booking {
                 this.dayEnd + Comma.COMMA +
                 this.customerID + Comma.COMMA +
                 this.serviceID + Comma.COMMA +
-                this.serviceType + Comma.COMMA + "\n";
+                this.serviceType + "\n";
     }
 
     @Override

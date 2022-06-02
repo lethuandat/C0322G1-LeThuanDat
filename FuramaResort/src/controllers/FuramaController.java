@@ -19,34 +19,29 @@ public class FuramaController {
         System.out.println("6.\tExit");
 
         System.out.println("Enter your choice: ");
-        try {
-            choice = input.nextLine();
-            switch (choice) {
-                case "1":
-                    displayEmployeeMenu();
-                    break;
-                case "2":
-                    displayCustomerMenu();
-                    break;
-                case "3":
-                    displayFacilityMenu();
-                    break;
-                case "4":
-                    displayBookingMenu();
-                    break;
-                case "5":
-                    displayPromotionMenu();
-                    break;
-                case "6":
-                    System.exit(6);
-                    break;
-                default:
-                    System.out.println("This option is not available.");
-                    displayMainMenu();
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Cannot enter the character.");
-            displayMainMenu();
+        choice = input.nextLine();
+        switch (choice) {
+            case "1":
+                displayEmployeeMenu();
+                break;
+            case "2":
+                displayCustomerMenu();
+                break;
+            case "3":
+                displayFacilityMenu();
+                break;
+            case "4":
+                displayBookingMenu();
+                break;
+            case "5":
+                displayPromotionMenu();
+                break;
+            case "6":
+                System.exit(6);
+                break;
+            default:
+                System.out.println("This option is not available.");
+                displayMainMenu();
         }
     }
 
@@ -61,26 +56,24 @@ public class FuramaController {
             System.out.println("\t4.\tReturn main menu");
 
             System.out.println("Enter your choice: ");
-            try {
-                choice = input.nextLine();
-                switch (choice) {
-                    case "1":
-                        employeeService.display();
-                        break;
-                    case "2":
-                        employeeService.addNewEmployee();
-                        break;
-                    case "3":
-                        employeeService.editEmployee();
-                        break;
-                    case "4":
-                        return;
-                    default:
-                        System.out.println("This option is not available.");
-                        displayEmployeeMenu();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Cannot enter the character.");
+
+            choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    employeeService.display();
+                    break;
+                case "2":
+                    employeeService.addNewEmployee();
+                    break;
+                case "3":
+                    employeeService.editEmployee();
+                    break;
+                case "4":
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayEmployeeMenu();
             }
         } while (true);
     }
@@ -95,26 +88,24 @@ public class FuramaController {
             System.out.println("\t4.\tReturn main menu");
 
             System.out.println("Enter your choice: ");
-            try {
-                choice = input.nextLine();
-                switch (choice) {
-                    case "1":
-                        customerService.display();
-                        break;
-                    case "2":
-                        customerService.addNewCustomer();
-                        break;
-                    case "3":
-                        customerService.editCustomer();
-                        break;
-                    case "4":
-                        return;
-                    default:
-                        System.out.println("This option is not available.");
-                        displayCustomerMenu();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Cannot enter the character.");
+
+            choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    customerService.display();
+                    break;
+                case "2":
+                    customerService.addNewCustomer();
+                    break;
+                case "3":
+                    customerService.editCustomer();
+                    break;
+                case "4":
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayCustomerMenu();
             }
         } while (true);
     }
@@ -130,26 +121,24 @@ public class FuramaController {
             System.out.println("\t4.\tReturn main menu");
 
             System.out.println("Enter your choice: ");
-            try {
-                choice = input.nextLine();
-                switch (choice) {
-                    case "1":
-                        facilityService.display();
-                        break;
-                    case "2":
-                        facilityService.addNewFacility();
-                        break;
-                    case "3":
-                        facilityService.displayFacilityMaintenance();
-                        break;
-                    case "4":
-                        return;
-                    default:
-                        System.out.println("This option is not available.");
-                        displayFacilityMenu();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Cannot enter the character.");
+
+            choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    facilityService.display();
+                    break;
+                case "2":
+                    facilityService.addNewFacility();
+                    break;
+                case "3":
+                    facilityService.displayFacilityMaintenance();
+                    break;
+                case "4":
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayFacilityMenu();
             }
         } while (true);
     }
@@ -168,32 +157,30 @@ public class FuramaController {
             System.out.println("\t6.\tReturn main menu");
 
             System.out.println("Enter your choice: ");
-            try {
-                choice = input.nextLine();
-                switch (choice) {
-                    case "1":
-                        bookingService.addNewBooking();
-                        break;
-                    case "2":
-                        bookingService.display();
-                        break;
-                    case "3":
-                        contractService.createNewContract();
-                        break;
-                    case "4":
-                        contractService.display();
-                        break;
-                    case "5":
-                        contractService.editContract();
-                        break;
-                    case "6":
-                        return;
-                    default:
-                        System.out.println("This option is not available.");
-                        displayBookingMenu();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Cannot enter the character.");
+
+            choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    bookingService.addNewBooking();
+                    break;
+                case "2":
+                    bookingService.display();
+                    break;
+                case "3":
+                    contractService.createNewContract();
+                    break;
+                case "4":
+                    contractService.display();
+                    break;
+                case "5":
+                    contractService.editContract();
+                    break;
+                case "6":
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayBookingMenu();
             }
         } while (true);
     }
@@ -208,24 +195,21 @@ public class FuramaController {
             System.out.println("\t3.\tReturn main menu");
 
             System.out.println("Enter your choice: ");
-            try {
-                choice = input.nextLine();
-                switch (choice) {
-                    case "1":
-                        promotionService.displayCustomerUseService();
-                        break;
-                    case "2":
-                        promotionService.displayCustomerGetVoucher();
-                        break;
-                    case "3":
-                        displayMainMenu();
-                        break;
-                    default:
-                        System.out.println("This option is not available.");
-                        displayPromotionMenu();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Cannot enter the character.");
+
+            choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    promotionService.displayCustomerUseService();
+                    break;
+                case "2":
+                    promotionService.displayCustomerGetVoucher();
+                    break;
+                case "3":
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("This option is not available.");
+                    displayPromotionMenu();
             }
         } while (true);
     }

@@ -35,6 +35,6 @@ public class Room extends Facility {
                 super.getRentPrice() + Comma.COMMA +
                 super.getMaxCustomer() + Comma.COMMA +
                 super.getRentType() + Comma.COMMA +
-                this.getFreeServiceWith() + Comma.COMMA + "\n";
+                this.getFreeServiceWith() + "\n";
     }
 }
