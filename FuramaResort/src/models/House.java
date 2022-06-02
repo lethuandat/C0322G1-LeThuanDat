@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class House extends Facility {
     private String standardRoom;
     private int floorQuantity;
@@ -34,5 +36,17 @@ public class House extends Facility {
         return "House " + super.toString() +
                 ", standard room:" + standardRoom +
                 ", floor of quantity:" + floorQuantity;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getServiceID() + Comma.COMMA +
+                super.getServiceName() + Comma.COMMA +
+                super.getArea() + Comma.COMMA +
+                super.getRentPrice() + Comma.COMMA +
+                super.getMaxCustomer() + Comma.COMMA +
+                super.getRentType() + Comma.COMMA +
+                this.getStandardRoom() + Comma.COMMA +
+                this.getFloorQuantity() + Comma.COMMA + "\n";
     }
 }

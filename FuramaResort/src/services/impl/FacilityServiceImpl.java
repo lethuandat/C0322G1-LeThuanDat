@@ -22,17 +22,18 @@ public class FacilityServiceImpl implements FacilityService {
     private static final String VILLA_FILE_PATH = "src\\data\\villa.csv";
     private static final String HOUSE_FILE_PATH = "src\\data\\house.csv";
     private static final String ROOM_FILE_PATH = "src\\data\\room.csv";
-    private static int choice;
+    private static String choice;
     private static final Scanner scanner = new Scanner(System.in);
-    private static Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
-    private static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
-    private static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
+    public static Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
+    public static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
+    public static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
 
 
     @Override
     public void display() {
         villaIntegerMap.clear();
         list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+
         for (String[] value : list) {
             Villa villa = new Villa(value[0],
                     value[1],
@@ -46,9 +47,11 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[9]);
             villaIntegerMap.put(villa, numUser);
         }
+
         list.clear();
         houseIntegerMap.clear();
         list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+
         for (String[] value : list) {
             House house = new House(value[0],
                     value[1],
@@ -61,9 +64,11 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[8]);
             houseIntegerMap.put(house, numUser);
         }
+
         list.clear();
         roomIntegerMap.clear();
         list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+
         for (String[] value : list) {
             Room room = new Room(value[0],
                     value[1],
@@ -75,15 +80,16 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[7]);
             roomIntegerMap.put(room, numUser);
         }
-        list.clear();
 
         System.out.println("List facility: ");
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
             System.out.println(entry.getKey() + ", Numbers of used: " + entry.getValue());
         }
+
         for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
             System.out.println(entry.getKey() + ", Numbers of used: " + entry.getValue());
         }
+
         for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
             System.out.println(entry.getKey() + ", Numbers of used: " + entry.getValue());
         }
@@ -100,18 +106,18 @@ public class FacilityServiceImpl implements FacilityService {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = scanner.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         addNewVilla();
                         break;
-                    case 2:
+                    case "2":
                         addNewHouse();
                         break;
-                    case 3:
+                    case "3":
                         addNewRoom();
                         break;
-                    case 4:
+                    case "4":
                         FuramaController.displayFacilityMenu();
                         break;
                     default:
@@ -128,6 +134,7 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewVilla() {
         villaIntegerMap.clear();
+        list.clear();
         list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
         for (String[] value : list) {
             Villa villa = new Villa(value[0],
@@ -143,14 +150,20 @@ public class FacilityServiceImpl implements FacilityService {
             villaIntegerMap.put(villa, numUser);
         }
         System.out.println("-----Add new villa:");
+
         String villaID = inputVillaID();
+
         String nameVilla = inputServiceName();
+
         double area = Double.parseDouble(inputArea());
+
         double price = Double.parseDouble(inputRentPrice());
+
         int maxCustomer = Integer.parseInt(inputNumberCustomer());
 
         System.out.println("Enter rent type:");
         String rentType = addRentType();
+
         System.out.println("Enter standard room:");
         String standardRoom = addStandardRoom();
 
@@ -159,122 +172,105 @@ public class FacilityServiceImpl implements FacilityService {
 
         Villa villa = new Villa(villaID, nameVilla, area, price, maxCustomer, rentType, standardRoom, poolArea, floorQuantity);
         villaIntegerMap.put(villa, 0);
+
         String line = "";
-        int count = 1;
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
-            if (count == villaIntegerMap.size()) {
-                line += entry.getKey().getServiceID() + "," +
-                        entry.getKey().getServiceName() + "," +
-                        entry.getKey().getArea() + "," +
-                        entry.getKey().getRentPrice() + "," +
-                        entry.getKey().getMaxCustomer() + "," +
-                        entry.getKey().getRentType() + "," +
-                        entry.getKey().getStandardRoom() + "," +
-                        entry.getKey().getPoolArea() + "," +
-                        entry.getKey().getFloorQuantity() + "," + entry.getValue();
-                break;
-            }
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getPoolArea() + "," +
-                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
-            count++;
+            entry.getKey().getInfo();
         }
+
         ReadAndWrite.writeTextFile(VILLA_FILE_PATH, line);
         System.out.println("Add villa successful!");
     }
 
     private String inputVillaID() {
         System.out.println("Enter ID villa:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_VILLA, "Nhập sai, ID có dạng SVVL-XXXX");
+        return RegexData.regexVillaID(scanner.nextLine(), REGEX_ID_VILLA);
     }
 
     private String inputHouseID() {
         System.out.println("Enter ID house:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_HOUSE, "Nhập sai, ID có dạng SVHO-XXXX");
+        return RegexData.regexHouseID(scanner.nextLine(), REGEX_ID_HOUSE);
     }
 
     private String inputRoomID() {
         System.out.println("Enter ID room:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_ROOM, "Nhập sai, ID có dạng SVRO-XXXX");
+        return RegexData.regexRoomID(scanner.nextLine(), REGEX_ID_ROOM);
     }
 
     private String inputServiceName() {
         System.out.println("Enter name:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_SERVICE_NAME, "Nhập sai, tên phải bắt đầu bằng kí tự viết hoa");
+        return RegexData.regexUpperCaseFirstLetter(scanner.nextLine(), REGEX_SERVICE_NAME);
     }
 
     private String inputArea() {
         System.out.println("Enter area:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_AREA, "Nhập sai, diện tích phải lớn hơn 30m2");
+        return RegexData.regexArea(scanner.nextLine(), REGEX_AREA);
     }
 
     private String inputRentPrice() {
         System.out.println("Enter rent price:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_PRICE, "Nhập sai, giá phải là số thực lớn hơn 0");
+        return RegexData.regexRentPrice(scanner.nextLine(), REGEX_PRICE);
     }
 
     private String inputNumberCustomer() {
         System.out.println("Enter max of customer:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_AMOUNT, "Nhập sai, số lượng người phải > 0 và < 20");
+        return RegexData.regexNumberCustomer(scanner.nextLine(), REGEX_AMOUNT);
     }
 
     private String inputPoolArea() {
         System.out.println("Enter pool area:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_AREA, "Nhập sai, diện tích phải lớn hơn 30m2");
+        return RegexData.regexPoolArea(scanner.nextLine(), REGEX_AREA);
     }
 
     private String inputFloor() {
         System.out.println("Enter number of floor:");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_FLOOR, "Nhập sai, số tầng phải > 0");
+        return RegexData.regexFloor(scanner.nextLine(), REGEX_FLOOR);
     }
 
     @Override
     public void addNewHouse() {
+        houseIntegerMap.clear();
+        list.clear();
+        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+
+        for (String[] value : list) {
+            House house = new House(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Integer.parseInt(value[7]));
+            int numUser = Integer.parseInt(value[8]);
+            houseIntegerMap.put(house, numUser);
+        }
         System.out.println("-----Add new house:");
 
         String houseID = inputHouseID();
+
         String nameHouse = inputServiceName();
+
         double area = Double.parseDouble(inputArea());
+
         double price = Double.parseDouble(inputRentPrice());
+
         int maxCustomer = Integer.parseInt(inputNumberCustomer());
 
         System.out.println("Enter rent type:");
         String rentType = addRentType();
+
         System.out.println("Enter standard room:");
         String standardRoom = addStandardRoom();
+
         int floorQuantity = Integer.parseInt(inputFloor());
 
         House house = new House(houseID, nameHouse, area, price, maxCustomer, rentType, standardRoom, floorQuantity);
         houseIntegerMap.put(house, 0);
         String line = "";
-        int count = 1;
+
         for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
-            if (count == houseIntegerMap.size()) {
-                line += entry.getKey().getServiceID() + "," +
-                        entry.getKey().getServiceName() + "," +
-                        entry.getKey().getArea() + "," +
-                        entry.getKey().getRentPrice() + "," +
-                        entry.getKey().getMaxCustomer() + "," +
-                        entry.getKey().getRentType() + "," +
-                        entry.getKey().getStandardRoom() + "," +
-                        entry.getKey().getFloorQuantity() + "," + entry.getValue();
-                break;
-            }
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
-            count++;
+            line += entry.getKey().getInfo();
         }
         ReadAndWrite.writeTextFile(HOUSE_FILE_PATH, line);
         System.out.println("Add house successful!");
@@ -282,42 +278,46 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void addNewRoom() {
+        roomIntegerMap.clear();
+        list.clear();
+        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+
+        for (String[] value : list) {
+            Room room = new Room(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6]);
+            int numUser = Integer.parseInt(value[7]);
+            roomIntegerMap.put(room, numUser);
+        }
+
         System.out.println("-----Add new room:");
+
         String roomID = inputRoomID();
+
         String nameRoom = inputServiceName();
+
         double area = Double.parseDouble(inputArea());
+
         double price = Double.parseDouble(inputRentPrice());
+
         int maxCustomer = Integer.parseInt(inputNumberCustomer());
+
         System.out.println("Enter rent type:");
         String rentType = addRentType();
+
         System.out.println("Enter free service with:");
         String freeServiceWith = scanner.nextLine();
 
         Room room = new Room(roomID, nameRoom, area, price, maxCustomer, rentType, freeServiceWith);
         roomIntegerMap.put(room, 0);
         String line = "";
-        int count = 1;
+
         for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
-            if (count == roomIntegerMap.size()) {
-                line += entry.getKey().getServiceID() + "," +
-                        entry.getKey().getServiceName() + "," +
-                        entry.getKey().getArea() + "," +
-                        entry.getKey().getRentPrice() + "," +
-                        entry.getKey().getMaxCustomer() + "," +
-                        entry.getKey().getRentType() + "," +
-                        entry.getKey().getFreeServiceWith() + "," +
-                        entry.getValue();
-                break;
-            }
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getFreeServiceWith() + "," +
-                    entry.getValue() + "\n";
-            count++;
+            line += entry.getKey().getInfo();
         }
         ReadAndWrite.writeTextFile(ROOM_FILE_PATH, line);
         System.out.println("Add room successful!");
@@ -325,6 +325,73 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacilityMaintenance() {
+        villaIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+
+        for (String[] value : list) {
+            Villa villa = new Villa(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Double.parseDouble(value[7]),
+                    Integer.parseInt(value[8]));
+            int numUser = Integer.parseInt(value[9]);
+            villaIntegerMap.put(villa, numUser);
+        }
+
+        list.clear();
+        houseIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
+
+        for (String[] value : list) {
+            House house = new House(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6],
+                    Integer.parseInt(value[7]));
+            int numUser = Integer.parseInt(value[8]);
+            houseIntegerMap.put(house, numUser);
+        }
+
+        list.clear();
+        roomIntegerMap.clear();
+        list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);
+
+        for (String[] value : list) {
+            Room room = new Room(value[0],
+                    value[1],
+                    Double.parseDouble(value[2]),
+                    Double.parseDouble(value[3]),
+                    Integer.parseInt(value[4]),
+                    value[5],
+                    value[6]);
+            int numUser = Integer.parseInt(value[7]);
+            roomIntegerMap.put(room, numUser);
+        }
+        list.clear();
+
+        System.out.println("List facility maintaince: ");
+        for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
+            }
+        }
+        for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
+            }
+        }
+        for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
+            }
+        }
 
     }
 
@@ -338,15 +405,15 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.println("Enter your choice, please!");
 
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = scanner.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         return "Year";
-                    case 2:
+                    case "2":
                         return "Month";
-                    case 3:
+                    case "3":
                         return "Day";
-                    case 4:
+                    case "4":
                         return "Hour";
                     default:
                         System.out.println("This option is not available.");
@@ -366,13 +433,13 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Enter your choice, please!");
 
         try {
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     return "Five stars";
-                case 2:
+                case "2":
                     return "Four stars";
-                case 3:
+                case "3":
                     return "Three stars";
                 default:
                     System.out.println("This option is not available.");

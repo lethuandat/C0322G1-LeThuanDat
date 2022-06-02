@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private static final String EMPLOYEE_FILE_PATH = "src\\data\\employee.csv";
-    private static int choice;
+    private static String choice;
     private static final Scanner scanner = new Scanner(System.in);
     private static List<String[]> list = new ArrayList<>();
     private static List<Employee> employeeList = new ArrayList<>();
@@ -19,6 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void display() {
         list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
         employeeList.clear();
+
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
                     Integer.parseInt(value[1]),
@@ -32,6 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     Double.parseDouble(value[9]));
             employeeList.add(employee);
         }
+
         System.out.println("List employees: ");
         for (Employee employee : employeeList) {
             System.out.println(employee);
@@ -43,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void addNewEmployee() {
         list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
         employeeList.clear();
+
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
                     Integer.parseInt(value[1]),
@@ -58,53 +61,42 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         System.out.println("-----Add new employee:");
+
         System.out.println("Enter name employee:");
         String name = scanner.nextLine();
+
         System.out.println("Enter age:");
         int age = Integer.parseInt(scanner.nextLine());
+
         System.out.println("Enter gender:");
         boolean gender = Boolean.parseBoolean(scanner.nextLine());
+
         System.out.println("Enter identity:");
         long identity = Long.parseLong(scanner.nextLine());
+
         System.out.println("Enter phone number:");
         long phoneNumber = Long.parseLong(scanner.nextLine());
+
         System.out.println("Enter email:");
         String email = scanner.nextLine();
+
         System.out.println("Enter level:");
         String level = addEmployeeLevel();
+
         System.out.println("Enter rank:");
         String rank = addEmployeeRank();
+
         System.out.println("Enter salary:");
         double salary = Double.parseDouble(scanner.nextLine());
 
         Employee employee = new Employee(name, age, gender, identity, phoneNumber, email, (list.size() + 1), level, rank, salary);
         employeeList.add(employee);
         String line = "";
+
         for (int i = 0; i < employeeList.size(); i++) {
-            if (i == (employeeList.size() - 1)) {
-                line += employeeList.get(i).getName() + "," +
-                        employeeList.get(i).getAge() + "," +
-                        employeeList.get(i).isGender() + "," +
-                        employeeList.get(i).getIdentity() + "," +
-                        employeeList.get(i).getPhoneNumber() + "," +
-                        employeeList.get(i).getEmail() + "," +
-                        employeeList.get(i).getEmployeeID() + "," +
-                        employeeList.get(i).getLevel() + "," +
-                        employeeList.get(i).getRank() + "," +
-                        employeeList.get(i).getSalary();
-            } else {
-                line += employeeList.get(i).getName() + "," +
-                        employeeList.get(i).getAge() + "," +
-                        employeeList.get(i).isGender() + "," +
-                        employeeList.get(i).getIdentity() + "," +
-                        employeeList.get(i).getPhoneNumber() + "," +
-                        employeeList.get(i).getEmail() + "," +
-                        employeeList.get(i).getEmployeeID() + "," +
-                        employeeList.get(i).getLevel() + "," +
-                        employeeList.get(i).getRank() + "," +
-                        employeeList.get(i).getSalary() + "\n";
-            }
+            line += employeeList.get(i).getInfo();
         }
+
         ReadAndWrite.writeTextFile(EMPLOYEE_FILE_PATH, line);
         System.out.println("Add successful!");
     }
@@ -113,6 +105,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void editEmployee() {
         list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
         employeeList.clear();
+
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
                     Integer.parseInt(value[1]),
@@ -129,6 +122,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         System.out.println("Enter ID employee want update: ");
         int idUpdate = Integer.parseInt(scanner.nextLine());
+
         boolean check = false;
         int index = 0;
 
@@ -143,20 +137,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (check) {
             System.out.println("Enter name:");
             String name = scanner.nextLine();
+
             System.out.println("Enter age:");
             int age = Integer.parseInt(scanner.nextLine());
+
             System.out.println("Enter gender:");
             boolean gender = Boolean.parseBoolean(scanner.nextLine());
+
             System.out.println("Enter identity:");
             long identity = Long.parseLong(scanner.nextLine());
+
             System.out.println("Enter phone number:");
             long phoneNumber = Long.parseLong(scanner.nextLine());
+
             System.out.println("Enter email:");
             String email = scanner.nextLine();
+
             System.out.println("Enter level:");
             String level = addEmployeeLevel();
+
             System.out.println("Enter rank:");
             String rank = addEmployeeRank();
+
             System.out.println("Enter salary:");
             double salary = Double.parseDouble(scanner.nextLine());
 
@@ -172,30 +174,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             String line = "";
             for (int i = 0; i < employeeList.size(); i++) {
-                if (i == (employeeList.size() - 1)) {
-                    line += employeeList.get(i).getName() + "," +
-                            employeeList.get(i).getAge() + "," +
-                            employeeList.get(i).isGender() + "," +
-                            employeeList.get(i).getIdentity() + "," +
-                            employeeList.get(i).getPhoneNumber() + "," +
-                            employeeList.get(i).getEmail() + "," +
-                            employeeList.get(i).getEmployeeID() + "," +
-                            employeeList.get(i).getLevel() + "," +
-                            employeeList.get(i).getRank() + "," +
-                            employeeList.get(i).getSalary();
-                } else {
-                    line += employeeList.get(i).getName() + "," +
-                            employeeList.get(i).getAge() + "," +
-                            employeeList.get(i).isGender() + "," +
-                            employeeList.get(i).getIdentity() + "," +
-                            employeeList.get(i).getPhoneNumber() + "," +
-                            employeeList.get(i).getEmail() + "," +
-                            employeeList.get(i).getEmployeeID() + "," +
-                            employeeList.get(i).getLevel() + "," +
-                            employeeList.get(i).getRank() + "," +
-                            employeeList.get(i).getSalary() + "\n";
-                }
+                line += employeeList.get(i).getInfo();
             }
+
             ReadAndWrite.writeTextFile(EMPLOYEE_FILE_PATH, line);
             System.out.println("Update successful!");
         } else {
@@ -212,15 +193,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("Enter your level, please!");
 
         try {
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     return "Intermediate";
-                case 2:
+                case "2":
                     return "Colleges";
-                case 3:
+                case "3":
                     return "University";
-                case 4:
+                case "4":
                     return "After University";
                 default:
                     System.out.println("This option is not available.");
@@ -244,19 +225,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("Enter your rank, please!");
 
         try {
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     return "Receptionist";
-                case 2:
+                case "2":
                     return "Servants";
-                case 3:
+                case "3":
                     return "Expert";
-                case 4:
+                case "4":
                     return "Supervisor";
-                case 5:
+                case "5":
                     return "Manager";
-                case 6:
+                case "6":
                     return "Director";
                 default:
                     System.out.println("This option is not available.");

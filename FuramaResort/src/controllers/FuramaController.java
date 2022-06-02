@@ -6,7 +6,7 @@ import services.impl.*;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static int choice;
+    public static String choice;
     public static Scanner input = new Scanner(System.in);
 
     public static void displayMainMenu() {
@@ -20,24 +20,24 @@ public class FuramaController {
 
         System.out.println("Enter your choice: ");
         try {
-            choice = Integer.parseInt(input.nextLine());
+            choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     displayEmployeeMenu();
                     break;
-                case 2:
+                case "2":
                     displayCustomerMenu();
                     break;
-                case 3:
+                case "3":
                     displayFacilityMenu();
                     break;
-                case 4:
+                case "4":
                     displayBookingMenu();
                     break;
-                case 5:
+                case "5":
                     displayPromotionMenu();
                     break;
-                case 6:
+                case "6":
                     System.exit(6);
                     break;
                 default:
@@ -62,20 +62,19 @@ public class FuramaController {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(input.nextLine());
+                choice = input.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         employeeService.display();
                         break;
-                    case 2:
+                    case "2":
                         employeeService.addNewEmployee();
                         break;
-                    case 3:
+                    case "3":
                         employeeService.editEmployee();
                         break;
-                    case 4:
-                        displayMainMenu();
-                        break;
+                    case "4":
+                        return;
                     default:
                         System.out.println("This option is not available.");
                         displayEmployeeMenu();
@@ -97,20 +96,19 @@ public class FuramaController {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(input.nextLine());
+                choice = input.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         customerService.display();
                         break;
-                    case 2:
+                    case "2":
                         customerService.addNewCustomer();
                         break;
-                    case 3:
+                    case "3":
                         customerService.editCustomer();
                         break;
-                    case 4:
-                        displayMainMenu();
-                        break;
+                    case "4":
+                        return;
                     default:
                         System.out.println("This option is not available.");
                         displayCustomerMenu();
@@ -133,17 +131,19 @@ public class FuramaController {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(input.nextLine());
+                choice = input.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         facilityService.display();
                         break;
-                    case 2:
+                    case "2":
                         facilityService.addNewFacility();
                         break;
-                    case 4:
-                        displayMainMenu();
+                    case "3":
+                        facilityService.displayFacilityMaintenance();
                         break;
+                    case "4":
+                        return;
                     default:
                         System.out.println("This option is not available.");
                         displayFacilityMenu();
@@ -169,26 +169,25 @@ public class FuramaController {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(input.nextLine());
+                choice = input.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         bookingService.addNewBooking();
                         break;
-                    case 2:
+                    case "2":
                         bookingService.display();
                         break;
-                    case 3:
+                    case "3":
                         contractService.createNewContract();
                         break;
-                    case 4:
+                    case "4":
                         contractService.display();
                         break;
-                    case 5:
+                    case "5":
                         contractService.editContract();
                         break;
-                    case 6:
-                        displayMainMenu();
-                        break;
+                    case "6":
+                        return;
                     default:
                         System.out.println("This option is not available.");
                         displayBookingMenu();
@@ -210,15 +209,15 @@ public class FuramaController {
 
             System.out.println("Enter your choice: ");
             try {
-                choice = Integer.parseInt(input.nextLine());
+                choice = input.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         promotionService.displayCustomerUseService();
                         break;
-                    case 2:
+                    case "2":
                         promotionService.displayCustomerGetVoucher();
                         break;
-                    case 3:
+                    case "3":
                         displayMainMenu();
                         break;
                     default:

@@ -21,6 +21,7 @@ public class ContractServiceImpl implements ContractService {
         list.clear();
         list = ReadAndWrite.readTextFile(CONTRACT_FILE_PATH);
         contractList.clear();
+
         for (String[] item : list) {
             Contract contract = new Contract(Integer.parseInt(item[0]),
                     Integer.parseInt(item[1]),
@@ -29,10 +30,12 @@ public class ContractServiceImpl implements ContractService {
                     Double.parseDouble(item[4]));
             contractList.add(contract);
         }
+
         System.out.println("Lists of contract: ");
         for (Contract contract : contractList) {
             System.out.println(contract);
         }
+
         System.out.println("Number: " + contractList.size() + " contract.");
     }
 
@@ -41,6 +44,7 @@ public class ContractServiceImpl implements ContractService {
         list.clear();
         list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
         bookingSet.clear();
+
         for (String[] item : list) {
             Booking booking = new Booking(Integer.parseInt(item[0]),
                     item[1],
@@ -62,29 +66,18 @@ public class ContractServiceImpl implements ContractService {
 
             System.out.println("Enter deposit money:");
             double deposit = Double.parseDouble(scanner.nextLine());
+
             System.out.println("Enter total money:");
             double totalMoney = Double.parseDouble(scanner.nextLine());
 
             Contract contract = new Contract(contractList.size() + 1, bookingID, customerID, deposit, totalMoney);
             contractList.add(contract);
             String line = "";
-            int count = 1;
+
             for (Contract value : contractList) {
-                if (count == contractList.size()) {
-                    line += value.getContractID() + "," +
-                            value.getBookingID() + "," +
-                            value.getCustomerID() + "," +
-                            value.getDeposit() + "," +
-                            value.getTotalMoney();
-                    break;
-                }
-                line += value.getContractID() + "," +
-                        value.getBookingID() + "," +
-                        value.getCustomerID() + "," +
-                        value.getDeposit() + "," +
-                        value.getTotalMoney() + "\n";
-                count++;
+                line += value.getInfo();
             }
+
             ReadAndWrite.writeTextFile(CONTRACT_FILE_PATH, line);
             System.out.println("Create contract successful!");
         }
@@ -95,6 +88,7 @@ public class ContractServiceImpl implements ContractService {
         list.clear();
         list = ReadAndWrite.readTextFile(CONTRACT_FILE_PATH);
         contractList.clear();
+
         for (String[] item : list) {
             Contract contract = new Contract(Integer.parseInt(item[0]),
                     Integer.parseInt(item[1]),
@@ -106,6 +100,7 @@ public class ContractServiceImpl implements ContractService {
 
         System.out.println("Enter ID contract want to edit: ");
         int id = Integer.parseInt(scanner.nextLine());
+
         boolean check = false;
         int index = 0;
 
@@ -120,6 +115,7 @@ public class ContractServiceImpl implements ContractService {
         if (check) {
             System.out.println("Enter deposit money:");
             double deposit = Double.parseDouble(scanner.nextLine());
+
             System.out.println("Enter total money:");
             double totalMoney = Double.parseDouble(scanner.nextLine());
 
@@ -127,22 +123,8 @@ public class ContractServiceImpl implements ContractService {
             contractList.get(index).setTotalMoney(totalMoney);
 
             String line = "";
-            int count = 1;
             for (Contract value : contractList) {
-                if (count == contractList.size()) {
-                    line += value.getContractID() + "," +
-                            value.getBookingID() + "," +
-                            value.getCustomerID() + "," +
-                            value.getDeposit() + "," +
-                            value.getTotalMoney();
-                    break;
-                }
-                line += value.getContractID() + "," +
-                        value.getBookingID() + "," +
-                        value.getCustomerID() + "," +
-                        value.getDeposit() + "," +
-                        value.getTotalMoney() + "\n";
-                count++;
+               line += value.getInfo();
             }
             ReadAndWrite.writeTextFile(CONTRACT_FILE_PATH, line);
             System.out.println("Update successful!");

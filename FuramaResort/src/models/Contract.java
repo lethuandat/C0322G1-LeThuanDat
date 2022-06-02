@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Contract {
     private int contractID;
     private int bookingID;
@@ -65,5 +67,13 @@ public class Contract {
                 ", customer ID: " + customerID +
                 ", deposit money: " + deposit +
                 ", total money:" + totalMoney;
+    }
+
+    public String getInfo() {
+        return this.contractID + Comma.COMMA +
+                this.bookingID + Comma.COMMA +
+                this.customerID + Comma.COMMA +
+                this.deposit + Comma.COMMA +
+                this.totalMoney + Comma.COMMA + "\n";
     }
 }

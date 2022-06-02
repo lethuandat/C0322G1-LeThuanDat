@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Villa extends Facility {
     private String standardRoom;
     private double poolArea;
@@ -45,5 +47,18 @@ public class Villa extends Facility {
                 ", standard room: " + standardRoom +
                 ", area pool: " + poolArea +
                 ", floor of quantity: " + floorQuantity;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getServiceID() + Comma.COMMA +
+                super.getServiceName() + Comma.COMMA +
+                super.getArea() + Comma.COMMA +
+                super.getRentPrice() + Comma.COMMA +
+                super.getMaxCustomer() + Comma.COMMA +
+                super.getRentType() + Comma.COMMA +
+                this.getStandardRoom() + Comma.COMMA +
+                this.getPoolArea() + Comma.COMMA +
+                this.getFloorQuantity() + Comma.COMMA + "\n";
     }
 }

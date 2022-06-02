@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Room extends Facility {
     private String freeServiceWith;
 
@@ -23,5 +25,16 @@ public class Room extends Facility {
     public String toString() {
         return "Room " + super.toString() +
                 ", free service: " + freeServiceWith;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getServiceID() + Comma.COMMA +
+                super.getServiceName() + Comma.COMMA +
+                super.getArea() + Comma.COMMA +
+                super.getRentPrice() + Comma.COMMA +
+                super.getMaxCustomer() + Comma.COMMA +
+                super.getRentType() + Comma.COMMA +
+                this.getFreeServiceWith() + Comma.COMMA + "\n";
     }
 }

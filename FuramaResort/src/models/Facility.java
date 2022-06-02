@@ -77,4 +77,6 @@ public abstract class Facility {
                 ", max customer:" + maxCustomer +
                 ", rentType: " + rentType;
     }
+
+    public abstract String getInfo();
 }

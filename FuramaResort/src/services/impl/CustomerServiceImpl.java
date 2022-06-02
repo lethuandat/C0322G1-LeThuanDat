@@ -14,12 +14,13 @@ public class CustomerServiceImpl implements CustomerService {
     private static final Scanner scanner = new Scanner(System.in);
     private static List<Customer> customerList = new LinkedList<>();
     private static List<String[]> list = new ArrayList<>();
-    private static int choice;
+    private static String choice;
 
     @Override
     public void display() {
         list = ReadAndWrite.readTextFile(CUSTOMER_FILE_PATH);
         customerList.clear();
+
         for (String[] value : list) {
             Customer customer = new Customer(value[0],
                     Integer.parseInt(value[1]),
@@ -32,6 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
                     value[8]);
             customerList.add(customer);
         }
+
         System.out.println("List customers: ");
         for (Customer customer : customerList) {
             System.out.println(customer);
@@ -59,47 +61,36 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("-----Add new customer:");
         System.out.println("Enter name:");
         String name = scanner.nextLine();
+
         System.out.println("Enter age:");
         int age = Integer.parseInt(scanner.nextLine());
+
         System.out.println("Enter gender:");
         boolean gender = Boolean.parseBoolean(scanner.nextLine());
+
         System.out.println("Enter identity:");
         long identity = Integer.parseInt(scanner.nextLine());
+
         System.out.println("Enter phone number:");
         long phoneNumber = Long.parseLong(scanner.nextLine());
+
         System.out.println("Enter email:");
         String email = scanner.nextLine();
+
         System.out.println("Enter type:");
         String customerType = addCustomerType();
+
         System.out.println("Enter address:");
         String address = scanner.nextLine();
 
         Customer customer = new Customer(name, age, gender, identity, phoneNumber, email, (list.size() + 1), customerType, address);
         customerList.add(customer);
         String line = "";
+
         for (int i = 0; i < customerList.size(); i++) {
-            if (i == (customerList.size() - 1)) {
-                line += customerList.get(i).getName() + "," +
-                        customerList.get(i).getAge() + "," +
-                        customerList.get(i).isGender() + "," +
-                        customerList.get(i).getIdentity() + "," +
-                        customerList.get(i).getPhoneNumber() + "," +
-                        customerList.get(i).getEmail() + "," +
-                        customerList.get(i).getCustomerID() + "," +
-                        customerList.get(i).getCustomerType() + "," +
-                        customerList.get(i).getAddress();
-            } else {
-                line += customerList.get(i).getName() + "," +
-                        customerList.get(i).getAge() + "," +
-                        customerList.get(i).isGender() + "," +
-                        customerList.get(i).getIdentity() + "," +
-                        customerList.get(i).getPhoneNumber() + "," +
-                        customerList.get(i).getEmail() + "," +
-                        customerList.get(i).getCustomerID() + "," +
-                        customerList.get(i).getCustomerType() + "," +
-                        customerList.get(i).getAddress() + "\n";
-            }
+           line += customerList.get(i).getInfo();
         }
+
         ReadAndWrite.writeTextFile(CUSTOMER_FILE_PATH, line);
         System.out.println("Add successful!");
     }
@@ -137,18 +128,25 @@ public class CustomerServiceImpl implements CustomerService {
         if (check) {
             System.out.println("Enter name:");
             String name = scanner.nextLine();
+
             System.out.println("Enter age:");
             int age = Integer.parseInt(scanner.nextLine());
+
             System.out.println("Enter gender:");
             boolean gender = Boolean.parseBoolean(scanner.nextLine());
+
             System.out.println("Enter identity:");
             long identity = Integer.parseInt(scanner.nextLine());
+
             System.out.println("Enter phone number:");
             long phoneNumber = Long.parseLong(scanner.nextLine());
+
             System.out.println("Enter email:");
             String email = scanner.nextLine();
+
             System.out.println("Enter type:");
             String customerType = addCustomerType();
+
             System.out.println("Enter address:");
             String address = scanner.nextLine();
 
@@ -163,28 +161,9 @@ public class CustomerServiceImpl implements CustomerService {
 
             String line = "";
             for (int i = 0; i < customerList.size(); i++) {
-                if (i == (customerList.size() - 1)) {
-                    line += customerList.get(i).getName() + "," +
-                            customerList.get(i).getAge() + "," +
-                            customerList.get(i).isGender() + "," +
-                            customerList.get(i).getIdentity() + "," +
-                            customerList.get(i).getPhoneNumber() + "," +
-                            customerList.get(i).getEmail() + "," +
-                            customerList.get(i).getCustomerID() + "," +
-                            customerList.get(i).getCustomerType() + "," +
-                            customerList.get(i).getAddress();
-                } else {
-                    line += customerList.get(i).getName() + "," +
-                            customerList.get(i).getAge() + "," +
-                            customerList.get(i).isGender() + "," +
-                            customerList.get(i).getIdentity() + "," +
-                            customerList.get(i).getPhoneNumber() + "," +
-                            customerList.get(i).getEmail() + "," +
-                            customerList.get(i).getCustomerID() + "," +
-                            customerList.get(i).getCustomerType() + "," +
-                            customerList.get(i).getAddress() + "\n";
-                }
+                line += customerList.get(i).getInfo();
             }
+
             ReadAndWrite.writeTextFile(CUSTOMER_FILE_PATH, line);
             System.out.println("Update successful!");
         } else {
@@ -202,17 +181,17 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("Enter your type, please!");
 
         try {
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     return "Diamond";
-                case 2:
+                case "2":
                     return "Platinum";
-                case 3:
+                case "3":
                     return "Gold";
-                case 4:
+                case "4":
                     return "Silver";
-                case 5:
+                case "5":
                     return "Member";
                 default:
                     System.out.println("This option is not available.");

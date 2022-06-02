@@ -12,6 +12,7 @@ import java.util.*;
 public class PromotionServiceImpl implements PromotionService {
     private static final String BOOKING_FILE_PATH = "src\\data\\booking.csv";
     private static List<String[]> list = new ArrayList<>();
+
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparatorID());
     static Stack<Booking> bookingStack = new Stack<>();
     static Scanner scanner = new Scanner(System.in);
@@ -45,9 +46,11 @@ public class PromotionServiceImpl implements PromotionService {
 
         int count = 0;
         System.out.println("Lists of customer in " + year + " :");
+
         for (Booking booking : bookingSet) {
             String[] arrDayStart = booking.getDayStart().split("/");
             String[] arrDayEnd = booking.getDayEnd().split("/");
+
             if (year == Integer.parseInt(arrDayStart[2]) || year == Integer.parseInt(arrDayEnd[2])) {
                 System.out.println(booking);
                 count++;
@@ -59,9 +62,11 @@ public class PromotionServiceImpl implements PromotionService {
     @Override
     public void displayCustomerGetVoucher() {
         int tenPercentVoucher = 0;
+
         int twentyPercentVoucher = 0;
+
         int fiftyPercentVoucher = 0;
-        int totalVoucher = 0;
+
         boolean check;
         do {
             check = false;
@@ -82,9 +87,11 @@ public class PromotionServiceImpl implements PromotionService {
             }
         } while (check);
 
-        totalVoucher = tenPercentVoucher + twentyPercentVoucher + fiftyPercentVoucher;
+        int totalVoucher = tenPercentVoucher + twentyPercentVoucher + fiftyPercentVoucher;
+
         list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
         bookingSet.clear();
+
         for (String[] item : list) {
             Booking booking = new Booking(Integer.parseInt(item[0]),
                     item[1],
@@ -104,17 +111,19 @@ public class PromotionServiceImpl implements PromotionService {
             i++;
         }
 
-        while (tenPercentVoucher > 0) {
+        while (tenPercentVoucher > 0 && !bookingStack.isEmpty()) {
             System.out.println(bookingStack.peek() + ", be received voucher 10%");
             bookingStack.pop();
             tenPercentVoucher--;
         }
-        while (twentyPercentVoucher > 0) {
+
+        while (twentyPercentVoucher > 0 && !bookingStack.isEmpty()) {
             System.out.println(bookingStack.peek() + ", be received voucher 20%");
             bookingStack.pop();
             twentyPercentVoucher--;
         }
-        while (fiftyPercentVoucher > 0) {
+
+        while (fiftyPercentVoucher > 0 && !bookingStack.isEmpty()) {
             System.out.println(bookingStack.peek() + ", be received voucher 50%");
             bookingStack.pop();
             fiftyPercentVoucher--;

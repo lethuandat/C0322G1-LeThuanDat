@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Employee extends Person {
     private int employeeID;
     private String level;
@@ -65,5 +67,19 @@ public class Employee extends Person {
                 ", level: " + level +
                 ", rank: " + rank +
                 ", salary: " + salary;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getName() + Comma.COMMA +
+                super.getAge() + Comma.COMMA +
+                super.isGender() + Comma.COMMA +
+                super.getIdentity() + Comma.COMMA +
+                super.getPhoneNumber() + Comma.COMMA +
+                super.getEmail() + Comma.COMMA +
+                this.getEmployeeID() + Comma.COMMA +
+                this.getLevel() + Comma.COMMA +
+                this.getRank() + Comma.COMMA +
+                this.getRank() + Comma.COMMA + "\n";
     }
 }

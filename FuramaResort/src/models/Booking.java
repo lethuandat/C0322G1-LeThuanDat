@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Booking {
     private int bookingID;
     private String dayStart;
@@ -66,6 +68,15 @@ public class Booking {
 
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
+    }
+
+    public String getInfo() {
+        return this.bookingID + Comma.COMMA +
+                this.dayStart + Comma.COMMA +
+                this.dayEnd + Comma.COMMA +
+                this.customerID + Comma.COMMA +
+                this.serviceID + Comma.COMMA +
+                this.serviceType + Comma.COMMA + "\n";
     }
 
     @Override

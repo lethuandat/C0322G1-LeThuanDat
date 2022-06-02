@@ -1,5 +1,7 @@
 package models;
 
+import comma.Comma;
+
 public class Customer extends Person {
     private int customerID;
     private String customerType;
@@ -37,6 +39,19 @@ public class Customer extends Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getName() + Comma.COMMA +
+                super.getAge() + Comma.COMMA +
+                super.isGender() + Comma.COMMA +
+                super.getIdentity() + Comma.COMMA +
+                super.getPhoneNumber() + Comma.COMMA +
+                super.getEmail() + Comma.COMMA +
+                this.getCustomerID() + Comma.COMMA +
+                this.getCustomerType() + Comma.COMMA +
+                this.getAddress() + "\n";
     }
 
     @Override
