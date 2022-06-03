@@ -62,6 +62,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         System.out.println("-----Add new employee:");
 
+        int id = 0;
+        int max = employeeList.get(0).getEmployeeID();
+        if (employeeList.size() == 0) {
+            id = 1;
+        } else {
+            for (int i = 1; i < employeeList.size(); i++) {
+                if (employeeList.get(i).getEmployeeID() > max) {
+                    max = employeeList.get(i).getEmployeeID();
+                }
+            }
+            id = max + 1;
+        }
+
         System.out.println("Enter name employee:");
         String name = scanner.nextLine();
 
@@ -89,7 +102,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("Enter salary:");
         double salary = Double.parseDouble(scanner.nextLine());
 
-        Employee employee = new Employee(name, age, gender, identity, phoneNumber, email, (list.size() + 1), level, rank, salary);
+        Employee employee = new Employee(name, age, gender, identity, phoneNumber, email, id, level, rank, salary);
         employeeList.add(employee);
         String line = "";
 

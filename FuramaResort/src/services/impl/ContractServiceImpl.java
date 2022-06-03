@@ -55,6 +55,19 @@ public class ContractServiceImpl implements ContractService {
             bookingSet.add(booking);
         }
 
+        int id = 0;
+        int max = contractList.get(0).getContractID();
+        if (contractList.size() == 0) {
+            id = 1;
+        } else {
+            for (int i = 1; i < contractList.size(); i++) {
+                if (contractList.get(i).getContractID() > max) {
+                    max = contractList.get(i).getContractID();
+                }
+            }
+            id = max + 1;
+        }
+
         Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
         while (!bookingQueue.isEmpty()) {
             assert bookingQueue.peek() != null;
@@ -70,7 +83,7 @@ public class ContractServiceImpl implements ContractService {
             System.out.println("Enter total money:");
             double totalMoney = Double.parseDouble(scanner.nextLine());
 
-            Contract contract = new Contract(contractList.size() + 1, bookingID, customerID, deposit, totalMoney);
+            Contract contract = new Contract(id, bookingID, customerID, deposit, totalMoney);
             contractList.add(contract);
             String line = "";
 
@@ -124,7 +137,7 @@ public class ContractServiceImpl implements ContractService {
 
             String line = "";
             for (Contract value : contractList) {
-               line += value.getInfo();
+                line += value.getInfo();
             }
             ReadAndWrite.writeTextFile(CONTRACT_FILE_PATH, line);
             System.out.println("Update successful!");

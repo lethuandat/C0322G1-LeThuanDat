@@ -59,6 +59,23 @@ public class BookingServiceImpl implements BookingService {
             bookingSet.add(booking);
         }
 
+//        int id = 0;
+//        int max = 0;
+//        for (Booking booking : bookingSet) {
+//            max = booking.getBookingID();
+//            booking.
+//        }
+//        if (customerList.size() == 0) {
+//            id = 1;
+//        } else {
+//            for (int i = 1; i < customerList.size(); i++) {
+//                if (customerList.get(i).getCustomerID() > max) {
+//                    max = customerList.get(i).getCustomerID();
+//                }
+//            }
+//            id = max + 1;
+//        }
+
         System.out.println("Enter day start:");
         String dayStart = scanner.nextLine();
 
@@ -113,23 +130,17 @@ public class BookingServiceImpl implements BookingService {
             int numUsed = Integer.parseInt(value[7]);
             roomIntegerMap.put(room, numUsed);
         }
+
         list.clear();
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
             if (entry.getKey().getServiceID().equals(facilityID)) {
                 entry.setValue(entry.getValue() + 1);
             }
         }
+
         String line = "";
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getPoolArea() + "," +
-                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+            line += entry.getKey().getInfo() + "," + entry.getValue() + "\n";
         }
         ReadAndWrite.writeTextFile(VILLA_FILE_PATH, line);
 
@@ -138,16 +149,10 @@ public class BookingServiceImpl implements BookingService {
                 entry.setValue(entry.getValue() + 1);
             }
         }
+
         line = "";
         for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getStandardRoom() + "," +
-                    entry.getKey().getFloorQuantity() + "," + entry.getValue() + "\n";
+            line += entry.getKey().getInfo() + "," + entry.getValue() + "\n";
         }
         ReadAndWrite.writeTextFile(HOUSE_FILE_PATH, line);
 
@@ -158,13 +163,7 @@ public class BookingServiceImpl implements BookingService {
         }
         line = "";
         for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
-            line += entry.getKey().getServiceID() + "," +
-                    entry.getKey().getServiceName() + "," +
-                    entry.getKey().getArea() + "," +
-                    entry.getKey().getRentPrice() + "," +
-                    entry.getKey().getMaxCustomer() + "," +
-                    entry.getKey().getRentType() + "," +
-                    entry.getKey().getFreeServiceWith() + "," + entry.getValue() + "\n";
+            line += entry.getKey().getInfo() + "," + entry.getValue() + "\n";
         }
         ReadAndWrite.writeTextFile(ROOM_FILE_PATH, line);
 
@@ -175,24 +174,9 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = new Booking(bookingSet.size() + 1, dayStart, dayEnd, customerID, facilityID, typeService);
         bookingSet.add(booking);
         line = "";
-        int count = 1;
+
         for (Booking value : bookingSet) {
-            if (count == bookingSet.size()) {
-                line += value.getBookingID() + "," +
-                        value.getDayStart() + "," +
-                        value.getDayEnd() + "," +
-                        value.getCustomerID() + "," +
-                        value.getServiceID() + "," +
-                        value.getServiceType();
-                break;
-            }
-            line += value.getBookingID() + "," +
-                    value.getDayStart() + "," +
-                    value.getDayEnd() + "," +
-                    value.getCustomerID() + "," +
-                    value.getServiceID() + "," +
-                    value.getServiceType() + "\n";
-            count++;
+            line += value.getInfo() + "\n";
         }
         ReadAndWrite.writeTextFile(BOOKING_FILE_PATH, line);
         System.out.println("Add successful!");

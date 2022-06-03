@@ -175,7 +175,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String line = "";
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
-            entry.getKey().getInfo();
+            line += entry.getKey().getInfo() + "\n";
         }
 
         ReadAndWrite.writeTextFile(VILLA_FILE_PATH, line);
@@ -270,7 +270,7 @@ public class FacilityServiceImpl implements FacilityService {
         String line = "";
 
         for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
-            line += entry.getKey().getInfo();
+            line += entry.getKey().getInfo() + "\n";
         }
         ReadAndWrite.writeTextFile(HOUSE_FILE_PATH, line);
         System.out.println("Add house successful!");
@@ -317,7 +317,7 @@ public class FacilityServiceImpl implements FacilityService {
         String line = "";
 
         for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
-            line += entry.getKey().getInfo();
+            line += entry.getKey().getInfo() + "\n";
         }
         ReadAndWrite.writeTextFile(ROOM_FILE_PATH, line);
         System.out.println("Add room successful!");

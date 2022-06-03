@@ -59,6 +59,19 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         System.out.println("-----Add new customer:");
+        int id = 0;
+        int max = customerList.get(0).getCustomerID();
+        if (customerList.size() == 0) {
+            id = 1;
+        } else {
+            for (int i = 1; i < customerList.size(); i++) {
+                if (customerList.get(i).getCustomerID() > max) {
+                    max = customerList.get(i).getCustomerID();
+                }
+            }
+            id = max + 1;
+        }
+
         System.out.println("Enter name:");
         String name = scanner.nextLine();
 
@@ -83,7 +96,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("Enter address:");
         String address = scanner.nextLine();
 
-        Customer customer = new Customer(name, age, gender, identity, phoneNumber, email, (list.size() + 1), customerType, address);
+        Customer customer = new Customer(name, age, gender, identity, phoneNumber, email, id, customerType, address);
         customerList.add(customer);
         String line = "";
 
