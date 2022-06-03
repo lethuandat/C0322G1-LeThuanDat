@@ -1,13 +1,13 @@
 package services;
 
 public interface FacilityService extends Service {
-    void addNewFacility();
+    void add();
 
-    void addNewVilla();
+    void addVilla();
 
-    void addNewHouse();
+    void addHouse();
 
-    void addNewRoom();
+    void addRoom();
 
     void displayFacilityMaintenance();
 }

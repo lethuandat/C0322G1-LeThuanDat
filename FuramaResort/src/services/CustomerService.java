@@ -1,7 +1,7 @@
 package services;
 
 public interface CustomerService extends Service {
-    void addNewCustomer();
+    void add();
 
-    void editCustomer();
+    void edit();
 }

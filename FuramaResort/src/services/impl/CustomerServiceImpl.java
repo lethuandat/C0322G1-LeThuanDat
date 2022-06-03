@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addNewCustomer() {
+    public void add() {
         list = ReadAndWrite.readTextFile(CUSTOMER_FILE_PATH);
         customerList.clear();
         for (String[] value : list) {
@@ -109,7 +109,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void editCustomer() {
+    public void edit() {
         list = ReadAndWrite.readTextFile(CUSTOMER_FILE_PATH);
         customerList.clear();
         for (String[] value : list) {

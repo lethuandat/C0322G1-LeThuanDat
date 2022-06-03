@@ -40,7 +40,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public void createNewContract() {
+    public void create() {
         list.clear();
         list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
         bookingSet.clear();
@@ -97,7 +97,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public void editContract() {
+    public void edit() {
         list.clear();
         list = ReadAndWrite.readTextFile(CONTRACT_FILE_PATH);
         contractList.clear();

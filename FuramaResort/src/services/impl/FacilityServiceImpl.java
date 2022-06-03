@@ -96,7 +96,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewFacility() {
+    public void add() {
         do {
             System.out.println("---Add new facility:");
             System.out.println("\t1.\tAdd new villa");
@@ -109,20 +109,20 @@ public class FacilityServiceImpl implements FacilityService {
                 choice = scanner.nextLine();
                 switch (choice) {
                     case "1":
-                        addNewVilla();
+                        addVilla();
                         break;
                     case "2":
-                        addNewHouse();
+                        addHouse();
                         break;
                     case "3":
-                        addNewRoom();
+                        addRoom();
                         break;
                     case "4":
                         FuramaController.displayFacilityMenu();
                         break;
                     default:
                         System.out.println("This option is not available.");
-                        addNewFacility();
+                        add();
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Cannot enter the character.");
@@ -132,7 +132,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewVilla() {
+    public void addVilla() {
         villaIntegerMap.clear();
         list.clear();
         list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
@@ -228,7 +228,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewHouse() {
+    public void addHouse() {
         houseIntegerMap.clear();
         list.clear();
         list = ReadAndWrite.readTextFile(HOUSE_FILE_PATH);
@@ -277,7 +277,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewRoom() {
+    public void addRoom() {
         roomIntegerMap.clear();
         list.clear();
         list = ReadAndWrite.readTextFile(ROOM_FILE_PATH);

@@ -45,7 +45,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void addNewBooking() {
+    public void add() {
         list = ReadAndWrite.readTextFile(BOOKING_FILE_PATH);
         bookingSet.clear();
 
@@ -59,22 +59,18 @@ public class BookingServiceImpl implements BookingService {
             bookingSet.add(booking);
         }
 
-//        int id = 0;
-//        int max = 0;
-//        for (Booking booking : bookingSet) {
-//            max = booking.getBookingID();
-//            booking.
-//        }
-//        if (customerList.size() == 0) {
-//            id = 1;
-//        } else {
-//            for (int i = 1; i < customerList.size(); i++) {
-//                if (customerList.get(i).getCustomerID() > max) {
-//                    max = customerList.get(i).getCustomerID();
-//                }
-//            }
-//            id = max + 1;
-//        }
+        int id = 0;
+        int max = 0;
+        if (bookingSet.size() == 0) {
+            id = 1;
+        } else {
+            for (Booking booking : bookingSet) {
+                if (booking.getBookingID() > max) {
+                    max = booking.getBookingID();
+                }
+            }
+            id = max + 1;
+        }
 
         System.out.println("Enter day start:");
         String dayStart = scanner.nextLine();
@@ -171,7 +167,7 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Enter type of service:");
         String typeService = scanner.nextLine();
 
-        Booking booking = new Booking(bookingSet.size() + 1, dayStart, dayEnd, customerID, facilityID, typeService);
+        Booking booking = new Booking(id, dayStart, dayEnd, customerID, facilityID, typeService);
         bookingSet.add(booking);
         line = "";
 

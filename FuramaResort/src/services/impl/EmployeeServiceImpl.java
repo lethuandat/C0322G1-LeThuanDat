@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addNewEmployee() {
+    public void add() {
         list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
         employeeList.clear();
 
@@ -115,7 +115,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void editEmployee() {
+    public void edit() {
         list = ReadAndWrite.readTextFile(EMPLOYEE_FILE_PATH);
         employeeList.clear();
 

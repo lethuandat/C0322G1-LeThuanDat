@@ -63,10 +63,10 @@ public class FuramaController {
                     employeeService.display();
                     break;
                 case "2":
-                    employeeService.addNewEmployee();
+                    employeeService.add();
                     break;
                 case "3":
-                    employeeService.editEmployee();
+                    employeeService.edit();
                     break;
                 case "4":
                     displayMainMenu();
@@ -95,10 +95,10 @@ public class FuramaController {
                     customerService.display();
                     break;
                 case "2":
-                    customerService.addNewCustomer();
+                    customerService.add();
                     break;
                 case "3":
-                    customerService.editCustomer();
+                    customerService.edit();
                     break;
                 case "4":
                     displayMainMenu();
@@ -128,7 +128,7 @@ public class FuramaController {
                     facilityService.display();
                     break;
                 case "2":
-                    facilityService.addNewFacility();
+                    facilityService.add();
                     break;
                 case "3":
                     facilityService.displayFacilityMaintenance();
@@ -161,19 +161,19 @@ public class FuramaController {
             choice = input.nextLine();
             switch (choice) {
                 case "1":
-                    bookingService.addNewBooking();
+                    bookingService.add();
                     break;
                 case "2":
                     bookingService.display();
                     break;
                 case "3":
-                    contractService.createNewContract();
+                    contractService.create();
                     break;
                 case "4":
                     contractService.display();
                     break;
                 case "5":
-                    contractService.editContract();
+                    contractService.edit();
                     break;
                 case "6":
                     displayMainMenu();
