@@ -3,6 +3,7 @@ package services.impl;
 import models.Employee;
 import services.EmployeeService;
 import utils.ReadAndWrite;
+import utils.RegexData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,11 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private static final String EMPLOYEE_FILE_PATH = "src\\data\\employee.csv";
+
     private static String choice;
     private static final Scanner scanner = new Scanner(System.in);
+    public static final String REGEX_TIME = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+
     private static List<String[]> list = new ArrayList<>();
     private static List<Employee> employeeList = new ArrayList<>();
 
@@ -22,8 +26,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
-                    Integer.parseInt(value[1]),
-                    Boolean.parseBoolean(value[2]),
+                    value[1],
+                    value[2],
                     Long.parseLong(value[3]),
                     Long.parseLong(value[4]),
                     value[5],
@@ -48,8 +52,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
-                    Integer.parseInt(value[1]),
-                    Boolean.parseBoolean(value[2]),
+                    value[1],
+                    value[2],
                     Long.parseLong(value[3]),
                     Long.parseLong(value[4]),
                     value[5],
@@ -64,6 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         int id = 0;
         int max = employeeList.get(0).getEmployeeID();
+
         if (employeeList.size() == 0) {
             id = 1;
         } else {
@@ -79,10 +84,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         String name = scanner.nextLine();
 
         System.out.println("Enter age:");
-        int age = Integer.parseInt(scanner.nextLine());
+        String age = RegexData.regexStr(scanner.nextLine(), REGEX_TIME, "Input date incorrect.");
 
         System.out.println("Enter gender:");
-        boolean gender = Boolean.parseBoolean(scanner.nextLine());
+        String gender = chooseGender();
 
         System.out.println("Enter identity:");
         long identity = Long.parseLong(scanner.nextLine());
@@ -121,8 +126,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         for (String[] value : list) {
             Employee employee = new Employee(value[0],
-                    Integer.parseInt(value[1]),
-                    Boolean.parseBoolean(value[2]),
+                    value[1],
+                    value[2],
                     Long.parseLong(value[3]),
                     Long.parseLong(value[4]),
                     value[5],
@@ -152,10 +157,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             String name = scanner.nextLine();
 
             System.out.println("Enter age:");
-            int age = Integer.parseInt(scanner.nextLine());
+            String age = RegexData.regexStr(scanner.nextLine(), REGEX_TIME, "Input date incorrect.");
 
             System.out.println("Enter gender:");
-            boolean gender = Boolean.parseBoolean(scanner.nextLine());
+            String gender = chooseGender();
 
             System.out.println("Enter identity:");
             long identity = Long.parseLong(scanner.nextLine());
@@ -259,6 +264,33 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (NumberFormatException e) {
             System.out.println("Cannot enter the character.");
             addEmployeeRank();
+        }
+        return null;
+    }
+
+    public String chooseGender() {
+        System.out.println("--Gender--");
+        System.out.println("1. Nam");
+        System.out.println("2. Nữ");
+        System.out.println("3. Khác");
+        System.out.println("Choose your gender:");
+
+        try {
+            choice = scanner.nextLine();
+            switch (choice) {
+                case "1":
+                    return "Nam";
+                case "2":
+                    return "Nữ";
+                case "3":
+                    return "Khác";
+                default:
+                    System.out.println("This option is not available.");
+                    chooseGender();
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Cannot enter the character.");
+            chooseGender();
         }
         return null;
     }

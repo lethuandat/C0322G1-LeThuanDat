@@ -11,8 +11,10 @@ import java.util.*;
 public class ContractServiceImpl implements ContractService {
     private static final String CONTRACT_FILE_PATH = "src\\data\\contract.csv";
     private static final String BOOKING_FILE_PATH = "src\\data\\booking.csv";
+
     private static List<String[]> list = new ArrayList<>();
     static List<Contract> contractList = new ArrayList<>();
+
     static Scanner scanner = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
 
@@ -57,6 +59,7 @@ public class ContractServiceImpl implements ContractService {
 
         int id = 0;
         int max = contractList.get(0).getContractID();
+
         if (contractList.size() == 0) {
             id = 1;
         } else {
@@ -69,6 +72,7 @@ public class ContractServiceImpl implements ContractService {
         }
 
         Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
+
         while (!bookingQueue.isEmpty()) {
             assert bookingQueue.peek() != null;
             int bookingID = bookingQueue.peek().getBookingID();

@@ -19,11 +19,14 @@ public class FacilityServiceImpl implements FacilityService {
     public static final String REGEX_PRICE = "^[1-9]|([1-9][0-9])|([1-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|([1-9][0-9][0-9][0-9][0-9])$";
 
     private static List<String[]> list = new ArrayList<>();
+
     private static final String VILLA_FILE_PATH = "src\\data\\villa.csv";
     private static final String HOUSE_FILE_PATH = "src\\data\\house.csv";
     private static final String ROOM_FILE_PATH = "src\\data\\room.csv";
+
     private static String choice;
     private static final Scanner scanner = new Scanner(System.in);
+
     public static Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
     public static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
     public static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
@@ -136,6 +139,7 @@ public class FacilityServiceImpl implements FacilityService {
         villaIntegerMap.clear();
         list.clear();
         list = ReadAndWrite.readTextFile(VILLA_FILE_PATH);
+
         for (String[] value : list) {
             Villa villa = new Villa(value[0],
                     value[1],
@@ -374,25 +378,28 @@ public class FacilityServiceImpl implements FacilityService {
             int numUser = Integer.parseInt(value[7]);
             roomIntegerMap.put(room, numUser);
         }
+
         list.clear();
 
         System.out.println("List facility maintaince: ");
+
         for (Map.Entry<Villa, Integer> entry : villaIntegerMap.entrySet()) {
             if (entry.getValue() >= 5) {
                 System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
             }
         }
+
         for (Map.Entry<House, Integer> entry : houseIntegerMap.entrySet()) {
             if (entry.getValue() >= 5) {
                 System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
             }
         }
+
         for (Map.Entry<Room, Integer> entry : roomIntegerMap.entrySet()) {
             if (entry.getValue() >= 5) {
                 System.out.println(entry.getKey() + ", number of used: " + entry.getValue());
             }
         }
-
     }
 
     public String addRentType() {

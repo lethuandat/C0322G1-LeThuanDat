@@ -10,7 +10,7 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(String name, int age, boolean gender, long identity, long phoneNumber, String email, int customerID, String customerType, String address) {
+    public Customer(String name, String age, String gender, long identity, long phoneNumber, String email, int customerID, String customerType, String address) {
         super(name, age, gender, identity, phoneNumber, email);
         this.customerID = customerID;
         this.customerType = customerType;
@@ -45,7 +45,7 @@ public class Customer extends Person {
     public String getInfo() {
         return super.getName() + Comma.COMMA +
                 super.getAge() + Comma.COMMA +
-                super.isGender() + Comma.COMMA +
+                super.getGender() + Comma.COMMA +
                 super.getIdentity() + Comma.COMMA +
                 super.getPhoneNumber() + Comma.COMMA +
                 super.getEmail() + Comma.COMMA +

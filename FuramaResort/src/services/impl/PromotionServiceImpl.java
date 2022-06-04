@@ -33,6 +33,7 @@ public class PromotionServiceImpl implements PromotionService {
 
         int year = 0;
         boolean check;
+
         do {
             check = false;
             try {
@@ -56,6 +57,7 @@ public class PromotionServiceImpl implements PromotionService {
                 count++;
             }
         }
+
         System.out.println("Having: " + count + " customer");
     }
 
@@ -68,6 +70,7 @@ public class PromotionServiceImpl implements PromotionService {
         int fiftyPercentVoucher = 0;
 
         boolean check;
+
         do {
             check = false;
             try {
@@ -104,6 +107,7 @@ public class PromotionServiceImpl implements PromotionService {
 
         bookingStack.clear();
         int i = 1;
+
         for (Booking booking : bookingSet) {
             if (i <= totalVoucher && i <= bookingSet.size()) {
                 bookingStack.push(booking);

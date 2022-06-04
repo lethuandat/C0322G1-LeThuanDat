@@ -12,8 +12,8 @@ public class Employee extends Person {
     }
 
     public Employee(String name,
-                    int age,
-                    boolean gender,
+                    String age,
+                    String gender,
                     long identity,
                     long phoneNumber,
                     String email,
@@ -73,7 +73,7 @@ public class Employee extends Person {
     public String getInfo() {
         return super.getName() + Comma.COMMA +
                 super.getAge() + Comma.COMMA +
-                super.isGender() + Comma.COMMA +
+                super.getGender() + Comma.COMMA +
                 super.getIdentity() + Comma.COMMA +
                 super.getPhoneNumber() + Comma.COMMA +
                 super.getEmail() + Comma.COMMA +

@@ -2,8 +2,8 @@ package models;
 
 public abstract class Person {
     private String name;
-    private int age;
-    private boolean gender;
+    private String age;
+    private String gender;
     private long identity;
     private long phoneNumber;
     private String email;
@@ -11,7 +11,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, int age, boolean gender, long identity, long phoneNumber, String email) {
+    public Person(String name, String age, String gender, long identity, long phoneNumber, String email) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -28,19 +28,19 @@ public abstract class Person {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public boolean isGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -74,7 +74,7 @@ public abstract class Person {
     public String toString() {
         return ", name: " + name +
                 ", age: " + age +
-                ", gender: " + (gender ? "Nam" : "Nữ") +
+                ", gender: " + gender +
                 ", identity: " + identity +
                 ", phoneNumber: " + phoneNumber +
                 ", email: " + email;
